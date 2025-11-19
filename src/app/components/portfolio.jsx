@@ -115,15 +115,15 @@ export default function Portfolio() {
 
   return (
     <>
-      <div className=" ml-20 mr-20 hidden lg:block">
+      <div className=" px-6 lg:ml-20 lg:mr-20 lg:block">
         <div className="text-center">
-          <h1 className="merienda-font font-extrabold text-3xl text-(--primary-color) leading-10">
+          <h1 className="merienda-font font-extrabold text-xl min-[768px]:max-[1023px]:text-3xl lg:text-3xl text-(--primary-color) leading-10">
             EXPLORE OUR PORTFOLIO
           </h1>
-          <p className="michroma-font text-2xl text-(--primary-color) leading-10 ">
+          <p className="michroma-font text-xl min-[768px]:max-[1023px]:text-2xl lg:text-2xl text-(--primary-color) leading-6 min-[768px]:max-[1023px]:leading-10 lg:leading-10 ">
             Design - Prints - Quality Results
           </p>
-          <p className="merienda-font font-medium text-sm text-(--primary-color)">
+          <p className="merienda-font font-medium text-xs min-[768px]:max-[1023px]:text-md lg:text-sm text-(--primary-color)">
             Our portfolio shows our hard work and devotion to helping our
             clients <br /> succeed. Don't just take our word for it. <br />
             Check out the latest work.
@@ -139,9 +139,9 @@ export default function Portfolio() {
         </div> */}
       </div>
 
-      <div className="text-center hidden lg:block">
+      <div className="text-center mt-5 lg:block">
         {/* Category Buttons */}
-        <div className="flex items-center justify-center gap-3 mt-3 bg-[--neutral-color] w-fit mx-auto p-2 rounded-full shadow-gray-400 shadow-xl ">
+        <div className="flex items-center justify-center min-[768px]:max-[1023px]:gap-3 min-[768px]:max-[1023px]:text-md lg:gap-3 lg:mt-3 bg-[--neutral-color] w-fit mx-auto p-2 rounded-full shadow-gray-400 shadow-xl ">
           {["All Work", "Print & Brand", "Graphic Design", "UI/UX Design"].map(
             (cat) => (
               <p
@@ -150,7 +150,7 @@ export default function Portfolio() {
                 className={`cursor-pointer px-4 py-2 rounded-full transition-all ${
                   activeCategory === cat
                     ? "bg-[--secondary-color] text-[--accent-color]"
-                    : "hover:bg-gray-200"
+                    : "hover:bg-(--primary-color)/50"
                 }`}
               >
                 {cat}
@@ -161,13 +161,13 @@ export default function Portfolio() {
       </div>
 
       {/* Portfolio Grid */}
-      <div className="flex items-center justify-center hidden lg:block">
-        <div className="flex flex-wrap items-center justify-center gap-5 mt-16 w-250 h-auto">
+      <div className="flex flex-col min-[768px]:max-[1023px]:flex lg:flex items-center justify-center mx-50">
+        <div className="flex flex-col min-[768px]:max-[1023px]:flex min-[768px]:max-[1023px]:flex-row min-[768px]:max-[1023px]:flex-wrap lg:flex lg:flex-row lg:flex-wrap items-center justify-center min-[768px]:max-[1023px]:gap-2 gap-5 mt-16 w-250 h-auto">
           <AnimatePresence>
             {filteredData.map((item) => (
               <motion.div
                 key={item.id}
-                className="relative w-50 h-50 cursor-pointer perspective-[1000px]"
+                className="relative w-90 h-90 min-[768px]:max-[1023px]:w-50 min-[768px]:max-[1023px]:h-50 lg:w-50 lg:h-50 cursor-pointer perspective-[1000px]"
                 onClick={() =>
                   setFlippedId(flippedId === item.id ? null : item.id)
                 }

@@ -13,10 +13,11 @@ export default function Footertwo() {
         <div className="bg-(--primary-color) w-full h-80 p-8 relative">
           <div className="flex items-top justify-evenly m-10">
             <div>
-              <img src="/image/footer-logo.png" alt="logo"  />
+              <img src="/image/footer-logo.png" alt="logo" />
               <p className="mt-3 text-sm text-(--neutral-color) font-light leading-6">
-                Dedicated to turning ideas into reality <br /> through stunning prints,
-                creative branding, <br />  and meaningful digital design <br />  experiences
+                Dedicated to turning ideas into reality <br /> through stunning
+                prints, creative branding, <br /> and meaningful digital design{" "}
+                <br /> experiences
               </p>
               <div className="flex items-center gap-2 mt-4 text-(--neutral-color) animate-bounce">
                 <CiFacebook />
@@ -27,7 +28,9 @@ export default function Footertwo() {
               </div>
             </div>
             <div>
-              <h3 className="text-[#6B6B6B] font-bold text-sm leading-8 ">QUICKLINKS</h3>
+              <h3 className="text-[#6B6B6B] font-bold text-sm leading-8 ">
+                QUICKLINKS
+              </h3>
               <ul className="text-(--neutral-color) font-extralight text-sm leading-8">
                 <li>
                   <Link href="/">Home</Link>
@@ -47,25 +50,134 @@ export default function Footertwo() {
               </ul>
             </div>
             <div>
-              <h3 className="text-[#6B6B6B] font-bold text-sm leading-8 ">Legal</h3>
+              <h3 className="text-[#6B6B6B] font-bold text-sm leading-8 ">
+                Legal
+              </h3>
               <ul className="text-(--neutral-color) font-extralight text-sm leading-8">
-                <li><Link href="/privacy">Privacy</Link></li>
-                <li><Link href="/terms">Terms of Service</Link></li>
-                <li><Link href="/return">Returns Policy</Link></li>
-                <li><Link href="/shipping">Shipping Rates</Link></li>
+                <li>
+                  <Link href="/privacy">Privacy</Link>
+                </li>
+                <li>
+                  <Link href="/terms">Terms of Service</Link>
+                </li>
+                <li>
+                  <Link href="/return">Returns Policy</Link>
+                </li>
+                <li>
+                  <Link href="/shipping">Shipping Rates</Link>
+                </li>
               </ul>
             </div>
             <div>
-              <h3 className="text-[#6B6B6B] font-bold text-sm leading-8 ">Help</h3>
+              <h3 className="text-[#6B6B6B] font-bold text-sm leading-8 ">
+                Help
+              </h3>
               <ul className="text-(--neutral-color) font-extralight text-sm leading-8">
-                <li><Link href="/faq">Help & FAQ</Link></li>
-                <li><Link href="/contact">Contact us</Link></li>
-                <li><Link href="/terms">Terms & Conditions</Link></li>
-                <li><Link href="/site">Site Map</Link></li>
+                <li>
+                  <Link href="/faq">Help & FAQ</Link>
+                </li>
+                <li>
+                  <Link href="/contact">Contact us</Link>
+                </li>
+                <li>
+                  <Link href="/terms">Terms & Conditions</Link>
+                </li>
+                <li>
+                  <Link href="/site">Site Map</Link>
+                </li>
               </ul>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Mobile / Tablet */}
+      <div className="lg:hidden block bg-(--primary-color) w-full py-10 px-5">
+        {/* Logo + Social */}
+        <div className="flex flex-col items-start gap-4 text-center">
+          <img src="/image/footer-logo.png" alt="logo" className="w-28" />
+          <p className="text-sm text-left text-(--neutral-color) font-light leading-6">
+            Dedicated to turning ideas into reality <br /> through stunning prints,
+            creative branding, <br /> and meaningful digital design <br /> experiences
+          </p>
+          <div className="flex items-center gap-3 text-(--neutral-color) mt-2 animate-bounce">
+            <CiFacebook />
+            <CiLinkedin />
+            <CiInstagram />
+            <PiTiktokLogoThin />
+            <FaXTwitter />
+          </div>
+        </div>
+
+        {/* Links */}
+        <div className="mt-8 flex flex-col gap-6 text-left">
+          <div>
+            <h3 className="text-[#6B6B6B] font-bold text-sm mb-2">
+              QUICKLINKS
+            </h3>
+            <ul className="text-(--neutral-color) font-extralight text-sm leading-7">
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/about">About Us</Link>
+              </li>
+              <li>
+                <Link href="/services">Services</Link>
+              </li>
+              <li>
+                <Link href="/products">Products</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-[#6B6B6B] font-bold text-sm mb-2">LEGAL</h3>
+            <ul className="text-(--neutral-color) font-extralight text-sm leading-7">
+              <li>
+                <Link href="/privacy">Privacy</Link>
+              </li>
+              <li>
+                <Link href="/terms">Terms of Service</Link>
+              </li>
+              <li>
+                <Link href="/return">Returns Policy</Link>
+              </li>
+              <li>
+                <Link href="/shipping">Shipping Rates</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-[#6B6B6B] font-bold text-sm mb-2">HELP</h3>
+            <ul className="text-(--neutral-color) font-extralight text-sm leading-7">
+              <li>
+                <Link href="/faq">Help & FAQ</Link>
+              </li>
+              <li>
+                <Link href="/contact">Contact us</Link>
+              </li>
+              <li>
+                <Link href="/terms">Terms & Conditions</Link>
+              </li>
+              <li>
+                <Link href="/site">Site Map</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Copyright Notice */}
+      <hr />
+      <div className="bg-(--primary-color) w-full py-4 text-center">
+        <p className="text-(--neutral-color) text-sm font-light">
+          © {new Date().getFullYear()} Aphamed Prints Ltd. All rights reserved.
+        </p>
       </div>
     </>
   );
