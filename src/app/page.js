@@ -346,7 +346,10 @@ export default function Home() {
                   From paper to fabric, your vision perfectly printed.
                 </p>
                 <p className="font-bold text-lg text-[#151515]">
-                  We provide high-quality printing solutions that transform ideas into tangible, lasting impressions. Whether it’s on paper, fabric, or promotional materials, our prints are designed to deliver excellence in every detail.
+                  We provide high-quality printing solutions that transform
+                  ideas into tangible, lasting impressions. Whether it’s on
+                  paper, fabric, or promotional materials, our prints are
+                  designed to deliver excellence in every detail.
                 </p>
                 <p className="font-bold text-lg mt-10 text-[#151515]">
                   ORDER NOW
@@ -369,12 +372,12 @@ export default function Home() {
                 <p className="font-bold text-lg  text-[#151515]">
                   Smart, user-focused digital experiences
                 </p>
-                 <p className="font-bold text-lg  text-[#151515]">
-                We provide high-quality printing solutions that transform ideas
-                into tangible, lasting impressions. Whether it’s on paper,
-                fabric, or promotional materials, our prints are designed to
-                deliver excellence in every detail.
-              </p>
+                <p className="font-bold text-lg  text-[#151515]">
+                  We provide high-quality printing solutions that transform
+                  ideas into tangible, lasting impressions. Whether it’s on
+                  paper, fabric, or promotional materials, our prints are
+                  designed to deliver excellence in every detail.
+                </p>
                 <p className="font-bold text-lg mt-10 text-[#151515]">
                   ORDER NOW
                 </p>
@@ -397,12 +400,12 @@ export default function Home() {
                   Wear it. Share it. Live your brand.
                 </p>
                 <p className="font-bold text-lg text-(--neutral-color) hover:text-(--primary-color) ">
-                Our Branding & Merchandise services are designed to help you
-                make a lasting impression — turning everyday items into powerful
-                brand tools. From custom apparel to corporate souvenirs, we
-                blend creativity and quality to help your brand stand out
-                wherever it goes.
-              </p>
+                  Our Branding & Merchandise services are designed to help you
+                  make a lasting impression — turning everyday items into
+                  powerful brand tools. From custom apparel to corporate
+                  souvenirs, we blend creativity and quality to help your brand
+                  stand out wherever it goes.
+                </p>
                 <p className="font-bold text-lg mt-5 text-(--neutral-color) ">
                   ORDER NOW
                 </p>
@@ -454,7 +457,10 @@ export default function Home() {
                 From paper to fabric, your vision perfectly printed.
               </p>
               <p className="font-bold text-xs text-[#151515]">
-                  We provide high-quality printing solutions that transform ideas into tangible, lasting impressions. Whether it’s on paper, fabric, or promotional materials, our prints are designed to deliver excellence in every detail.
+                We provide high-quality printing solutions that transform ideas
+                into tangible, lasting impressions. Whether it’s on paper,
+                fabric, or promotional materials, our prints are designed to
+                deliver excellence in every detail.
               </p>
               <p className="font-bold text-xs mt-32 text-[#151515]">
                 ORDER NOW
