@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Numbers from "./components/numbers.jsx";
 import Portfolio from "./components/portfolio.jsx";
 import Footerone from "./components/footerone.jsx";
-import Footertwo from "./components/footertwo.jsx";
+import HeroImages from "./components/HeroImages.jsx";
 import { useState, useEffect } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa6";
@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <main>
       {/*Hero Section */}
-      <div className="HeroSection">
+      <div className="HeroSection m-5 lg:m-20">
         {/*Hero Text */}
         <motion.div
           className="HeroText"
@@ -52,10 +52,10 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <motion.h1
-            className="text-2xl min-[768px]:max-[1023px]:text-3xl lg:text-4xl text-(--Primary-color) text-center font-extrabold mt-8 leading-8 lg:leading-12"
+            className="text-2xl min-[768px]:max-[1023px]:text-5xl lg:text-6xl text-(--Primary-color) text-center font-extrabold mt-8 leading-8  min-[768px]:max-[1023px]:leading-12 lg:leading-15"
             initial={{ opacity: 0, y: -40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             WE DON’T JUST PRINT, <br /> WE PRINT EXPERIENCE <br /> THAT LAST
           </motion.h1>
@@ -73,7 +73,7 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-(--secondary-color) p-3 rounded-md flex items-center gap-2 text-sm min-[768px]:max-[1023px]:text-md lg:text-md min-[768px]:max-[1023px]:font-medium lg:font-medium shadow-md hover:bg-(--primary-color) hover:text-white"
+              className="bg-(--secondary-color) p-3 rounded-md flex items-center gap-2 text-xs min-[768px]:max-[1023px]:text-md lg:text-md font-medium min-[768px]:max-[1023px]:font-medium lg:font-medium shadow-md hover:bg-(--primary-color) hover:text-white"
             >
               See our work
               <FaArrowRightLong className="text-(--accent-color) hover:text-white " />
@@ -88,65 +88,7 @@ export default function Home() {
             </motion.button>
           </div>
         </motion.div>
-        {/* Hero Image Smaller screens */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="HeroImage sm:block lg:hidden"
-        >
-          <div className="flex items-center justify-between min-[768px]:max-[1023px]:gap-5 p-2  ">
-            <img
-              src="/image/Heroimg1.png"
-              alt="Hero Image"
-              className=" mt-10 w-30 min-[768px]:max-[1023px]w-full"
-            />
-            <img
-              src="/image/Heroimg2.png"
-              alt="Hero Image"
-              className=" mt-10 w-30 min-[768px]:max-[1023px]w-full"
-            />
-
-            <img
-              src="/image/Heroimg5.png"
-              alt="Hero Image"
-              className=" mt-10 w-30 min-[768px]:max-[1023px]w-full"
-            />
-          </div>
-        </motion.div>
-        {/* Hero Image large screens */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="HeroImage hidden lg:block"
-        >
-          <div className="flex items-center justify-between p-2 m-10">
-            <img
-              src="/image/Heroimg1.png"
-              alt="Hero Image"
-              className=" mt-10 absolute top-90"
-            />
-
-            <img
-              src="/image/Heroimg2.png"
-              alt="Hero Image"
-              className=" mt-10 absolute left-70 top-130"
-            />
-            <img
-              src="/image/Heroimg3.png"
-              alt="Hero Image"
-              className=" mt-10 absolute left-170 top-150"
-            />
-            <img
-              src="/image/Heroimg4.png"
-              alt="Hero Image"
-              className=" mt-10 absolute top-120 left-260"
-            />
-          </div>
-        </motion.div>
+        <HeroImages />
       </div>
       {/* All Products Section Small screen */}
       <div className="mt-10 mb-20 ml-5 mr-5 min-[768px]:max-[1023px]:ml-20 min-[768px]:max-[1023px]:mr-20 lg:hidden">
@@ -223,7 +165,7 @@ export default function Home() {
         </div>
       </div>
       {/* All Products Section */}
-      <div className="mt-120 mb-30 ml-20 mr-20 hidden lg:block">
+      <div className="mt-10 mb-20 ml-20 mr-20 hidden lg:block">
         {/* <AllProducts /> */}
         <div className="flex items-center gap-10 justify-center">
           <div className="bg-(--neutral-color) p-3 flex items-center gap-3 shadow-gray-400 shadow-md rounded-md">
@@ -347,7 +289,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* What we do best small screen */}
+      {/* What we do best Mobile & ipad screens */}
       <div className="mt-180 mb-20 min-[768px]:max-[1023px]:mt-110 lg:hidden">
         <div>
           <div className="">
@@ -361,90 +303,114 @@ export default function Home() {
           </div>
           <div className="hidden min-[768px]:max-[1023px]:flex min-[768px]:max-[1023px]:flex-wrap min-[768px]:max-[1023px]:items-center min-[768px]:max-[1023px]:justify-center min-[768px]:max-[1023px]:gap-5 mt-10 ">
             <div className="flex items-center justify-center gap-5 mt-10 ">
-            <div className="w-[350px] h-[300.48px] bg-(--primary-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
-              <div className="flex items-center gap-2 mt-3 mb-3 ">
-                <img
-                  src="/image/Wwdbimg1.png"
-                  alt="whatwedobest"
-                  className=""
-                />
-                <h1 className="font-bold text-2xl text-(--neutral-color)">
-                  Graphic Design
-                </h1>
+              <div className="w-[400px] h-auto bg-(--primary-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
+                <div className="flex items-center gap-2 mt-3 mb-3 ">
+                  <img
+                    src="/image/Wwdbimg1.png"
+                    alt="whatwedobest"
+                    className=""
+                  />
+                  <h1 className="font-bold text-2xl text-(--neutral-color)">
+                    Graphic Design
+                  </h1>
+                </div>
+                <p className="font-bold text-lg text-(--neutral-color)">
+                  Designs that speak louder than words.
+                </p>
+                <p className="font-bold text-lg text-(--neutral-color)">
+                  We design with intention, blending creativity, strategy, and
+                  experience to create visuals that inspire action. Logos,
+                  flyers, social media graphics, or print layouts — whatever
+                  your design needs, we bring them to life with detail and
+                  excellence.
+                </p>
+                <p className="font-bold text-lg mt-10 text-(--neutral-color)">
+                  ORDER NOW
+                </p>
+                <HiOutlineArrowLongRight className="absolute top-101 left-33 text-xl text-(--neutral-color)" />
               </div>
-              <p className="font-medium text-xs leading-10 text-(--neutral-color)">
-                Designs that speak louder than words.
+            </div>
+            <div className="flex items-center justify-center gap-5 mt-10">
+              <div className="w-[400px] h-auto bg-(--secondary-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
+                <div className="flex items-center gap-2 mt-3 mb-3 ">
+                  <img
+                    src="/image/Wwdbimg2.png"
+                    alt="whatwedobest"
+                    className=""
+                  />
+                  <h1 className="font-bold text-2xl text-[#151515]">
+                    Printing Solutions
+                  </h1>
+                </div>
+                <p className="font-bold text-lg text-[#151515]">
+                  From paper to fabric, your vision perfectly printed.
+                </p>
+                <p className="font-bold text-lg text-[#151515]">
+                  We provide high-quality printing solutions that transform ideas into tangible, lasting impressions. Whether it’s on paper, fabric, or promotional materials, our prints are designed to deliver excellence in every detail.
+                </p>
+                <p className="font-bold text-lg mt-10 text-[#151515]">
+                  ORDER NOW
+                </p>
+                <HiOutlineArrowLongRight className="absolute top-99 left-33 mt-1 text-[#151515] text-xl" />
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-5 mt-10">
+              <div className="w-[400px] h-auto bg-(--footer-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
+                <div className="flex items-center gap-2 mt-3 mb-3 ">
+                  <img
+                    src="/image/Wwdbimg1.png"
+                    alt="whatwedobest"
+                    className=""
+                  />
+                  <h1 className="font-bold text-2xl text-[#151515]">
+                    UI/UX Design
+                  </h1>
+                </div>
+                <p className="font-bold text-lg  text-[#151515]">
+                  Smart, user-focused digital experiences
+                </p>
+                 <p className="font-bold text-lg  text-[#151515]">
+                We provide high-quality printing solutions that transform ideas
+                into tangible, lasting impressions. Whether it’s on paper,
+                fabric, or promotional materials, our prints are designed to
+                deliver excellence in every detail.
               </p>
-              <p className="font-medium text-xs mt-30 text-(--neutral-color)">
-                ORDER NOW
+                <p className="font-bold text-lg mt-10 text-[#151515]">
+                  ORDER NOW
+                </p>
+                <HiOutlineArrowLongRight className="absolute top-100 left-33 mt-1 text-[#151515] text-xl" />
+              </div>
+            </div>
+            <div className="flex items-center justify-center gap-5 mt-10">
+              <div className="w-[400px] h-auto bg-(--accent-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
+                <div className="flex items-center gap-2 mt-3 mb-3 ">
+                  <img
+                    src="/image/Wwdbimg3.png"
+                    alt="whatwedobest"
+                    className=""
+                  />
+                  <h1 className="font-bold text-2xl text-(--neutral-color) ">
+                    Branding & Merchandise
+                  </h1>
+                </div>
+                <p className="font-bold text-lg text-(--neutral-color) ">
+                  Wear it. Share it. Live your brand.
+                </p>
+                <p className="font-bold text-lg text-(--neutral-color) hover:text-(--primary-color) ">
+                Our Branding & Merchandise services are designed to help you
+                make a lasting impression — turning everyday items into powerful
+                brand tools. From custom apparel to corporate souvenirs, we
+                blend creativity and quality to help your brand stand out
+                wherever it goes.
               </p>
-              <HiOutlineArrowLongRight className="absolute top-65 left-23 mt-1 text-(--neutral-color)" />
+                <p className="font-bold text-lg mt-5 text-(--neutral-color) ">
+                  ORDER NOW
+                </p>
+                <HiOutlineArrowLongRight className="absolute top-99 left-33 mt-1 text-(--neutral-color)  font-bold text-xl" />
+              </div>
             </div>
           </div>
-          <div className="flex items-center justify-center gap-5 mt-10">
-            <div className="w-[350px] h-[300.48px] bg-(--secondary-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
-              <div className="flex items-center gap-2 mt-3 mb-3 ">
-                <img
-                  src="/image/Wwdbimg2.png"
-                  alt="whatwedobest"
-                  className=""
-                />
-                <h1 className="font-bold text-2xl text-[#151515]">
-                  Printing Solutions
-                </h1>
-              </div>
-              <p className="font-bold text-xs text-[#151515]">
-                From paper to fabric, your vision perfectly printed.
-              </p>
-              <p className="font-bold text-xs mt-32 text-[#151515]">
-                ORDER NOW
-              </p>
-              <HiOutlineArrowLongRight className="absolute top-65 left-23 mt-1 text-[#151515]" />
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-5 mt-10">
-            <div className="w-[350px] h-[300.48px] bg-(--footer-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
-              <div className="flex items-center gap-2 mt-3 mb-3 ">
-                <img
-                  src="/image/Wwdbimg1.png"
-                  alt="whatwedobest"
-                  className=""
-                />
-                <h1 className="font-bold text-2xl text-[#151515]">
-                  UI/UX Design
-                </h1>
-              </div>
-              <p className="font-bold text-xs text-[#151515]">
-                Smart, user-focused digital experiences
-              </p>
-              <p className="font-bold text-xs mt-36 text-[#151515]">
-                ORDER NOW
-              </p>
-              <HiOutlineArrowLongRight className="absolute top-65 left-23 mt-1 text-[#151515] font-bold" />
-            </div>
-          </div>
-          <div className="flex items-center justify-center gap-5 mt-10">
-            <div className="w-[350px] h-[300.48px] bg-(--accent-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
-              <div className="flex items-center gap-2 mt-3 mb-3 ">
-                <img
-                  src="/image/Wwdbimg3.png"
-                  alt="whatwedobest"
-                  className=""
-                />
-                <h1 className="font-bold text-2xl text-(--neutral-color) ">
-                  Branding & Merchandise
-                </h1>
-              </div>
-              <p className="font-bold text-xs text-(--neutral-color) ">
-                Wear it. Share it. Live your brand.
-              </p>
-              <p className="font-bold text-xs mt-30 text-(--neutral-color) ">
-                ORDER NOW
-              </p>
-              <HiOutlineArrowLongRight className="absolute top-63 left-23 mt-1 text-(--neutral-color)  font-bold" />
-            </div>
-          </div>
-          </div>
+          {/* Small Screens */}
           <div className="flex items-center justify-center gap-5 mt-10 min-[768px]:max-[1023px]:hidden">
             <div className="w-[350px] h-[300.48px] bg-(--primary-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
               <div className="flex items-center gap-2 mt-3 mb-3 ">
@@ -460,7 +426,13 @@ export default function Home() {
               <p className="font-medium text-xs leading-10 text-(--neutral-color)">
                 Designs that speak louder than words.
               </p>
-              <p className="font-medium text-xs mt-30 text-(--neutral-color)">
+              <p className="font-medium text-xs text-(--neutral-color)">
+                We design with intention, blending creativity, strategy, and
+                experience to create visuals that inspire action. Logos, flyers,
+                social media graphics, or print layouts — whatever your design
+                needs, we bring them to life with detail and excellence.
+              </p>
+              <p className="font-medium text-xs mt-10 text-(--neutral-color)">
                 ORDER NOW
               </p>
               <HiOutlineArrowLongRight className="absolute top-65 left-23 mt-1 text-(--neutral-color)" />
@@ -481,6 +453,9 @@ export default function Home() {
               <p className="font-bold text-xs text-[#151515]">
                 From paper to fabric, your vision perfectly printed.
               </p>
+              <p className="font-bold text-xs text-[#151515]">
+                  We provide high-quality printing solutions that transform ideas into tangible, lasting impressions. Whether it’s on paper, fabric, or promotional materials, our prints are designed to deliver excellence in every detail.
+              </p>
               <p className="font-bold text-xs mt-32 text-[#151515]">
                 ORDER NOW
               </p>
@@ -488,7 +463,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex items-center justify-center gap-5 mt-10 min-[768px]:max-[1023px]:hidden">
-            <div className="w-[350px] h-[300.48px] bg-(--footer-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
+            <div className="w-[350px] h-auto bg-(--footer-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
               <div className="flex items-center gap-2 mt-3 mb-3 ">
                 <img
                   src="/image/Wwdbimg1.png"
@@ -502,31 +477,44 @@ export default function Home() {
               <p className="font-bold text-xs text-[#151515]">
                 Smart, user-focused digital experiences
               </p>
-              <p className="font-bold text-xs mt-36 text-[#151515]">
+              <p className="font-bold text-xs text-[#151515]">
+                We provide high-quality printing solutions that transform ideas
+                into tangible, lasting impressions. Whether it’s on paper,
+                fabric, or promotional materials, our prints are designed to
+                deliver excellence in every detail.
+              </p>
+              <p className="font-bold text-xs mt-10 text-[#151515]">
                 ORDER NOW
               </p>
-              <HiOutlineArrowLongRight className="absolute top-65 left-23 mt-1 text-[#151515] font-bold" />
+              <HiOutlineArrowLongRight className="absolute top-59 left-23 mt-1 text-[#151515] font-bold" />
             </div>
           </div>
           <div className="flex items-center justify-center gap-5 mt-10 min-[768px]:max-[1023px]:hidden">
-            <div className="w-[350px] h-[300.48px] bg-(--accent-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5">
-              <div className="flex items-center gap-2 mt-3 mb-3 ">
+            <div className="w-[350px] h-auto bg-(--accent-color) border-gradient-animate shadow-gray-400 shadow-xl rounded-tr-2xl rounded-bl-2xl p-5 hover:text-(--accent-color) ">
+              <div className="flex items-center gap-2 mt-5 mb-3 ">
                 <img
                   src="/image/Wwdbimg3.png"
                   alt="whatwedobest"
                   className=""
                 />
-                <h1 className="font-bold text-2xl text-(--neutral-color) ">
+                <h1 className="font-bold text-2xl text-(--neutral-color) hover:text-(--primary-color) ">
                   Branding & Merchandise
                 </h1>
               </div>
-              <p className="font-bold text-xs text-(--neutral-color) ">
+              <p className="font-bold text-xs text-(--neutral-color) hover:text-(--primary-color) ">
                 Wear it. Share it. Live your brand.
               </p>
-              <p className="font-bold text-xs mt-30 text-(--neutral-color) ">
+              <p className="font-bold text-xs text-(--neutral-color) hover:text-(--primary-color) ">
+                Our Branding & Merchandise services are designed to help you
+                make a lasting impression — turning everyday items into powerful
+                brand tools. From custom apparel to corporate souvenirs, we
+                blend creativity and quality to help your brand stand out
+                wherever it goes.
+              </p>
+              <p className="font-bold text-xs mt-10 text-(--neutral-color) hover:text-(--accent-color)">
                 ORDER NOW
               </p>
-              <HiOutlineArrowLongRight className="absolute top-63 left-23 mt-1 text-(--neutral-color)  font-bold" />
+              <HiOutlineArrowLongRight className="absolute top-69 left-23 mt-1 text-(--neutral-color)  font-bold hover:text-(--accent-color)" />
             </div>
           </div>
         </div>
@@ -683,7 +671,7 @@ export default function Home() {
                   <span>Event Branding</span>
                 </li>
               </ul>
-              <button className="text-(--neutral-color) [background:linear-gradient(90deg,#062B21_0%,#14916F_100%)] p-2 rounded-md mt-13 mx-20 relative">
+              <button className="text-(--neutral-color) [background:linear-gradient(90deg,#062B21_0%,#14916F_100%)] p-2 rounded-md mt-5 mx-20 relative">
                 ORDER NOW{" "}
                 <HiOutlineArrowLongRight className="absolute top-6 left-20" />
               </button>
@@ -736,7 +724,6 @@ export default function Home() {
       {/* Explore our portfolio */}
       <Portfolio />
       <Footerone />
-      <Footertwo />
     </main>
   );
 }

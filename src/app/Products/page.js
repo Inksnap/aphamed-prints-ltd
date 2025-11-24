@@ -1,8 +1,632 @@
-export default function AboutPage() {
+"use client";
+import { useState } from "react";
+import { BsFilterLeft } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
+
+const PRODUCTS = [
+  {
+    id: 1,
+    name: "A5 Flyers",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/A4-flyers.png",
+    unit: "Per 50",
+  },
+  {
+    id: 2,
+    name: "Double side Business Card",
+    price: "19,000",
+    category: "Branding",
+    image: "/image/Business-Card.png",
+    unit: "Per 100",
+  },
+  {
+    id: 3,
+    name: "Shirts",
+    price: "8,000",
+    category: "Fashion",
+    image: "/image/Shirts.png",
+    unit: "Per one",
+  },
+  {
+    id: 4,
+    name: "Invitation Cards",
+    price: "15,000",
+    category: "Prints",
+    image: "/image/Invitation.png",
+    unit: "Per one",
+  },
+  {
+    id: 5,
+    name: "Stickers",
+    price: "12,000",
+    category: "Branding",
+    image: "/image/Stickers2.png",
+    unit: "Per 100",
+  },
+
+  {
+    id: 6,
+    name: "A4 Brochure",
+    price: "6,500",
+    category: "Prints",
+    image: "/image/A4-Brochure.png",
+    unit: "Per one",
+  },
+  {
+    id: 7,
+    name: "Burial Programme",
+    price: "5,500",
+    category: "Branding",
+    image: "/image/Burial-programme.png",
+    unit: "Per one",
+  },
+  {
+    id: 8,
+    name: "Notepad",
+    price: "5,500",
+    category: "Fashion",
+    image: "/image/Notepad.png",
+    unit: "Per one",
+  },
+  {
+    id: 9,
+    name: "Exercise Book ",
+    price: "0,000",
+    category: "Prints",
+    image: "/image/Exercise-book.png",
+    unit: "Per one",
+  },
+  {
+    id: 10,
+    name: "Conqueror Letterhead",
+    price: "20,000",
+    category: "Branding",
+    image: "/image/Conqueror-Letterhead.png",
+    unit: "Per one",
+  },
+  {
+    id: 11,
+    name: "A4 Flyers",
+    price: "45,000",
+    category: "Prints",
+    image: "/image/A4-Flyers3.png",
+    unit: "Per one",
+  },
+  {
+    id: 12,
+    name: "Branded Nylon ",
+    price: "28,000",
+    category: "Branding",
+    image: "/image/Branded-Nylon.png",
+    unit: "Per one",
+  },
+  {
+    id: 13,
+    name: "Pen Branding ",
+    price: "1,200",
+    category: "Fashion",
+    image: "/image/Pen-Branding.png",
+    unit: "Per one",
+  },
+  {
+    id: 14,
+    name: "A5 Jotter (Soft Cover) ",
+    price: "1,200",
+    category: "Prints",
+    image: "/image/A5-Jotter.png",
+    unit: "Per one",
+  },
+  {
+    id: 15,
+    name: "A2 Posters",
+    price: "80,000",
+    category: "Branding",
+    image: "/image/A2-Posters.png",
+    unit: "Per one",
+  },
+    {
+    id: 16,
+    name: "A5 Jotter (Hard Cover)",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/A5-Jotter2.png",
+  },
+  {
+    id: 17,
+    name: "A3 Posters ",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/A3-Posters.png",
+  },
+  {
+    id: 18,
+    name: "Roll Up Banner + Machine  ",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/Roll-Up-Banner.png",
+  },
+  {
+    id: 19,
+    name: "A6 Flyer ",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/A6-Flyer.png",
+  },
+  {
+    id: 20,
+    name: "Stickers",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Stickers3.png",
+  },
+  {
+    id: 21,
+    name: "Billboard banner",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Billboard-banner.png",
+  },
+  {
+    id: 22,
+    name: "Original Jersey Prints",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/Original-Jersey.png",
+  },
+  {
+    id: 23,
+    name: "Double side Business Card ",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/Double-side.png",
+  },
+  {
+    id: 24,
+    name: "Outdoor Signage ",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/Outdoor-Signage.png",
+  },
+  {
+    id: 25,
+    name: "Indoor Signage",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/Indoor-Signage.png",
+  },
+  {
+    id: 26,
+    name: "Feather Banner",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Feather-Banner.png",
+  },
+    {
+    id: 27,
+    name: "Branded Hoodie",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/Branded-Hoodie.png",
+  },
+  {
+    id: 28,
+    name: "Backdrop Banners ",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/Backdrop-Banners.png",
+  },
+  {
+    id: 29,
+    name: "A5 jotter  ",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/A5-jotter2.png",
+  },
+  {
+    id: 30,
+    name: "Flag Banner ",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/Flag-Banner.png",
+  },
+  {
+    id: 31,
+    name: "Backdrop",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Backdrop.png",
+  },
+  {
+    id: 32,
+    name: "Canvas Prints",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Canvas-prints.png",
+  },
+  {
+    id: 33,
+    name: "Face Cap Branding ",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Face-cap.png",
+  },
+  {
+    id: 34,
+    name: "Road Poll banner",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/Road-poll.png",
+  },
+  {
+    id: 35,
+    name: "Birthday Banner ",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/Birthday-banner.png",
+  },
+  {
+    id: 36,
+    name: "Custom Calendar ",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/Custom-calender.png",
+  },
+  {
+    id: 37,
+    name: "Envelope Printing",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/Envelope.png",
+  },
+  {
+    id: 38,
+    name: "Card Label",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Card-Label.png",
+  },
+    {
+    id: 39,
+    name: "A2 Paper Bag ",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/A2-Paper-bag.png",
+  },
+  {
+    id: 40,
+    name: "Face Cap ",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/Face-Cap2.png",
+  },
+  {
+    id: 41,
+    name: "Silicone Wristband ",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/Silicone-Wristband.png",
+  },
+  {
+    id: 42,
+    name: "Face Cap",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/Face-Cap3.png",
+  },
+  {
+    id: 43,
+    name: "A5 Birthday NoteBook",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A5-Birthday.png",
+  },
+  {
+    id: 44,
+    name: "Acrylic Award ",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Acrylic-Award.png",
+  },
+  {
+    id: 45,
+    name: "Sticker",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Stickers3.png",
+  },
+  {
+    id: 46,
+    name: "Neon Signage ",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Neon-Signage.png",
+  },
+  {
+    id: 47,
+    name: "Reflective Jacket",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/Reflective-jacket.png",
+  },
+  {
+    id: 48,
+    name: "Luminous outdoor Signage",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/Luminous-outdoor-signage.png",
+  },
+  {
+    id: 49,
+    name: "Club Poster Design ",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/Club-Poster.png",
+  },
+  {
+    id: 50,
+    name: "Custom Calendar",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/Custom-calender2.png",
+  },
+  {
+    id: 51,
+    name: "Outdoor Signage",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Outdoor-signage2.png",
+  },
+    {
+    id: 52,
+    name: "A2 Paper Bag ",
+    price: "25,000",
+    category: "Prints",
+    image: "/image/A2-Paper.png",
+  },
+  {
+    id: 53,
+    name: "Badge Lapel",
+    price: "8,000",
+    category: "Branding",
+    image: "/image/Badge-Lapel.png",
+  },
+  {
+    id: 54,
+    name: "Jersey name customization",
+    price: "15,000",
+    category: "Fashion",
+    image: "/image/Jersey-name-customization.png",
+  },
+  {
+    id: 55,
+    name: "A3 Paper Bag",
+    price: "20,000",
+    category: "Prints",
+    image: "/image/A3-Paper-bag.png",
+  },
+  {
+    id: 56,
+    name: "Birthday flier Design",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Birthday-flier-design.png",
+  },
+  {
+    id: 57,
+    name: "Double side Business Card",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Double-side-Business-card.png",
+  },
+  {
+    id: 58,
+    name: "A5 Birthday NoteBook",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A5-Birthday.png",
+  },
+  {
+    id: 59,
+    name: "Glass Frame",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Glass-Frame.png",
+  },
+  {
+    id: 60,
+    name: "Branded Box",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Branded-box.png",
+  },
+   {
+    id: 61,
+    name: "A3 Paper Bag",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A3-Paper-bag.png",
+  },
+  {
+    id: 62,
+    name: "Glitters Frame",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Glitters-frame.png",
+  },
+  {
+    id: 63,
+    name: "Site Helmet",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Site-helmet.png",
+  },
+  {
+    id: 64,
+    name: "A3 Paper Bag",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A3-paperbag2.png",
+  },
+  {
+    id: 65,
+    name: "A4 Flyers",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A4-Flyers5.png",
+  },
+   {
+    id: 66,
+    name: "A4 Flyers",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A4-Flyers4.png",
+  },
+  {
+    id: 67,
+    name: "Site Instagram Booth",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Site-Instagram-booth.png",
+  },
+  {
+    id: 68,
+    name: "Glitters Frame",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Glitters-frame1.png",
+  },
+  {
+    id: 69,
+    name: "A3 Paper Bag",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/A3-paperbag3.png",
+  },
+  {
+    id: 70,
+    name: "Branded Box",
+    price: "5,000",
+    category: "Branding",
+    image: "/image/Branded-Box2.png",
+  },
+];
+
+const CATEGORIES = ["All", "Prints", "Branding", "Fashion"];
+
+export default function ProductPage() {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+
+  const filteredProducts = PRODUCTS.filter((item) => {
+    const matchesCategory = category === "All" || item.category === category;
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
   return (
-    <main className="p-10 text-center">
-      <h1 className="text-4xl font-bold text-blue-600">Products Aphamed Prints Ltd</h1>
-      <p className="mt-4 text-lg text-gray-600">We are a professional printing press providing high-quality print solutions.</p>
+    <main>
+      {/* HERO / FILTER BAR */}
+      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-5">
+        <div className="rounded-full p-4 bg-white w-[90%] max-w-[500px] h-12 mx-auto mt-10 flex items-center justify-between shadow">
+          <div className="flex items-center gap-3 text-gray-500 w-full">
+            <BsFilterLeft className="text-xl" />
+
+            {/* Category Dropdown */}
+            <select
+              className="text-xs bg-transparent outline-none"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option disabled>Categories</option>
+
+              {CATEGORIES.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+
+            <img src="/image/Lineicon.png" alt="line" />
+
+            {/* Search Input */}
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="flex-1 text-xs outline-none"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+
+          <div className="bg-(--primary-color) p-2 text-xs rounded-full text-white">
+            <FaSearch />
+          </div>
+        </div>
+
+        {/* Breadcrumb */}
+        <div className="flex items-center justify-center gap-3 text-[#080808] text-sm font-medium mt-5">
+          <p>HOME</p>
+          <img src="/image/Lineicon2.png" alt="line" className="h-3" />
+          <p>GET QOUTE</p>
+        </div>
+      </div>
+
+      {/* TITLE */}
+      <div className="mx-auto mt-10">
+        <h1 className="text-center text-xl font-medium text-[#026445]">
+          ALL PRODUCTS
+        </h1>
+        <img src="image/Lineicon3.png" className="mx-auto" alt="" />
+        <p className="text-center italic text-lg font-medium">
+          Quality that speaks louder than words
+        </p>
+      </div>
+      <div className="flex items-center justify-center gap-5 mt-5">
+        <div className="flex items-center gap-2">
+          <img src="image/Productdot.png" alt="dot" />
+          <p className="text-lg font-medium">Bold Prints</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <img src="image/Productdot.png" alt="dot" />
+          <p className="text-lg font-medium">Fast Delivery</p>
+        </div>
+        <div className="flex items-center gap-2">
+          <img src="image/Productdot.png" alt="dot" />
+          <p className="text-lg font-medium">Happy Client</p>
+        </div>
+      </div>
+
+      {/*PRODUCT SECTION USING FLEX*/}
+      <div className="flex flex-wrap items-center justify-center gap-3 px-5 pb-20 mt-20">
+        {filteredProducts.map((product) => (
+          <div key={product.id} className="flex flex-col items-center">
+            <img src={product.image} alt={product.name} className=" w-[200px] h-auto mb-3" />
+
+            <div className="w-[135px] h-[113px] bg-white rounded-md p-2 shadow-lg">
+              <h1 className="text-center font-semibold text-sm  leading-5">{product.name}</h1>
+              <p className="text-center text-(--primary-color) leading-5 font-bold text-md">₦{product.price}</p>
+
+             <button className="block mx-auto mt-2 px-5 py-1 border border-[#5E5E5E] text-[#5E5E5E] rounded-sm text-sm">
+              {product.unit}
+             </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="bg-[#D9D9D9] p-10 block mx-auto">
+  <div className="mx-auto text-center">
+    <h1 className="font-bold text-2xl text-[#1B1B1B] leading-10">
+      APHAMED PRINTS
+    </h1>
+    <p className="italic text-[#1B1B1B] leading-10">
+      Quality is our Job, and Your Satisfaction is our Priority.
+    </p>
+  </div>
+</div>
+
     </main>
   );
 }

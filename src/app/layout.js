@@ -2,6 +2,8 @@
 import { Montserrat, Merienda, Michroma } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar.jsx"
+import Footerone from "./components/footerone.jsx";
+import Footertwo from "./components/footertwo.jsx";
 
 
 const montserrat = Montserrat({
@@ -29,7 +31,9 @@ export default function RootLayout({ children }) {
         {/* Navbar */}
         <Navbar />
         {/* Main Page content */}
-        <main className="pt-5">{children}</main>
+        <main className="">{children}</main>
+        
+        <Footertwo />
       </body>
     </html>
   );
