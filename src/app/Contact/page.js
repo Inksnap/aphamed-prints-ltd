@@ -1,8 +1,193 @@
+import MapSection from "../components/map.jsx";
+import { MdLocationOn } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+import { MdCall } from "react-icons/md";
+import { CiFacebook } from "react-icons/ci";
+import { CiLinkedin } from "react-icons/ci";
+import { CiInstagram } from "react-icons/ci";
+import { PiTiktokLogoThin } from "react-icons/pi";
+import { FaXTwitter } from "react-icons/fa6";
+
 export default function AboutPage() {
   return (
-    <main className="p-10 text-center">
-      <h1 className="text-4xl font-bold text-blue-600">Contact Aphamed Prints Ltd</h1>
-      <p className="mt-4 text-lg text-gray-600">We are a professional printing press providing high-quality print solutions.</p>
+    <main>
+      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-10">
+        <div className="flex items-center gap-130">
+          <div className="ml-25">
+            <h1 className="text-5xl font-bold text-(--neutral-color)">
+              CONTACTS
+            </h1>
+            <div className="flex items-center  gap-3 text-[#080808] text-sm font-medium  mt-5">
+              <p>HOME</p>
+              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
+              <p>GET QOUTE</p>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center gap-3">
+              <img src="/image/anglebracket.png" alt="line" className="w-10" />
+              <img src="/image/dot1.png" alt="line" className="w-5 h-5" />
+              <img src="/image/dot2.png" alt="line" className="w-5 h-5" />
+              <img src="/image/dot3.png" alt="line" className="w-5 h-5" />
+            </div>
+          </div>
+        </div>
+           
+      </div>
+
+      <div className=" mt-20 mb-30">
+        <div className="flex items-center justify-center gap-25 ">
+          <div>
+            <div className="flex items-center gap-2 p-2 rounded-sm bg-(--secondary-color) w-[130px] h-[30px]">
+              <img src="/image/Cdot.png" alt="cdot" />
+              <p className="font-bold text-xs ">Contact Us </p>
+              <img src="/image/Cdot.png" alt="cdot" />
+            </div>
+            <h3 className="font-bold text-md leading-10" >We’d love to hear from you!</h3>
+            <p className="font-medium text-sm leading-6">Have a project, question, or idea in mind? <br /> 
+              Reach out, our team is ready to bring your <br />
+              vision to life.</p>
+            <div className="flex items-center gap-3 mt-5">
+              <div className="w-10 h-10 bg-(--primary-color) flex items-center justify-center rounded-xs">
+              <MdLocationOn className="text-(--neutral-color) text-2xl" />
+              </div>
+             <div>
+              <h4 className="font-medium text-xs">Head Office</h4>
+              <p className="font-light text-xs">42, Market Street somolu Lagos. </p>
+             </div>
+            </div>
+            <div className="flex items-center gap-3 mt-5">
+              <div className="w-10 h-10 bg-(--primary-color) flex items-center justify-center rounded-xs">
+              <MdEmail className="text-(--neutral-color) text-2xl" />
+              </div>
+             <div>
+              <h4 className="font-medium text-xs">Email</h4>
+              <p className="font-light text-xs">aphamed0@gmail.com </p>
+             </div>
+            </div>
+             <div className="flex items-center gap-3 mt-5">
+              <div className="w-10 h-10 bg-(--primary-color) flex items-center justify-center rounded-xs">
+              <MdCall className="text-(--neutral-color) text-2xl" />
+              </div>
+             <div>
+              <h4 className="font-medium text-xs">Call Us</h4>
+              <p className="font-light text-xs">P: +234 701 397 2790
+                W: +234 909 164 3613 </p>
+             </div>
+            </div>
+          </div>
+
+          <div className="w-[611px] h-[505px]">
+            <MapSection  className="w-[611px] h-[505px]"/>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-30 mb-160 relative">
+        <div className=" h-50 bg-diamond-gradient p-40 text-center">
+          <h3 className="font-bold text-2xl text-(--neutral-color)">Send us a message</h3>
+          <p className="font-medium text-xs text-(--neutral-color)">Your next project start here</p>
+        </div>
+        
+      <div className="max-w-xl mx-auto p-6 bg-white rounded-xl shadow-xl absolute top-55 left-100">
+        <form className="space-y-4">
+        {/* Name */}
+        <div className="flex items-center gap-3">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-1">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name"
+            className="w-65 px-4 py-2 bg-[#F0F0F0] placeholder:text-xs placeholder:font-light focus:outline-none focus:ring-2 focus:ring-(--primary-color) focus:border-(--primary-color)"
+          />
+          </div>
+
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium mb-1">
+            Phone
+          </label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            placeholder="Enter Your Phone Number"
+           className="w-65 px-4 py-2 bg-[#F0F0F0] placeholder:text-xs placeholder:font-light focus:outline-none focus:ring-2 focus:ring-(--primary-color) focus:border-(--primary-color)"
+          />
+          </div>
+        </div>
+
+        {/* Email */}
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium mb-1">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email address"
+            className="w-full px-4 py-2 bg-[#F0F0F0] placeholder:text-xs placeholder:font-light focus:outline-none focus:ring-2 focus:ring-(--primary-color) focus:border-(--primary-color)"
+          />
+        </div>
+
+        {/* Product */}
+        <div>
+          <label htmlFor="product" className="block text-sm font-medium mb-1">
+            Product
+          </label>
+          <input
+            type="text"
+            id="product"
+            name="product"
+            placeholder="Product name"
+            className="w-full px-4 py-2 bg-[#F0F0F0] placeholder:text-xs placeholder:font-light focus:outline-none focus:ring-2 focus:ring-(--primary-color) focus:border-(--primary-color)"
+          />
+        </div>
+
+        {/* Product Description */}
+        <div>
+          <label htmlFor="description" className="block text-sm font-medium mb-1">
+            Product Description
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            placeholder="Describe your product or requirements"
+            rows={4}
+            className="w-full px-4 py-2 bg-[#F0F0F0] placeholder:text-xs placeholder:font-light focus:outline-none focus:ring-2 focus:ring-(--primary-color) focus:border-(--primary-color)"
+          ></textarea>
+        </div>
+
+        {/* Submit Button */}
+        <div className="text-center">
+          <button
+            type="submit"
+            className="w-full mt-4 px-6 py-3 bg-(--primary-color) text-white font-semibold rounded-md shadow-md hover:bg-(--primary-hover) transition-colors duration-300"
+          >
+            Get a Quote
+          </button>
+        </div>
+          </form>
+
+          <div>
+        <div className="mx-auto">
+          <div className="flex items-center gap-2 mt-4 justify-center animate-bounce">
+                <CiFacebook />
+                <CiLinkedin />
+                <CiInstagram />
+                <PiTiktokLogoThin />
+                <FaXTwitter />
+              </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      
     </main>
   );
 }

@@ -141,7 +141,7 @@ export default function Navbar() {
                 PRODUCTS
               </a>
               <a
-                href="/Products"
+                href="/Service"
                 className="text-white font-bold hover:underline"
               >
                 SERVICES

@@ -125,7 +125,7 @@ const PRODUCTS = [
     image: "/image/A2-Posters.png",
     unit: "Per one",
   },
-    {
+  {
     id: 16,
     name: "A5 Jotter (Hard Cover)",
     price: "1,800",
@@ -213,7 +213,7 @@ const PRODUCTS = [
     image: "/image/Feather-Banner.png",
     unit: "Per piece",
   },
-    {
+  {
     id: 27,
     name: "Branded Hoodie",
     price: "12,000",
@@ -309,7 +309,7 @@ const PRODUCTS = [
     image: "/image/Card-Label.png",
     unit: "Per 100",
   },
-    {
+  {
     id: 39,
     name: "A5 Paper Bag ",
     price: "20,600",
@@ -421,7 +421,7 @@ const PRODUCTS = [
     image: "/image/Outdoor-signage2.png",
     unit: "Per piece",
   },
-    {
+  {
     id: 53,
     name: "A2 Paper Bag ",
     price: "2,000",
@@ -493,7 +493,7 @@ const PRODUCTS = [
     image: "/image/Branded-box.png",
     unit: "Per piece",
   },
-   {
+  {
     id: 62,
     name: "A3 Paper Bag",
     price: "1,600",
@@ -533,7 +533,7 @@ const PRODUCTS = [
     image: "/image/A4-Flyers5.png",
     unit: "Per 50",
   },
-   {
+  {
     id: 67,
     name: "A4 Flyers",
     price: "35,000",
@@ -666,30 +666,37 @@ export default function ProductPage() {
       <div className="flex flex-wrap items-center justify-center gap-3 px-5 pb-20 mt-20">
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex flex-col items-center">
-            <img src={product.image} alt={product.name} className=" w-[200px] h-auto mb-3" />
+            <img
+              src={product.image}
+              alt={product.name}
+              className=" w-[200px] h-auto mb-3"
+            />
 
             <div className="w-[135px] h-[113px] bg-white rounded-md p-2 shadow-lg">
-              <h1 className="text-center font-semibold text-sm  leading-5">{product.name}</h1>
-              <p className="text-center text-(--primary-color) leading-5 font-bold text-md">₦{product.price}</p>
+              <h1 className="text-center font-semibold text-sm  leading-5">
+                {product.name}
+              </h1>
+              <p className="text-center text-(--primary-color) leading-5 font-bold text-md">
+                ₦{product.price}
+              </p>
 
-             <button className="block mx-auto mt-2 px-5 py-1 border border-[#5E5E5E] text-[#5E5E5E] rounded-sm text-sm">
-              {product.unit}
-             </button>
+              <button className="block mx-auto mt-2 px-5 py-1 border border-[#5E5E5E] text-[#5E5E5E] rounded-sm text-sm">
+                {product.unit}
+              </button>
             </div>
           </div>
         ))}
       </div>
       <div className="bg-[#D9D9D9] p-10 block mx-auto">
-  <div className="mx-auto text-center">
-    <h1 className="font-bold text-2xl text-[#1B1B1B] leading-10">
-      APHAMED PRINTS
-    </h1>
-    <p className="italic text-[#1B1B1B] leading-10">
-      Quality is our Job, and Your Satisfaction is our Priority.
-    </p>
-  </div>
-</div>
-
+        <div className="mx-auto text-center">
+          <h1 className="font-bold text-2xl text-[#1B1B1B] leading-10">
+            APHAMED PRINTS
+          </h1>
+          <p className="italic text-[#1B1B1B] leading-10">
+            Quality is our Job, and Your Satisfaction is our Priority.
+          </p>
+        </div>
+      </div>
     </main>
   );
 }
