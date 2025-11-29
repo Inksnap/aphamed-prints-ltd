@@ -129,14 +129,6 @@ export default function Portfolio() {
             Check out the latest work.
           </p>
         </div>
-        {/* <div className="text-center">
-          <div className="flex items-center justify-center gap-3 mt-3 bg-(--neutral-color) w-120 mx-auto p-3 rounded-full shadow-gray-400 shadow-xl">
-            <p className="">All Work</p>
-            <p>Print & Brand</p>
-            <p>Graphic Design</p>
-            <p>UI/UX Design</p>
-          </div>
-        </div> */}
       </div>
 
       <div className="text-center mt-5 lg:block">
@@ -161,7 +153,7 @@ export default function Portfolio() {
       </div>
 
       {/* Portfolio Grid */}
-      <div className="flex flex-col min-[768px]:max-[1023px]:flex lg:flex items-center justify-center mx-50">
+      <div className="flex flex-col min-[768px]:max-[1023px]:flex lg:flex items-center justify-center  lg:mx-50">
         <div className="flex flex-col min-[768px]:max-[1023px]:flex min-[768px]:max-[1023px]:flex-row min-[768px]:max-[1023px]:flex-wrap lg:flex lg:flex-row lg:flex-wrap items-center justify-center min-[768px]:max-[1023px]:gap-2 gap-5 mt-16 w-250 h-auto">
           <AnimatePresence>
             {filteredData.map((item) => (

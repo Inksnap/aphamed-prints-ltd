@@ -10,34 +10,6 @@ import { FaCheck } from "react-icons/fa6";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 
 export default function Home() {
-  // Define initial positions for each image
-  // const [positions, setPositions] = useState([
-  //   { top: "400px", left: "100px" },    // Image 1
-  //   { top: "650px", left: "500px" },  // Image 2
-  //   { top: "700px", left: "800px" },  // Image 3
-  //   { top: "500px", left: "1200px" },  // Image 4
-  // ]);
-
-  // const images = [
-  //   "/image/Heroimg1.png",
-  //   "/image/Heroimg2.png",
-  //   "/image/Heroimg3.png",
-  //   "/image/Heroimg4.png",
-  // ];
-
-  //Cycle through positions (move each image to the next one's position)
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setPositions((prev) => {
-  //       const updated = [...prev];
-  //       const first = updated.pop(); // Remove first position
-  //       updated.unshift(first);           // Add it to the end (rotate)
-  //       return updated;
-  //     });
-  //   }, 60000); // every 3 seconds
-
-  //   return () => clearInterval(interval);
-  // }, []);
   return (
     <main>
       {/*Hero Section */}
@@ -239,11 +211,11 @@ export default function Home() {
       {/* Creativity meets Precesion */}
       <div className="mb-30  lg:block">
         <div className="">
-          <div className=" flex flex-col min-[768px]:max-[1023px]:flex-row lg:flex-row items-center justify-center gap-20 m-6 lg:m-8 relative">
+          <div className=" flex flex-col min-[768px]:max-[1023px]:flex-row lg:flex-row items-center justify-center gap-20 m-8  lg:m-8 relative">
             <div className="">
               <div className="w-[200.62px] h-[270px] lg:w-[281.26px] lg:h-[380px] bg-[#073226] rounded-3xl absolute top-0 left-[8] lg:top-0 lg:left-20"></div>
               <div className="w-[200.62px] h-[270px] lg:w-[281.26px] lg:h-[380px] bg-[#024230] rounded-3xl absolute top-0 left-[60] lg:top-0 lg:left-40"></div>
-              <div className="w-[200.62px] h-[200px] lg:w-[281.26px] lg:h-[380px]  rounded-3xl absolute top-0 left-[110] lg:top-0 lg:left-60">
+              <div className="w-[200.62px] h-[200px] lg:w-[281.26px] lg:h-[380px]  rounded-3xl absolute top-0 left-[100] lg:top-0 lg:left-60">
                 <img
                   src="/image/Creativity-image.png"
                   alt="creativity image"
@@ -260,7 +232,7 @@ export default function Home() {
                   CREATIVITY <br /> MEETS <br /> PRECISION
                 </h1>
               </div>
-              <div className="text-[#151515] font-light text-[17px] leading-7 mb-5 mx-3">
+              <div className="text-[#151515] font-light text-[17px] leading-7 mb-5 mx-2">
                 <p className="lg:hidden  text-[14px] text-justify leading-6 font-light min-[768px]:max-[1023px]:font-medium ">
                   At Aphamed Prints, we go beyond ink and paper. We are
                   designers, creators, and problem-solvers who combine printing
@@ -462,7 +434,7 @@ export default function Home() {
                 fabric, or promotional materials, our prints are designed to
                 deliver excellence in every detail.
               </p>
-              <p className="font-bold text-xs mt-32 text-[#151515]">
+              <p className="font-bold text-xs mt-13 text-[#151515]">
                 ORDER NOW
               </p>
               <HiOutlineArrowLongRight className="absolute top-65 left-23 mt-1 text-[#151515]" />
@@ -529,7 +501,7 @@ export default function Home() {
       <div className="mt-150 mb-40 hidden lg:block">
         <div>
           <div className="">
-            <button className="bg-(--secondary-color) p-3 rounded-md mx-auto my-5 block font-bold text-2xl text-center text-(--primary-color) ">
+            <button className="bg-(--secondary-color) p-3 rounded-md mx-auto my-5 block font-bold text-2xl text-center text-(--primary-color) outline-none ">
               WHAT WE DO BEST
             </button>
             <p className="text-center font-medium text-lg text-(--primary-color)">
