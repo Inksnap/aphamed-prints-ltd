@@ -2,13 +2,13 @@ import Numbers from "../components/numbers.jsx";
 export default function AboutPage() {
   return (
     <main>
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-10">
-        <div className="flex items-center gap-130">
-          <div className="ml-25">
-            <h1 className="text-5xl font-bold text-(--neutral-color)">
+      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-25 p-5 lg:h-50 lg:p-10">
+        <div className="flex items-center gap-23 lg:gap-130">
+          <div className="ml-5 lg:ml-25">
+            <h1 className="text-xl lg:text-5xl font-bold text-(--neutral-color)">
               ABOUT US
             </h1>
-            <div className="flex items-center  gap-3 text-[#080808] text-sm font-medium  mt-5">
+            <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
               <p>HOME</p>
               <img src="/image/Lineicon2.png" alt="line" className="h-3" />
               <p>GET QOUTE</p>
@@ -16,24 +16,24 @@ export default function AboutPage() {
           </div>
           <div>
             <div className="flex items-center gap-3">
-              <img src="/image/anglebracket.png" alt="line" className="w-10" />
-              <img src="/image/dot1.png" alt="line" className="w-5 h-5" />
-              <img src="/image/dot2.png" alt="line" className="w-5 h-5" />
-              <img src="/image/dot3.png" alt="line" className="w-5 h-5" />
+              <img src="/image/anglebracket.png" alt="line" className="w-5 lg:w-10" />
+              <img src="/image/dot1.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
+              <img src="/image/dot2.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
+              <img src="/image/dot3.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className=" mt-20 mb-30">
-        <div className="flex items-center justify-center ml-20 gap-30 ">
+      <div className="mt-10 lg:mt-20 mb-40 lg:mb-30">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center ml-5 lg:ml-20 gap-10 lg:gap-30 ">
           <div>
             <div className="flex items-center gap-2 p-2 rounded-sm bg-(--secondary-color) w-[110px] h-[30px]">
               <img src="/image/Cdot.png" alt="cdot" />
               <p className="font-bold text-xs ">About Us </p>
               <img src="/image/Cdot.png" alt="cdot" />
             </div>
-            <p className="font-medium text-sm leading-6">
+            <p className="font-medium text-sm leading-5 lg:leading-6">
               Aphamed Prints is a full-service branding, design, and printing
               company committed <br /> to bringing ideas to life through
               creativity, precision, and quality craftsmanship. <br />
@@ -67,8 +67,8 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <div className="w-[540px] h-[350px] relative bg-[#D9D9D9] rounded-lg ">
-              <div className="w-[384px] h-[213px] bg-[#D9D9D9] border border-white rounded-lg absolute top-60 left-30"></div>
+            <div className="w-[400px] h-[280px] lg:w-[540px] lg:h-[350px]  relative bg-[#D9D9D9] rounded-lg ">
+              <div className="w-[300px] h-[180px] lg:w-[384px] lg:h-[213px] bg-[#D9D9D9] border border-white rounded-lg absolute top-50 left-18 lg:top-60 lg:left-30"></div>
             </div>
           </div>
         </div>
@@ -76,14 +76,14 @@ export default function AboutPage() {
 
       <Numbers />
 
-      <div className="flex items-center justify-end gap-40 mb-20">
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-end gap-20 lg:gap-40 mb-20">
       <div>
-        <div className="flex items-center gap-2 p-2 rounded-sm bg-(--secondary-color) w-[120px] h-[30px]">
+        <div className="flex items-center gap-2 p-2 rounded-sm bg-(--secondary-color) w-[120px] h-[30px] ml-10 lg:ml-0">
           <img src="/image/Cdot.png" alt="cdot" />
           <p className="font-bold text-[10px] ">Meet the CEO </p>
           <img src="/image/Cdot.png" alt="cdot" />
         </div>
-        <p className="font-medium text-sm leading-6">
+        <p className="font-medium text-sm leading-5 lg:leading-6 ml-5 mr-5 lg:ml-0 lg:mr-0  ">
           I’ve always believed that design isn’t just about what you see it’s
           about how it makes <br /> you feel. That belief became the foundation
           of Aphamed Prints.
@@ -115,7 +115,7 @@ export default function AboutPage() {
       </div>
 
       <div>
-        <img src="/image/CeoImg.png" alt="Ceo-img" />
+        <img src="/image/CeoImg.png" alt="Ceo-img" className=" lg:ml-0" />
       </div>
       </div>
 
