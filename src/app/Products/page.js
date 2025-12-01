@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
+import { Listbox } from "@headlessui/react";
+import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
 
 const PRODUCTS = [
   {
@@ -593,24 +595,68 @@ export default function ProductPage() {
     <main>
       {/* HERO / FILTER BAR */}
       <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-5">
-        <div className="rounded-full p-4 bg-white w-[90%] max-w-[500px] h-12 mx-auto mt-10 flex items-center justify-between shadow">
-          <div className="flex items-center gap-3 text-gray-500 w-full">
-            <BsFilterLeft className="text-xl" />
+        <div className="rounded-full p-5 lg:p-4 bg-white w-[100%] lg:w-[90%] max-w-[500px] lg:max-w-[500px] h-12 lg:h-12 mx-auto mt-10 flex items-center gap-3 lg:gap-10 shadow">
+          <div className="flex items-center gap-1 lg:gap-3 text-gray-500 w-full">
+            <BsFilterLeft className="hidden lg:block lg:text-2xl" />
 
             {/* Category Dropdown */}
-            <select
-              className="text-xs bg-transparent outline-none"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option disabled>Categories</option>
+            <div className="w-30">
+              <Listbox value={category} onChange={setCategory}>
+                <div className="relative mt-1">
+                  {/* Button */}
+                  <Listbox.Button
+                    className="
+              relative w-full cursor-pointer rounded-md 
+               py-2 px-3 text-xs outline-none border-none
+              flex items-center gap-3
+              focus:ring-0 focus:ring-white/30
+            "
+                  >
+                    <span>{category || "Select Category"}</span>
+                    <ChevronUpDownIcon className="w-4 h-4 text-[var(--primary-color)]" />
+                  </Listbox.Button>
 
-              {CATEGORIES.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
+                  {/* Options */}
+                  <Listbox.Options
+                    className="
+              absolute mt-1 max-h-60 w-full overflow-auto rounded-md
+              bg-[var(--primary-color)] shadow-lg py-2 z-50
+            "
+                  >
+                    {CATEGORIES.map((cat) => (
+                      <Listbox.Option
+                        key={cat}
+                        value={cat}
+                        className={({ active }) =>
+                          `
+                  cursor-pointer select-none py-2 px-3 text-xs rounded-md
+                  ${active
+                            ? "bg-white/10 text-white"
+                            : "text-[var(--neutral-color)]"
+                          }
+                `
+                        }
+                      >
+                        {({ selected }) => (
+                          <div className="flex justify-between items-center">
+                            <span
+                              className={`${selected ? "font-semibold" : "font-normal"
+                                }`}
+                            >
+                              {cat}
+                            </span>
+
+                            {selected && (
+                              <CheckIcon className="h-4 w-4 text-[var(--neutral-color)]" />
+                            )}
+                          </div>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </div>
+              </Listbox>
+            </div>
 
             <img src="/image/Lineicon.png" alt="line" />
 
@@ -624,7 +670,7 @@ export default function ProductPage() {
             />
           </div>
 
-          <div className="bg-(--primary-color) p-2 text-xs rounded-full text-white">
+          <div className="bg-(--primary-color) p-2 text-xs rounded-full text-white -ml-5 l">
             <FaSearch />
           </div>
         </div>
@@ -639,37 +685,37 @@ export default function ProductPage() {
 
       {/* TITLE */}
       <div className="mx-auto mt-10">
-        <h1 className="text-center text-xl font-medium text-[#026445]">
+        <h1 className="text-center text-lg lg:text-xl font-medium text-[#026445]">
           ALL PRODUCTS
         </h1>
         <img src="image/Lineicon3.png" className="mx-auto" alt="" />
-        <p className="text-center italic text-lg font-medium">
+        <p className="text-center italic text-sm lg:text-lg font-medium">
           Quality that speaks louder than words
         </p>
       </div>
-      <div className="flex items-center justify-center gap-5 mt-5">
-        <div className="flex items-center gap-2">
-          <img src="image/Productdot.png" alt="dot" />
-          <p className="text-lg font-medium">Bold Prints</p>
+      <div className="flex items-center justify-center gap-2 lg:gap-5 mt-5">
+        <div className="flex items-center gap-1 lg:gap-2">
+          <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
+          <p className="text-sm lg:text-lg font-medium">Bold Prints</p>
         </div>
         <div className="flex items-center gap-2">
-          <img src="image/Productdot.png" alt="dot" />
-          <p className="text-lg font-medium">Fast Delivery</p>
+          <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
+          <p className="text-sm lg:text-lgfont-medium">Fast Delivery</p>
         </div>
         <div className="flex items-center gap-2">
-          <img src="image/Productdot.png" alt="dot" />
-          <p className="text-lg font-medium">Happy Client</p>
+          <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
+          <p className="text-sm lg:text-lg font-medium">Happy Client</p>
         </div>
       </div>
 
       {/*PRODUCT SECTION USING FLEX*/}
-      <div className="flex flex-wrap items-center justify-center gap-3 px-5 pb-20 mt-20">
+      <div className="flex flex-wrap items-center lg:justify-center gap-1 px-2 mt-5 lg:gap-3 lg:px-5 lg:pb-20 lg:mt-20">
         {filteredProducts.map((product) => (
           <div key={product.id} className="flex flex-col items-center">
             <img
               src={product.image}
               alt={product.name}
-              className=" w-[200px] h-auto mb-3"
+              className="w-[195px] min-[300px]:max-[391px]:w-[170px] lg:w-[200px] h-auto mb-0 lg:mb-3"
             />
 
             <div className="w-[135px] h-[113px] bg-white rounded-md p-2 shadow-lg">
@@ -689,10 +735,10 @@ export default function ProductPage() {
       </div>
       <div className="bg-[#D9D9D9] p-10 block mx-auto">
         <div className="mx-auto text-center">
-          <h1 className="font-bold text-2xl text-[#1B1B1B] leading-10">
+          <h1 className="font-bold text-xl lg:text-2xl text-[#1B1B1B] leading-5 lg:leading-10">
             APHAMED PRINTS
           </h1>
-          <p className="italic text-[#1B1B1B] leading-10">
+          <p className="italic text-sm font-medium text-[#1B1B1B] leading-5 lg:leading-10">
             Quality is our Job, and Your Satisfaction is our Priority.
           </p>
         </div>
