@@ -4,32 +4,32 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 export default function ServicePage() {
   return (
     <main>
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-10">
-        <div className="flex items-center gap-130">
-          <div className="ml-25">
-            <h1 className="text-5xl font-bold text-(--neutral-color)">
+      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-8 min-[768px]:max-[1023px]:p-10 lg:p-10">
+        <div className="flex items-center gap-25 min-[768px]:max-[1023px]:gap-70 lg:gap-130">
+          <div className="ml-2 mt-10 min-[768px]:max-[1023px]:mt-5 min-[768px]:max-[1023px]:ml-10 lg:mt-5 lg:ml-25">
+            <h1 className="text-md min-[768px]:max-[1023px]:text-3xl lg:text-5xl font-bold text-(--neutral-color)">
               OUR SERVICES
             </h1>
-            <div className="flex items-center  gap-3 text-[#080808] text-sm font-medium  mt-5">
+            <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
               <p>HOME</p>
               <img src="/image/Lineicon2.png" alt="line" className="h-3" />
               <p>GET QOUTE</p>
             </div>
           </div>
           <div>
-            <div className="flex items-center gap-3">
-              <img src="/image/anglebracket.png" alt="line" className="w-10" />
-              <img src="/image/dot1.png" alt="line" className="w-5 h-5" />
-              <img src="/image/dot2.png" alt="line" className="w-5 h-5" />
-              <img src="/image/dot3.png" alt="line" className="w-5 h-5" />
+            <div className="flex items-center gap-3 mt-10 min-[768px]:max-[1023px]:mt-5 lg:mt-5">
+              <img src="/image/anglebracket.png" alt="line" className="w-5 lg:w-10" />
+              <img src="/image/dot1.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
+              <img src="/image/dot2.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
+              <img src="/image/dot3.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
             </div>
           </div>
         </div>
       </div>
 
-      <div className="m-30 ">
+      <div className="m-5 min-[768px]:max-[1023px]:m-10 lg:m-30  ">
         <div className="flex flex-wrap items-center justify-center gap-20">
-          <div className="w-[400px] h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
+          <div className="w-full h-auto min-[768px]:max-[1023px]:w-full min-[768px]:max-[1023px]:h-auto lg:w-[400px] lg:h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
             <div className="flex items-center gap-3">
               <img
                 src="/image/Wwdbimg1.png"
@@ -82,7 +82,7 @@ export default function ServicePage() {
               <HiOutlineArrowLongRight className="absolute top-5 left-25" />
             </button>
           </div>
-          <div className="w-[400px] h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
+          <div className="w-full h-auto min-[768px]:max-[1023px]:w-full min-[768px]:max-[1023px]:h-auto lg:w-[400px] lg:h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
             <div className="flex items-center gap-3">
               <img
                 src="/image/Wwdbimg2.png"
@@ -138,7 +138,7 @@ export default function ServicePage() {
               <HiOutlineArrowLongRight className="absolute top-5 left-25" />
             </button>
           </div>
-          <div className="w-[400px] h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
+          <div className="w-full h-auto min-[768px]:max-[1023px]:w-full min-[768px]:max-[1023px]:h-auto lg:w-[400px] lg:h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
             <div className="flex items-center gap-3">
               <img
                 src="/image/Wwdbimg3.png"
@@ -235,10 +235,12 @@ export default function ServicePage() {
         </div>
       </div>
 
-      <div className="m-30 ">
+      <div className="mx-5 my-10 lg:m-30 ">
         <div className="text-center">
-          <h1 className="michroma-font font-bold text-4xl leading-10">WHY CHOOSE US</h1>
-          <p className="font-medium text-md leading-5">
+          <h1 className="michroma-font font-bold text-xl lg:text-4xl leading-10">
+            WHY CHOOSE US
+          </h1>
+          <p className="font-medium text-sm lg:text-md leading-5">
             At Aphamed Prints, we blend creativity, precision, and commitment{" "}
             <br />
             to deliver designs and prints that speak quality.
@@ -247,44 +249,151 @@ export default function ServicePage() {
           </p>
         </div>
         <div className="m-10">
-          <div className="flex items-center justify-center gap-30">
-            <div className="relative">
-            <img src="/image/Ark1.png" alt="ark" />
-            <img src="/image/Ark-img1.png" alt="ark-img" className="absolute top-5 left-10" />
-          </div>
-
-           <div className="relative">
-            <img src="/image/Ark1.png" alt="ark" />
-            <img src="/image/Ark-img2.png" alt="ark-img" className="absolute top-5 left-10" />
-          </div>
-
-           <div className="relative">
-            <img src="/image/Ark1.png" alt="ark" />
-            <img src="/image/Ark-img3.png" alt="ark-img" className="absolute top-5 left-10" />
-          </div>
-
-           <div className="relative">
-            <img src="/image/Ark1.png" alt="ark" />
-            <img src="/image/Ark-img4.png" alt="ark-img" className="absolute top-5 left-10" />
-          </div>
-          </div>
-
-          <div className="flex items-center justify-center gap-15 m-10">
-            <div className="text-center">
-              <h3 className="font-bold text-md text-[#062B21] leading-5">QUALITY</h3>
-              <p className="font-medium font-sm leading-5">We use premium materials and expert techniques to ensure every print and design stands out clean, vibrant, and lasting</p>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-15 lg:gap-30">
+            <div className="relative flex flex-col items-center lg:hidden">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img1.png"
+                alt="ark-img"
+                className="absolute top-5 left-29 min-[768px]:max-[1023px]:left-73"
+              />
+              <div className="text-center mt-3">
+                <h3 className="font-bold text-md text-[#062B21] leading-5">
+                  QUALITY
+                </h3>
+                <p className="font-medium font-sm leading-5">
+                  We use premium materials and expert techniques to ensure every
+                  print and design stands out clean, vibrant, and lasting
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <h3 className="font-bold text-md text-[#062B21] leading-5">FAST & RELIABLE</h3>
-              <p className="font-medium font-sm leading-5">We respect your time. Every project is delivered promptly without compromising quality even when deadlines are tight.</p>
+            <div className="relative hidden lg:block">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img1.png"
+                alt="ark-img"
+                className="absolute top-5 left-10"
+              />
             </div>
-            <div className="text-center">
-              <h3 className="font-bold text-md text-[#062B21] leading-5">CREATIVE EXCELLENCE</h3>
-              <p className="font-medium font-sm leading-5">Our designs go beyond visuals,  they tell stories, capture attention, and represent your brand with originality.</p>
+
+            <div className="relative flex flex-col items-center lg:hidden">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img2.png"
+                alt="ark-img"
+                className="absolute top-5 left-30 min-[768px]:max-[1023px]:left-73"
+              />
+              <div className="text-center mt-3">
+                <h3 className="font-bold text-md text-[#062B21] leading-5">
+                  FAST & RELIABLE
+                </h3>
+                <p className="font-medium font-sm leading-5">
+                  We respect your time. Every project is delivered promptly
+                  without compromising quality even when deadlines are tight.
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <h3 className="font-bold text-md text-[#062B21] leading-5">CUSTOMER FOCUSED</h3>
-              <p className="font-medium font-sm leading-5">Your satisfaction is our priority. We listen, customize, and deliver exactly what your brand needs to shine.</p>
+
+            <div className="relative hidden lg:block">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img2.png"
+                alt="ark-img"
+                className="absolute top-5 left-10"
+              />
+            </div>
+
+            <div className="relative flex flex-col items-center lg:hidden">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img3.png"
+                alt="ark-img"
+                className="absolute top-5 left-30 min-[768px]:max-[1023px]:left-73"
+              />
+              <div className="text-center mt-3">
+                <h3 className="font-bold text-md text-[#062B21] leading-5">
+                  CREATIVE EXCELLENCE
+                </h3>
+                <p className="font-medium font-sm leading-5">
+                  Our designs go beyond visuals, they tell stories, capture
+                  attention, and represent your brand with originality.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative hidden lg:block">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img3.png"
+                alt="ark-img"
+                className="absolute top-5 left-10"
+              />
+            </div>
+
+            <div className="relative flex flex-col items-center lg:hidden">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img4.png"
+                alt="ark-img"
+                className="absolute top-5 left-30 min-[768px]:max-[1023px]:left-73"
+              />
+              <div className="text-center mt-3">
+                <h3 className="font-bold text-md text-[#062B21] leading-5">
+                  CUSTOMER FOCUSED
+                </h3>
+                <p className="font-medium font-sm leading-5">
+                  Your satisfaction is our priority. We listen, customize, and
+                  deliver exactly what your brand needs to shine.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative hidden lg:block">
+              <img src="/image/Ark1.png" alt="ark" />
+              <img
+                src="/image/Ark-img4.png"
+                alt="ark-img"
+                className="absolute top-5 left-10"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-15 m-10 ">
+            <div className="text-cente hidden lg:block">
+              <h3 className="font-bold text-md text-[#062B21] leading-5">
+                QUALITY
+              </h3>
+              <p className="font-medium font-sm leading-5">
+                We use premium materials and expert techniques to ensure every
+                print and design stands out clean, vibrant, and lasting
+              </p>
+            </div>
+            <div className="text-center hidden lg:block">
+              <h3 className="font-bold text-md text-[#062B21] leading-5">
+                FAST & RELIABLE
+              </h3>
+              <p className="font-medium font-sm leading-5">
+                We respect your time. Every project is delivered promptly
+                without compromising quality even when deadlines are tight.
+              </p>
+            </div>
+            <div className="text-center hidden lg:block">
+              <h3 className="font-bold text-md text-[#062B21] leading-5">
+                CREATIVE EXCELLENCE
+              </h3>
+              <p className="font-medium font-sm leading-5">
+                Our designs go beyond visuals, they tell stories, capture
+                attention, and represent your brand with originality.
+              </p>
+            </div>
+            <div className="text-center hidden lg:block">
+              <h3 className="font-bold text-md text-[#062B21] leading-5">
+                CUSTOMER FOCUSED
+              </h3>
+              <p className="font-medium font-sm leading-5">
+                Your satisfaction is our priority. We listen, customize, and
+                deliver exactly what your brand needs to shine.
+              </p>
             </div>
           </div>
         </div>

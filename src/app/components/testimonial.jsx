@@ -40,8 +40,8 @@ export default function Testimonial() {
   return (
     <div className="m-20">
       <div className="text-center mb-10">
-        <h3 className="michroma-font text-5xl font-bold">TESTIMONIAL</h3>
-        <p className="font-medium text-md italic">Here is what people say about us</p>
+        <h3 className="michroma-font text-xl lg:text-5xl font-bold">TESTIMONIAL</h3>
+        <p className="font-medium text-sm lg:text-md italic">Here is what people say about us</p>
       </div>
 
       <div className="flex items-center justify-center">
@@ -54,12 +54,12 @@ export default function Testimonial() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center gap-10"
           >
-            <div className="flex items-center justify-center gap-20">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20">
               <div>
                 <img src={current.image} alt="testimonial-img" className="w-[300px] h-auto" />
               </div>
 
-              <div>
+              <div className="max-w-lg text-center lg:text-left">
                 <p className="font-light text-md text-[#1F1F1F] leading-6 max-w-md">
                   {current.text}
                 </p>
