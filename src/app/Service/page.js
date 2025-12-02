@@ -18,7 +18,7 @@ export default function ServicePage() {
           </div>
           <div>
             <div className="flex items-center gap-3 mt-10 min-[768px]:max-[1023px]:mt-5 lg:mt-5">
-              <img src="/image/anglebracket.png" alt="line" className="w-5 lg:w-10" />
+              <img src="/image/anglebracket.png" alt="line" className="w-5 min-[768px]:max-[1023px]:w-5 lg:w-10" />
               <img src="/image/dot1.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
               <img src="/image/dot2.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
               <img src="/image/dot3.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
