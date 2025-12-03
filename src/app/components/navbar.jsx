@@ -108,7 +108,7 @@ export default function Navbar() {
             {/* Mobile Logo */}
             <a href="#">
               <img
-                src="/image/logo.svg"
+                src="/image/logo2.png"
                 alt="Logo"
                 className="lg:hidden min-[768px]:max-[1023px]:hidden ml-5"
               />
