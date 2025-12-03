@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div className="flex items-center gap-20 min-[768px]:max-[1023px]:gap-70 lg:gap-130">
           <div className="ml-2 mt-10 min-[768px]:max-[1023px]:mt-5 min-[768px]:max-[1023px]:ml-10 lg:mt-5 lg:ml-25">
             <h1 className="text-md min-[768px]:max-[1023px]:text-3xl lg:text-5xl font-bold text-(--neutral-color)">
-              OUR SERVICES
+              CONTACTS
             </h1>
             <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
               <p>HOME</p>

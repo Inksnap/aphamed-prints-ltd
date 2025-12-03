@@ -1,10 +1,16 @@
-"use client";
 import { Montserrat, Merienda, Michroma } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar.jsx"
+import Navbar from "./components/navbar.jsx";
 import Preloader from "./components/Preloader.jsx";
 import Footertwo from "./components/footertwo.jsx";
 
+export const metadata = {
+  title: "Aphamed Prints LTD",
+  description: "Quality printing services for all your branding needs.",
+  icons: {
+    icon: "/image/logo.svg", 
+  },
+};
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -26,14 +32,15 @@ const michroma = Michroma({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-theme="inline" className={`${montserrat.variable} ${merienda.variable} ${michroma.variable}`}>
+    <html
+      lang="en"
+      data-theme="inline"
+      className={`${montserrat.variable} ${merienda.variable} ${michroma.variable}`}
+    >
       <body>
         <Preloader />
-        {/* Navbar */}
         <Navbar />
-        {/* Main Page content */}
-        <main className="">{children}</main>
-        
+        <main>{children}</main>
         <Footertwo />
       </body>
     </html>
