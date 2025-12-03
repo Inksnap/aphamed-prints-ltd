@@ -4,7 +4,30 @@ import { HiOutlineArrowLongRight } from "react-icons/hi2";
 export default function ServicePage() {
   return (
     <main>
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-8 min-[768px]:max-[1023px]:p-10 lg:p-10">
+      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-25 p-5 lg:h-50 lg:p-10 lg:hidden min-[768px]:max-[1023px]:hidden ">
+        <div className="flex items-center gap-23 lg:gap-130">
+          <div className="ml-5 lg:ml-25">
+            <h1 className="text-xl lg:text-5xl font-bold text-(--neutral-color)">
+              ABOUT US
+            </h1>
+            <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
+              <p>HOME</p>
+              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
+              <p>GET QOUTE</p>
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center gap-3">
+              <img src="/image/anglebracket.png" alt="line" className="w-5 lg:w-10" />
+              <img src="/image/dot1.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
+              <img src="/image/dot2.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
+              <img src="/image/dot3.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-8 min-[768px]:max-[1023px]:p-10 lg:p-10 lg:block hidden min-[768px]:max-[1023px]:block  ">
         <div className="flex items-center gap-25 min-[768px]:max-[1023px]:gap-70 lg:gap-130">
           <div className="ml-2 mt-10 min-[768px]:max-[1023px]:mt-5 min-[768px]:max-[1023px]:ml-10 lg:mt-5 lg:ml-25">
             <h1 className="text-md min-[768px]:max-[1023px]:text-3xl lg:text-5xl font-bold text-(--neutral-color)">
