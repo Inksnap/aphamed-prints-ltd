@@ -18,7 +18,7 @@ export default function Preloader() {
   return (
     <div className="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
       <Image
-        src="/image/logo.svg"   // <-- place your logo inside /public/logo.png
+        src="/image/logo2.png"   
         width={140}
         height={140}
         alt="Loading..."

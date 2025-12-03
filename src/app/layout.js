@@ -8,7 +8,7 @@ export const metadata = {
   title: "Aphamed Prints LTD",
   description: "Quality printing services for all your branding needs.",
   icons: {
-    icon: "/image/logo.svg", 
+    icon: "/image/logo2.png", 
   },
 };
 

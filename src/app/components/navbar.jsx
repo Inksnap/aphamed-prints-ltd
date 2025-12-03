@@ -44,7 +44,7 @@ export default function Navbar() {
             <div>
               <a href="#">
                 <img
-                  src="/image/logo.svg"
+                  src="/image/logo2.png"
                   alt="Logo"
                   className=" hidden
                   min-[768px]:max-[1023px]:block
