@@ -700,7 +700,7 @@ export default function ProductPage() {
         </div>
         <div className="flex items-center gap-2">
           <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
-          <p className="text-sm lg:text-lgfont-medium">Fast Delivery</p>
+          <p className="text-sm lg:text-lg font-medium">Fast Delivery</p>
         </div>
         <div className="flex items-center gap-2">
           <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />

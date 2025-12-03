@@ -2,7 +2,7 @@
 import { Montserrat, Merienda, Michroma } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar.jsx"
-import Footerone from "./components/footerone.jsx";
+import Preloader from "./components/Preloader.jsx";
 import Footertwo from "./components/footertwo.jsx";
 
 
@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" data-theme="inline" className={`${montserrat.variable} ${merienda.variable} ${michroma.variable}`}>
       <body>
+        <Preloader />
         {/* Navbar */}
         <Navbar />
         {/* Main Page content */}
