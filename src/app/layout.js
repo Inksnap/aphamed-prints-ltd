@@ -38,10 +38,13 @@ export default function RootLayout({ children }) {
       className={`${montserrat.variable} ${merienda.variable} ${michroma.variable}`}
     >
       <body>
-        <Preloader />
+        <div className="overflow-x-hidden">
+         <Preloader />
         <Navbar />
         <main>{children}</main>
         <Footertwo />
+        </div>
+        
       </body>
     </html>
   );
