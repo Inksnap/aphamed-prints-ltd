@@ -37,8 +37,8 @@ export default function RootLayout({ children }) {
       data-theme="inline"
       className={`${montserrat.variable} ${merienda.variable} ${michroma.variable}`}
     >
-      <body>
-        <div className="overflow-x-hidden">
+      <body className="overflow-x-hidden">
+        <div>
          <Preloader />
         <Navbar />
         <main>{children}</main>

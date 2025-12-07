@@ -1,56 +1,17 @@
 import Testimonial from "../components/testimonial.jsx";
 import { FaCheck } from "react-icons/fa6";
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import ServicesHeader from "../components/ServicesHeader.jsx";
+import Services from "../components/Services.jsx";
+import WhyChooseUs from "../components/WhyChooseUs.jsx";
 export default function ServicePage() {
   return (
     <main>
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-25 p-5 lg:h-50 lg:p-10 lg:hidden min-[768px]:max-[1023px]:hidden ">
-        <div className="flex items-center gap-23 lg:gap-130">
-          <div className="ml-5 lg:ml-25">
-            <h1 className="text-xl lg:text-5xl font-bold text-(--neutral-color)">
-              ABOUT US
-            </h1>
-            <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
-              <p>HOME</p>
-              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
-              <p>GET QOUTE</p>
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-3">
-              <img src="/image/anglebracket.png" alt="line" className="w-5 lg:w-10" />
-              <img src="/image/dot1.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
-              <img src="/image/dot2.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
-              <img src="/image/dot3.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-8 min-[768px]:max-[1023px]:p-10 lg:p-10 lg:block hidden min-[768px]:max-[1023px]:block  ">
-        <div className="flex items-center gap-25 min-[768px]:max-[1023px]:gap-70 lg:gap-130">
-          <div className="ml-2 mt-10 min-[768px]:max-[1023px]:mt-5 min-[768px]:max-[1023px]:ml-10 lg:mt-5 lg:ml-25">
-            <h1 className="text-md min-[768px]:max-[1023px]:text-3xl lg:text-5xl font-bold text-(--neutral-color)">
-              OUR SERVICES
-            </h1>
-            <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
-              <p>HOME</p>
-              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
-              <p>GET QOUTE</p>
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-3 mt-10 min-[768px]:max-[1023px]:mt-5 lg:mt-5">
-              <img src="/image/anglebracket.png" alt="line" className="w-5 min-[768px]:max-[1023px]:w-5 lg:w-10" />
-              <img src="/image/dot1.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
-              <img src="/image/dot2.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
-              <img src="/image/dot3.png" alt="line" className="w-3 h-3 min-[768px]:max-[1023px]:w-5 min-[768px]:max-[1023px]:h-5 lg:w-5 lg:h-5" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <ServicesHeader />
 
-      <div className="m-5 min-[768px]:max-[1023px]:m-10 lg:m-30  ">
+      <Services />
+      {/* <div className="m-5 min-[768px]:max-[1023px]:m-10 lg:m-30  ">
         <div className="flex flex-wrap items-center justify-center gap-20">
           <div className="w-full h-auto min-[768px]:max-[1023px]:w-full min-[768px]:max-[1023px]:h-auto lg:w-[400px] lg:h-[750px] border border-gray-400  rounded-tr-xl rounded-bl-xl shadow-xl bg-(--neutral-color)/80 p-10 ">
             <div className="flex items-center gap-3">
@@ -256,9 +217,9 @@ export default function ServicePage() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="mx-5 my-10 lg:m-30 ">
+      </div> */}
+      <WhyChooseUs />
+      {/* <div className="mx-5 my-10 lg:m-30 ">
         <div className="text-center">
           <h1 className="michroma-font font-bold text-xl lg:text-4xl leading-10">
             WHY CHOOSE US
@@ -420,7 +381,7 @@ export default function ServicePage() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <Testimonial />
     </main>
   );

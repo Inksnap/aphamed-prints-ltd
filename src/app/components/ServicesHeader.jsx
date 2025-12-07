@@ -1,13 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 
-export default function AboutHeader() {
+export default function ServicesHeader() {
   return (
     <div className="bg-gradient-to-r from-[#0CE7AC] to-[#00543D] py-8 lg:py-14">
       <div className="container mx-auto px-4">
-
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-
+        <div className="flex  flex-row max-[360px]:flex-col items-center justify-around gap-10 lg:gap-64">
           {/* Left Side */}
           <div>
             {/* Title */}
@@ -17,7 +15,7 @@ export default function AboutHeader() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="text-2xl lg:text-5xl font-bold text-(--neutral-color)"
             >
-              ABOUT US
+              OUR SERVICES
             </motion.h1>
 
             {/* Breadcrumb */}
@@ -34,12 +32,7 @@ export default function AboutHeader() {
           </div>
 
           {/* Icons */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-3 lg:gap-5"
-          >
+          <div className="flex items-center gap-3 lg:gap-5">
             {[
               "/image/anglebracket.png",
               "/image/dot1.png",
@@ -50,23 +43,23 @@ export default function AboutHeader() {
                 key={i}
                 src={src}
                 alt="icon"
-                className="w-6 lg:w-10"
+                className={i === 0 ? "w-6 lg:w-10" : "w-3 h-3 lg:w-5 lg:h-5"}
                 animate={{
-                  y: [0, -4, 0],
+                  y: [0, -6, 0],
+                  scale: [1, 1.05, 1],
+                  opacity: [0.9, 1, 0.9],
                 }}
                 transition={{
+                  duration: 3 + i * 0.7, 
+                  delay: i * 0.3, 
                   repeat: Infinity,
-                  duration: 4,
-                  delay: i * 0.2,
                   ease: "easeInOut",
                 }}
               />
             ))}
-          </motion.div>
-
+          </div>
         </div>
-
       </div>
     </div>
   );
-}
+} 
