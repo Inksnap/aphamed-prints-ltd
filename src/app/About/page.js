@@ -1,123 +1,17 @@
 import Numbers from "../components/numbers.jsx";
+import AboutHeader from "../components/AboutHeader.jsx";
+import AboutMain from "../components/AboutMain.jsx";
+import MeetCEO from "../components/MeetCEO.jsx";
 export default function AboutPage() {
   return (
     <main>
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-25 p-5 lg:h-50 lg:p-10">
-        <div className="flex items-center gap-23 lg:gap-130">
-          <div className="ml-5 lg:ml-25">
-            <h1 className="text-xl lg:text-5xl font-bold text-(--neutral-color)">
-              ABOUT US
-            </h1>
-            <div className="flex items-center  gap-3 text-[#080808] text-xs font-medium lg:text-sm lg:font-medium mt-2 lg:mt-5">
-              <p>HOME</p>
-              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
-              <p>GET QOUTE</p>
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-3">
-              <img src="/image/anglebracket.png" alt="line" className="w-5 lg:w-10" />
-              <img src="/image/dot1.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
-              <img src="/image/dot2.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
-              <img src="/image/dot3.png" alt="line" className="w-3 h-3 lg:w-5 lg:h-5" />
-            </div>
-          </div>
-        </div>
-      </div>
+      <AboutHeader />
 
-      <div className="mt-10 lg:mt-20 mb-40 lg:mb-30">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center ml-5 lg:ml-20 gap-10 lg:gap-30 ">
-          <div>
-            <div className="flex items-center gap-2 p-2 rounded-sm bg-(--secondary-color) w-[110px] h-[30px]">
-              <img src="/image/Cdot.png" alt="cdot" />
-              <p className="font-bold text-xs ">About Us </p>
-              <img src="/image/Cdot.png" alt="cdot" />
-            </div>
-            <p className="font-medium text-sm leading-5 lg:leading-6">
-              Aphamed Prints is a full-service branding, design, and printing
-              company committed <br /> to bringing ideas to life through
-              creativity, precision, and quality craftsmanship. <br />
-              <br />
-              We believe that every design tells a story , one that deserves to
-              be printed with care <br /> passion, and purpose. Since our
-              inception in 2018, we’ve grown from a small print <br /> Brand
-              into a trusted brand known for delivering premium-quality printing
-              and <br /> branding solutions across Lagos and beyond. <br />
-              <br />
-              We specialize in digital printing, brand design, and creative
-              production, offering top- <br />
-              notch services that blend modern technology with skilled
-              craftsmanship. From <br /> business cards to large-format banners,
-              and from corporate branding to customized <br />
-              merchandise, our goal is simple; to make your brand stand out
-              beautifully and <br /> professionally. <br />
-              <br />
-              Driven by the philosophy that “Quality is our Job,” we don’t just
-              print , we partner <br /> with our clients to bring their ideas to
-              life. <br />
-              <br />
-              Over the years, Aphamed Prints has become a one-stop solution for
-              individuals, <br /> startups, and established businesses seeking
-              consistent quality, timely delivery, and <br /> innovative
-              results. We take pride in transforming visions into tangible
-              expressions of <br />
-              success because at Aphamed Prints , quality isn’t just what we do;
-              it’s who we are.
-            </p>
-          </div>
-
-          <div>
-            <div className="w-[400px] h-[280px] lg:w-[540px] lg:h-[350px]  relative bg-[#D9D9D9] rounded-lg ">
-              <div className="w-[300px] h-[180px] lg:w-[384px] lg:h-[213px] bg-[#D9D9D9] border border-white rounded-lg absolute top-50 left-18 lg:top-60 lg:left-30"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <AboutMain />
 
       <Numbers />
 
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-end gap-20 lg:gap-40 mb-20">
-      <div>
-        <div className="flex items-center gap-2 p-2 rounded-sm bg-(--secondary-color) w-[120px] h-[30px] ml-10 lg:ml-0">
-          <img src="/image/Cdot.png" alt="cdot" />
-          <p className="font-bold text-[10px] ">Meet the CEO </p>
-          <img src="/image/Cdot.png" alt="cdot" />
-        </div>
-        <p className="font-medium text-sm leading-5 lg:leading-6 ml-5 mr-5 lg:ml-0 lg:mr-0  ">
-          I’ve always believed that design isn’t just about what you see it’s
-          about how it makes <br /> you feel. That belief became the foundation
-          of Aphamed Prints.
-          <br />
-          <br />
-          Hi! Welcome here.
-          <br />
-          <br />
-          I’m Ahmed Mustapha Olawale, a passionate Design, Print, and Brand
-          Technologist <br /> with years of professional experience in the
-          creative and printing industry. <br />
-          <br />
-          I’m a proud graduate of Yaba College of Technology, where I built a
-          strong foundation <br /> in printing technology and creative design.
-          My journey began long before Aphamed <br /> Prints officially launched
-          in 2018. With hands-on experience in printing, machine <br />{" "}
-          operation, and brand development from SO&L Communication to ARK
-          Creative <br /> Agency, I’ve learned that true excellence is achieved
-          through consistency, innovation, <br /> and teamwork. <br />
-          <br />
-          Through Aphamed Prints, my mission has always been to redefine what
-          quality <br /> means in the print and branding space not just through{" "}
-          the final result, but through <br />  the entire creative process.
-          Every client we work with becomes part of our story, and <br /> every
-          project is a new opportunity to raise the standard higher. <br />
-          <br />
-          At Aphamed Prints, quality isn’t just our job — it’s our identity.
-        </p>
-      </div>
-
-      <div>
-        <img src="/image/CeoImg.png" alt="Ceo-img" className=" lg:ml-0" />
-      </div>
-      </div>
+      <MeetCEO />
 
        <div className="bg-[#D9D9D9] p-20 block mx-auto">
         <div className="mx-auto text-center">

@@ -1,9 +1,14 @@
 "use client";
+
 import { useState } from "react";
 import { BsFilterLeft } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
+import { motion } from "framer-motion";
+
+
+// PRODUCT LIST 
 
 const PRODUCTS = [
   {
@@ -583,71 +588,65 @@ export default function ProductPage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
+ 
   const filteredProducts = PRODUCTS.filter((item) => {
     const matchesCategory = category === "All" || item.category === category;
+
     const matchesSearch = item.name
       .toLowerCase()
       .includes(search.toLowerCase());
+
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <main>
-      {/* HERO / FILTER BAR */}
-      <div className="[background:linear-gradient(90deg,#0CE7AC_0%,#00543D_100%)] h-50 p-5">
-        <div className="rounded-full p-5 lg:p-4 bg-white w-[100%] lg:w-[90%] max-w-[500px] lg:max-w-[500px] h-12 lg:h-12 mx-auto mt-10 flex items-center gap-3 lg:gap-10 shadow">
-          <div className="flex items-center gap-1 lg:gap-3 text-gray-500 w-full">
-            <BsFilterLeft className="hidden lg:block lg:text-2xl" />
+    <div className="w-full">
+      
+      {/* HERO FILTER AREA WITH ANIMATION */}
+   
+      <div className="bg-gradient-to-r from-[#0CE7AC] to-[#00543D] py-10">
+        <div className="container mx-auto px-4">
+          {/* FILTER BAR */}
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="rounded-full p-4 bg-white w-full max-w-md lg:max-w-xl h-12 mx-auto flex items-center gap-4 shadow-lg"
+          >
+            <BsFilterLeft className="hidden lg:block text-2xl text-gray-500" />
 
-            {/* Category Dropdown */}
-            <div className="w-30">
+            {/* CATEGORY DROPDOWN */}
+            <div className="w-32">
               <Listbox value={category} onChange={setCategory}>
-                <div className="relative mt-1">
-                  {/* Button */}
-                  <Listbox.Button
-                    className="
-              relative w-full cursor-pointer rounded-md 
-               py-2 px-3 text-xs outline-none border-none
-              flex items-center gap-3
-              focus:ring-0 focus:ring-white/30
-            "
-                  >
-                    <span>{category || "Select Category"}</span>
-                    <ChevronUpDownIcon className="w-4 h-4 text-[var(--primary-color)]" />
+                <div className="relative">
+                  <Listbox.Button className="w-full py-2 px-3 text-xs flex items-center gap-2">
+                    <span>{category}</span>
+                    <ChevronUpDownIcon className="w-4 h-4 text-black" />
                   </Listbox.Button>
 
-                  {/* Options */}
-                  <Listbox.Options
-                    className="
-              absolute mt-1 max-h-60 w-full overflow-auto rounded-md
-              bg-[var(--primary-color)] shadow-lg py-2 z-50
-            "
-                  >
+                  <Listbox.Options className="absolute mt-1 max-h-60 w-full bg-[var(--primary-color)] rounded-md py-2 z-50 shadow-lg">
                     {CATEGORIES.map((cat) => (
                       <Listbox.Option
                         key={cat}
                         value={cat}
                         className={({ active }) =>
-                          `
-                  cursor-pointer select-none py-2 px-3 text-xs rounded-md
-                  ${active
-                            ? "bg-white/10 text-white"
-                            : "text-[var(--neutral-color)]"
-                          }
-                `
+                          `cursor-pointer select-none py-2 px-3 text-xs 
+                          ${
+                            active ? "bg-white/10 text-white" : "text-gray-200"
+                          }`
                         }
                       >
                         {({ selected }) => (
                           <div className="flex justify-between items-center">
                             <span
-                              className={`${selected ? "font-semibold" : "font-normal"
-                                }`}
+                              className={
+                                selected ? "font-semibold" : "font-normal"
+                              }
                             >
                               {cat}
                             </span>
-
                             {selected && (
-                              <CheckIcon className="h-4 w-4 text-[var(--neutral-color)]" />
+                              <CheckIcon className="h-4 w-4 text-white" />
                             )}
                           </div>
                         )}
@@ -658,9 +657,7 @@ export default function ProductPage() {
               </Listbox>
             </div>
 
-            <img src="/image/Lineicon.png" alt="line" />
-
-            {/* Search Input */}
+            {/* SEARCH INPUT */}
             <input
               type="text"
               placeholder="Search products..."
@@ -668,81 +665,115 @@ export default function ProductPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-          </div>
 
-          <div className="bg-(--primary-color) p-2 text-xs rounded-full text-white -ml-5 l">
-            <FaSearch />
-          </div>
-        </div>
+            <div className="bg-[var(--primary-color)] p-2 rounded-full text-white cursor-pointer">
+              <FaSearch size={12} />
+            </div>
+          </motion.div>
 
-        {/* Breadcrumb */}
-        <div className="flex items-center justify-center gap-3 text-[#080808] text-sm font-medium mt-5">
-          <p>HOME</p>
-          <img src="/image/Lineicon2.png" alt="line" className="h-3" />
-          <p>GET QOUTE</p>
+          {/* BREADCRUMB */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="flex items-center justify-center gap-3 text-[#080808] text-sm font-medium mt-5"
+          >
+            <p>HOME</p>
+            <span>
+              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
+            </span>
+            <p>PRODUCTS</p>
+          </motion.div>
         </div>
       </div>
 
       {/* TITLE */}
-      <div className="mx-auto mt-10">
-        <h1 className="text-center text-lg lg:text-xl font-medium text-[#026445]">
-          ALL PRODUCTS
-        </h1>
-        <img src="image/Lineicon3.png" className="mx-auto" alt="" />
-        <p className="text-center italic text-sm lg:text-lg font-medium">
-          Quality that speaks louder than words
-        </p>
-      </div>
-      <div className="flex items-center justify-center gap-2 lg:gap-5 mt-5">
-        <div className="flex items-center gap-1 lg:gap-2">
-          <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
-          <p className="text-sm lg:text-lg font-medium">Bold Prints</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
-          <p className="text-sm lg:text-lg font-medium">Fast Delivery</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
-          <p className="text-sm lg:text-lg font-medium">Happy Client</p>
-        </div>
-      </div>
-
-      {/*PRODUCT SECTION USING FLEX*/}
-      <div className="flex flex-wrap items-center lg:justify-center gap-1 px-2 mt-5 lg:gap-3 lg:px-5 lg:pb-20 lg:mt-20">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="flex flex-col items-center">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-[195px] min-[300px]:max-[391px]:w-[170px] lg:w-[200px] h-auto mb-0 lg:mb-3"
-            />
-
-            <div className="w-[135px] h-[113px] bg-white rounded-md p-2 shadow-lg">
-              <h1 className="text-center font-semibold text-sm  leading-5">
-                {product.name}
-              </h1>
-              <p className="text-center text-(--primary-color) leading-5 font-bold text-md">
-                ₦{product.price}
-              </p>
-
-              <button className="block mx-auto mt-2 px-5 py-1 border border-[#5E5E5E] text-[#5E5E5E] rounded-sm text-sm">
-                {product.unit}
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="bg-[#D9D9D9] p-10 block mx-auto">
-        <div className="mx-auto text-center">
-          <h1 className="font-bold text-xl lg:text-2xl text-[#1B1B1B] leading-5 lg:leading-10">
-            APHAMED PRINTS
+      <div className="container mx-auto px-4 mt-10">
+        <div className="text-center">
+          <h1 className="text-lg lg:text-xl font-medium text-[#026445]">
+            ALL PRODUCTS
           </h1>
-          <p className="italic text-sm font-medium text-[#1B1B1B] leading-5 lg:leading-10">
-            Quality is our Job, and Your Satisfaction is our Priority.
+
+          <img
+            src="image/Lineicon3.png"
+            className="mx-auto w-24 lg:w-32 mt-1"
+            alt="line"
+          />
+
+          <p className="italic text-sm lg:text-lg font-medium mt-2">
+            Quality that speaks louder than words
           </p>
         </div>
+
+        {/* FEATURES */}
+        <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-6 mt-5">
+          <div className="flex items-center gap-2">
+            <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
+            <p className="text-sm lg:text-lg font-medium">Bold Prints</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
+            <p className="text-sm lg:text-lg font-medium">Fast Delivery</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <img src="image/Productdot.png" alt="dot" className="w-3 h-3" />
+            <p className="text-sm lg:text-lg font-medium">Happy Client</p>
+          </div>
+        </div>
       </div>
-    </main>
+
+      {/* PRODUCT GRID SECTION */}
+      
+      <div className="container mx-auto px-1 lg:px-4 py-12">
+
+        {/* PRODUCT GRID */}
+        <div
+          className="
+            grid 
+            grid-cols-2 
+            sm:grid-cols-2 
+            md:grid-cols-3
+            lg:grid-cols-5 
+            gap-1 lg:gap-10
+          "
+        >
+          {filteredProducts.map((product) => (
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="overflow-hidden p-4"
+            >
+              <img src={product.image} alt={product.name} className="w-full" />
+
+              <div className=" text-center mt-4 h-auto rounded-md p-2 shadow-lg">
+                <h3 className="text-lg font-medium">{product.name}</h3>
+                <p className="text-xs text-gray-500">{product.unit}</p>
+
+                <button className="mt-2 text-(--primary-color) font-semibold border border-[#5E5E5E] rounded-sm p-1">
+                  ₦{product.price}
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
+      </div>
+      <div className="bg-[#D9D9D9] py-10 px-4">
+          <div className="container mx-auto text-center">
+            <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-[#1B1B1B] leading-tight">
+              APHAMED PRINTS
+            </h1>
+
+            <p className="italic text-sm md:text-base lg:text-lg font-medium text-[#1B1B1B] mt-2 leading-relaxed">
+              Quality is our Job, and Your Satisfaction is our Priority.
+            </p>
+          </div>
+        </div>
+    </div>
   );
 }
