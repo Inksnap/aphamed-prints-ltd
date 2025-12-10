@@ -218,11 +218,11 @@ export default function Portfolio() {
                   <p className="text-center text-sm">{item.description}</p>
                   <button className="bg-(--secondary-color) rounded-sm p-2 merienda-font mt-2">
                     <a
-                      href="https://www.behance.net/gallery/226929635/APHAMED-PROJECT"
+                      href="https://wa.me/2349091643613"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      See More
+                      Order Now
                     </a>
                   </button>
                 </div>

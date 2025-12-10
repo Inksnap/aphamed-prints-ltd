@@ -8,8 +8,8 @@ const services = [
     subtitle: "Designs that speak louder than words.",
     description:
       "We design with intention, blending creativity, strategy, and experience to create visuals that inspire action. Logos, flyers, social media graphics, or print layouts — whatever your design needs, we bring them to life with detail and excellence.",
-    bgColor: "bg-(--primary-color)",
-    textColor: "text-(--neutral-color)",
+    bgColor: "bg-(--neutral-color)",
+    textColor: "text-[#151515]",
     img: "/image/Wwdbimg1.png",
   },
   {
@@ -17,7 +17,7 @@ const services = [
     subtitle: "From paper to fabric, your vision perfectly printed.",
     description:
       "We provide high-quality printing solutions that transform ideas into tangible, lasting impressions. Whether it’s on paper, fabric, or promotional materials, our prints are designed to deliver excellence in every detail.",
-    bgColor: "bg-(--secondary-color)",
+    bgColor: "bg-(--neutral-color)",
     textColor: "text-[#151515]",
     img: "/image/Wwdbimg2.png",
   },
@@ -26,7 +26,7 @@ const services = [
     subtitle: "Smart, user-focused digital experiences",
     description:
       "We provide high-quality digital design solutions that transform ideas into seamless, user-friendly experiences. Whether it’s websites, apps, or digital products, we craft interfaces with precision and creativity.",
-    bgColor: "bg-(--footer-color)",
+    bgColor: "bg-(--neutral-color)",
     textColor: "text-[#151515]",
     img: "/image/Wwdbimg1.png",
   },
@@ -35,8 +35,8 @@ const services = [
     subtitle: "Wear it. Share it. Live your brand.",
     description:
       "Our Branding & Merchandise services are designed to help you make a lasting impression — turning everyday items into powerful brand tools. From custom apparel to corporate souvenirs, we blend creativity and quality to help your brand stand out wherever it goes.",
-    bgColor: "bg-(--accent-color)",
-    textColor: "text-(--neutral-color)",
+    bgColor: "bg-(--neutral-color)",
+    textColor: "text-[#151515]",
     img: "/image/Wwdbimg3.png",
   },
 ];

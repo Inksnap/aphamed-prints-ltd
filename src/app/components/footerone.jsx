@@ -15,7 +15,14 @@ export default function Footerone() {
             Let’s talk about it, we’ll give you the best offer for your project.
           </p>
           <button className="bg-(--accent-color) py-2 px-6 text-sm rounded-full text-(--neutral-color) mt-2 hover:scale-105 transition-transform">
-            Request Quote
+             <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:underline"
+              >
+                Request Quote
+              </a>
           </button>
         </div>
 

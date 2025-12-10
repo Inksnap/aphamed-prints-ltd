@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function ContactHeader() {
   return (
@@ -25,9 +26,18 @@ export default function ContactHeader() {
               transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
               className="flex items-center gap-2 text-xs lg:text-sm text-[#080808] mt-3"
             >
-              <p className="font-medium">HOME</p>
+              <Link href="/">
+                <p className="font-medium hover:underline">HOME</p>
+              </Link>
               <img src="/image/Lineicon2.png" alt="" className="h-3" />
-              <p className="font-medium">GET QUOTE</p>
+              <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:underline"
+              >
+                GET QUOTE
+              </a>
             </motion.div>
           </div>
 

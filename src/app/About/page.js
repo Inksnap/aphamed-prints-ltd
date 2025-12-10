@@ -13,12 +13,17 @@ export default function AboutPage() {
 
       <MeetCEO />
 
-       <div className="bg-[#D9D9D9] p-20 block mx-auto">
-        <div className="mx-auto text-center">
-          
+      <div className="bg-[#D9D9D9] py-10 px-4">
+        <div className="container mx-auto text-center">
+          <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-[#1B1B1B] leading-tight">
+            APHAMED PRINTS
+          </h1>
+
+          <p className="italic text-sm md:text-base lg:text-lg font-medium text-[#1B1B1B] mt-2 leading-relaxed">
+            Quality is our Job, and Your Satisfaction is our Priority.
+          </p>
         </div>
       </div>
-  
     </main>
   );
 }

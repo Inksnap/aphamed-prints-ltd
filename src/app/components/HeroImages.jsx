@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 
 const mobileImagesArray = [
   "/image/Heroimg1.png",
-  "/image/Heroimg2.png",
-  "/image/Heroimg3.png",
+  // "/image/Heroimg2.png",
+  // "/image/Heroimg3.png",
+  "/image/Heroimg4.png",
 ];
 
 const desktopImagesArray = [
@@ -51,13 +52,13 @@ export default function HeroImages() {
     <div className="relative w-full flex justify-center items-center">
 
       {/* Mobile / Tablet */}
-      <div className="flex lg:hidden gap-4 p-5">
+      <div className="flex lg:hidden gap-4 p-5 mt-10">
         {mobileImages.map((src, i) => (
           <img
             key={i}
             src={src}
             alt="hero"
-            className="w-25 md:w-50 h-auto"
+            className="w-40 md:w-50 h-auto"
           />
         ))}
       </div>

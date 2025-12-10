@@ -79,13 +79,20 @@ export default function Navbar() {
       <div
         className={`
           w-full z-50 transition-all duration-300
-          ${isFixed ? "fixed top-0 left-0 bg-(--primary-color)/70 backdrop-blur-lg shadow-md" : "relative bg-(--primary-color)"}
+          ${
+            isFixed
+              ? "fixed top-0 left-0 bg-(--primary-color)/70 backdrop-blur-lg shadow-md"
+              : "relative bg-(--primary-color)"
+          }
         `}
       >
         <nav className="max-w-7xl mx-auto flex justify-between items-center px-4 py-3">
-
           {/* MOBILE LOGO */}
-          <img src="/image/footer-logo.png" alt="logo" className="w-24 md:hidden" />
+          <img
+            src="/image/footer-logo.png"
+            alt="logo"
+            className="w-24 md:hidden"
+          />
 
           {/* MENU LINKS */}
           <div
@@ -95,7 +102,14 @@ export default function Navbar() {
               md:static md:flex md:flex-row md:space-y-0 md:space-x-5 md:w-auto md:bg-transparent
             `}
           >
-            {["/", "/About", "/Products", "/Service", "/Portfolio", "/Contact"].map((path, i) => (
+            {[
+              "/",
+              "/About",
+              "/Products",
+              "/Service",
+              "/Portfolio",
+              "/Contact",
+            ].map((path, i) => (
               <Link
                 key={i}
                 href={path}
@@ -109,11 +123,20 @@ export default function Navbar() {
 
           {/* RIGHT BUTTONS (DESKTOP) */}
           <div className="hidden md:flex items-center gap-4">
-            <button className="bg-(--secondary-color) p-2 rounded text-(--accent-color)">
-              <FaSearch size={18} />
-            </button>
+            <Link href="/Products">
+              <button className="bg-(--secondary-color) p-2 rounded text-(--accent-color)">
+                <FaSearch size={18} />
+              </button>
+            </Link>
             <button className="bg-(--secondary-color) py-2 px-4 rounded text-sm font-medium text-(--accent-color)">
-              GET A QUOTE
+              <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:underline"
+              >
+                GET QUOTE
+              </a>
             </button>
           </div>
 
@@ -129,10 +152,6 @@ export default function Navbar() {
     </>
   );
 }
-
-
-
-
 
 // "use client";
 // import { useState, useEffect } from "react";

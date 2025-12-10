@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function AboutHeader() {
   return (
@@ -25,9 +26,18 @@ export default function AboutHeader() {
               transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
               className="flex items-center gap-2 text-xs lg:text-sm text-[#080808] mt-3"
             >
-              <p className="font-medium">HOME</p>
+              <Link href="/">
+                <p className="font-medium hover:underline">HOME</p>
+              </Link>
               <img src="/image/Lineicon2.png" alt="" className="h-3" />
-              <p className="font-medium">GET QUOTE</p>
+              <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:underline"
+              >
+                GET QUOTE
+              </a>
             </motion.div>
           </div>
 
@@ -50,8 +60,8 @@ export default function AboutHeader() {
                   opacity: [0.9, 1, 0.9],
                 }}
                 transition={{
-                  duration: 3 + i * 0.7, 
-                  delay: i * 0.3, 
+                  duration: 3 + i * 0.7,
+                  delay: i * 0.3,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
@@ -62,4 +72,4 @@ export default function AboutHeader() {
       </div>
     </div>
   );
-} 
+}

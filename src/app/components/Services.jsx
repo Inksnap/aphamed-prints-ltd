@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 export default function Services() {
   return (
     <div className="m-5 sm:m-10 lg:m-20">
-      <div className="flex flex-wrap items-start justify-center gap-10">
+      <div className="flex flex-wrap lg:flex-nowrap items-start justify-center gap-10">
         {/* Card 1 */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -26,8 +26,8 @@ export default function Services() {
               social media graphics, or print layouts — whatever your design
               needs, we bring them to life with detail and excellence.
           </p>
-          <img src="/image/Service-img1.png" alt="graphic-img" className="mt-10 rounded" />
-          <ul className="font-extralight text-[15px] leading-6 mt-5 space-y-2">
+          <img src="/image/Service-img1.png" alt="graphic-img" className="mt-5 rounded" />
+          <ul className="font-extralight text-[15px] leading-5 mt-5 space-y-2">
             {[
               "Logo & Brand Identity Design",
               "Flyers, Posters & Brochures",
@@ -142,7 +142,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="w-full sm:w-[45%] lg:w-[400px] h-[750px] relative gap-10 "
+          className="w-full sm:w-[45%] lg:w-[400px] h-[750px] relative gap-10 hidden"
         >
           <div className="[background:linear-gradient(90deg,#062B21_0%,#14916F_100%)] p-5 rounded-xl shadow-lg h-[300px] z-10 relative">
             <div className="flex items-center gap-2 p-3">

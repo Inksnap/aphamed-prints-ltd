@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { Listbox } from "@headlessui/react";
 import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 
 // PRODUCT LIST 
@@ -582,7 +583,7 @@ const PRODUCTS = [
   },
 ];
 
-const CATEGORIES = ["All", "Prints", "Branding", "Fashion"];
+const CATEGORIES = ["All", "Prints", "Branding", "Design"];
 
 export default function ProductPage() {
   const [search, setSearch] = useState("");
@@ -678,11 +679,18 @@ export default function ProductPage() {
             transition={{ delay: 0.4 }}
             className="flex items-center justify-center gap-3 text-[#080808] text-sm font-medium mt-5"
           >
-            <p>HOME</p>
-            <span>
-              <img src="/image/Lineicon2.png" alt="line" className="h-3" />
-            </span>
-            <p>PRODUCTS</p>
+            <Link href="/">
+                <p className="font-medium hover:underline">HOME</p>
+              </Link>
+              <img src="/image/Lineicon2.png" alt="" className="h-3" />
+              <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium hover:underline"
+              >
+                GET QUOTE
+              </a>
           </motion.div>
         </div>
       </div>
@@ -690,7 +698,7 @@ export default function ProductPage() {
       {/* TITLE */}
       <div className="container mx-auto px-4 mt-10">
         <div className="text-center">
-          <h1 className="text-lg lg:text-xl font-medium text-[#026445]">
+          <h1 className="text-lg lg:text-xl font-bold text-[#026445]">
             ALL PRODUCTS
           </h1>
 
