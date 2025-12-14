@@ -9,12 +9,16 @@ import CreativitySection from "./components/Creativity.jsx"
 import WhatWeDoBest from "./components/WhatWeDoBest.jsx"
 import WhatWeDoBestLg from "./components/WhatWeDoBestLg.jsx"
 import UiUxProcess from "./components/UiUxProcess.jsx"
-import { useState, useEffect } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
-import { FaCheck } from "react-icons/fa6";
-import { HiOutlineArrowLongRight } from "react-icons/hi2";
+import { useRef } from "react";
 
 export default function Home() {
+  const portfolioRef = useRef(null);
+
+  const scrollToPortfolio = () => {
+    portfolioRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main>
       {/*Hero Section */}
@@ -48,7 +52,9 @@ export default function Home() {
           </motion.p>
 
           <div className="buttons flex md:flex-row gap-4 md:gap-6 mt-6">
+            
             <motion.button
+              onClick={scrollToPortfolio}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-(--secondary-color) p-3 rounded-md flex items-center gap-2 text-sm md:text-md font-medium shadow-md hover:bg-(--primary-color) hover:text-white"
@@ -56,13 +62,22 @@ export default function Home() {
               See our work
               <FaArrowRightLong className="text-(--accent-color) hover:text-white" />
             </motion.button>
+            
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-(--button-color) p-3 rounded-md flex items-center gap-2 text-sm md:text-md font-medium shadow-md hover:bg-(--accent-color) hover:text-white"
             >
-              Start your projects
+              <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium"
+              >
+                Start your projects
+              </a>
+              
               <FaArrowRightLong className="text-(--accent-color) hover:text-white" />
             </motion.button>
           </div>
@@ -84,7 +99,11 @@ export default function Home() {
 
       <Numbers />
    
-      <Portfolio />
+        <div ref={portfolioRef}>
+        <Portfolio />
+      </div>
+
+      {/* <Portfolio /> */}
       <Footerone />
     </main>
   );

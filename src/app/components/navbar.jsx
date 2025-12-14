@@ -66,10 +66,40 @@ export default function Navbar() {
             </div>
 
             <div className="md:flex items-center gap-3 ml-6 animate-bounce">
+               <a
+              href="https://www.facebook.com/profile.php?id=100066513801954"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <CiFacebook className="text-blue-600" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100066513801954"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <CiLinkedin className="text-blue-700" />
+            </a>
+
+            <a
+              href="https://www.facebook.com/profile.php?id=100066513801954"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <CiInstagram className="text-pink-500" />
+            </a>
+
+              <a
+              href="https://www.facebook.com/profile.php?id=100066513801954"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaTiktok className="text-black" />
+            </a>
+              
+              
+              
             </div>
           </div>
         </div>

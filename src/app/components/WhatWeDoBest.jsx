@@ -8,8 +8,8 @@ const services = [
     subtitle: "Designs that speak louder than words.",
     description:
       "We design with intention, blending creativity, strategy, and experience to create visuals that inspire action. Logos, flyers, social media graphics, or print layouts — whatever your design needs, we bring them to life with detail and excellence.",
-    bgColor: "bg-(--neutral-color)",
-    textColor: "text-[#151515]",
+    bgColor: "bg-[#014230CC]",
+    textColor: "text-(--neutral-color) ",
     img: "/image/Wwdbimg1.png",
   },
   {
@@ -17,7 +17,7 @@ const services = [
     subtitle: "From paper to fabric, your vision perfectly printed.",
     description:
       "We provide high-quality printing solutions that transform ideas into tangible, lasting impressions. Whether it’s on paper, fabric, or promotional materials, our prints are designed to deliver excellence in every detail.",
-    bgColor: "bg-(--neutral-color)",
+    bgColor: "bg-(--secondary-color)/68",
     textColor: "text-[#151515]",
     img: "/image/Wwdbimg2.png",
   },
@@ -26,7 +26,7 @@ const services = [
     subtitle: "Smart, user-focused digital experiences",
     description:
       "We provide high-quality digital design solutions that transform ideas into seamless, user-friendly experiences. Whether it’s websites, apps, or digital products, we craft interfaces with precision and creativity.",
-    bgColor: "bg-(--neutral-color)",
+    bgColor: "bg-(--footer-color)/75",
     textColor: "text-[#151515]",
     img: "/image/Wwdbimg1.png",
   },
@@ -35,8 +35,8 @@ const services = [
     subtitle: "Wear it. Share it. Live your brand.",
     description:
       "Our Branding & Merchandise services are designed to help you make a lasting impression — turning everyday items into powerful brand tools. From custom apparel to corporate souvenirs, we blend creativity and quality to help your brand stand out wherever it goes.",
-    bgColor: "bg-(--neutral-color)",
-    textColor: "text-[#151515]",
+    bgColor: "bg-(--accent-color)/77",
+    textColor: "text-(--neutral-color) ",
     img: "/image/Wwdbimg3.png",
   },
 ];
@@ -69,15 +69,15 @@ export default function WhatWeDoBest() {
             viewport={{ once: false, amount: 0.3 }}
             className={`${service.bgColor} w-full shadow-xl shadow-gray-400 border-gradient-animate rounded-tr-2xl rounded-bl-2xl p-5 relative`}
           >
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-1">
               <img src={service.img} alt={service.title} className="w-10 h-10" />
               <h2 className={`font-bold text-2xl ${service.textColor}`}>{service.title}</h2>
             </div>
-            <p className={`font-bold text-lg ${service.textColor} mb-2`}>{service.subtitle}</p>
-            <p className={`font-bold text-sm ${service.textColor} mb-5`}>{service.description}</p>
-            <div className={`font-bold text-lg ${service.textColor} flex items-center gap-2 cursor-pointer`}>
+            <p className={`font-semibold text-sm ${service.textColor} mb-5`}>{service.subtitle}</p>
+            <p className={`font-light text-md ${service.textColor} mb-5`}>{service.description}</p>
+            <div className={`font-semibold text-sm ${service.textColor} flex items-center gap-2 cursor-pointer`}>
               <span>ORDER NOW</span>
-              <HiOutlineArrowRight className={`${service.textColor} text-xl`} />
+              <HiOutlineArrowRight className={`${service.textColor} text-sm`} />
             </div>
           </motion.div>
         ))}

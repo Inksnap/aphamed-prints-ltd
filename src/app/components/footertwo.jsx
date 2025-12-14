@@ -19,12 +19,47 @@ export default function Footertwo() {
                 prints, creative branding, <br /> and meaningful digital design{" "}
                 <br /> experiences
               </p>
-              <div className="flex items-center gap-2 mt-4 text-(--neutral-color) animate-bounce">
-                <CiFacebook />
-                <CiLinkedin />
-                <CiInstagram />
-                <PiTiktokLogoThin />
-                <FaXTwitter />
+              <div className="flex items-center gap-3 text-(--neutral-color) mt-2 animate-bounce">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100066513801954"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CiFacebook />
+                </a>
+
+                <a
+                  href="
+https://www.linkedin.com/in/hammed-mustapha-b25a24328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CiLinkedin />
+                </a>
+
+                <a
+                  href="https://www.instagram.com/aphamedprints?igsh=MTJydzV2OWowYTI4OQ%3D%3D&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CiInstagram />
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@olawale1601"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <PiTiktokLogoThin />
+                </a>
+
+                <a
+                  href="https://x.com/certifiedomoal1?s=21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaXTwitter />
+                </a>
               </div>
             </div>
             <div>
@@ -36,16 +71,16 @@ export default function Footertwo() {
                   <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <Link href="/about">About Us</Link>
+                  <Link href="/About">About Us</Link>
                 </li>
                 <li>
-                  <Link href="/services">Services</Link>
+                  <Link href="/Service">Services</Link>
                 </li>
                 <li>
-                  <Link href="/products">Products</Link>
+                  <Link href="/Products">Products</Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contact</Link>
+                  <Link href="/Contact">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -97,15 +132,51 @@ export default function Footertwo() {
         <div className="flex flex-col items-start gap-4 text-center">
           <img src="/image/footer-logo.png" alt="logo" className="w-28" />
           <p className="text-sm text-left text-(--neutral-color) font-light leading-6">
-            Dedicated to turning ideas into reality <br /> through stunning prints,
-            creative branding, <br /> and meaningful digital design <br /> experiences
+            Dedicated to turning ideas into reality <br /> through stunning
+            prints, creative branding, <br /> and meaningful digital design{" "}
+            <br /> experiences
           </p>
           <div className="flex items-center gap-3 text-(--neutral-color) mt-2 animate-bounce">
-            <CiFacebook />
-            <CiLinkedin />
-            <CiInstagram />
-            <PiTiktokLogoThin />
-            <FaXTwitter />
+            <a
+              href="https://www.facebook.com/profile.php?id=100066513801954"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CiFacebook />
+            </a>
+
+            <a
+              href="
+https://www.linkedin.com/in/hammed-mustapha-b25a24328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CiLinkedin />
+            </a>
+
+            <a
+              href="https://www.instagram.com/aphamedprints?igsh=MTJydzV2OWowYTI4OQ%3D%3D&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CiInstagram />
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@olawale1601"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PiTiktokLogoThin />
+            </a>
+
+            <a
+              href="https://x.com/certifiedomoal1?s=21"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaXTwitter />
+            </a>
           </div>
         </div>
 

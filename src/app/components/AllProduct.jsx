@@ -1,6 +1,7 @@
 "use client";
 import { FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const products = [
   { icon: "/image/Producticon1.png", name: "UIUX\nDesign" },
@@ -40,13 +41,15 @@ export default function AllProducts() {
           </motion.div>
         ))}
       </motion.div>
-
+      <Link href="/Products">
       <div className="flex items-center justify-center lg:justify-end gap-2 mt-6 cursor-pointer hover:text-(--accent-color)">
+        
         <p className="text-(--products-color) font-medium text-sm md:text-base lg:text-lg">
           SEE ALL PRODUCTS
         </p>
         <FaArrowRight className="text-(--products-color) hover:text-(--accent-color) transition-colors duration-300" />
       </div>
+      </Link>
     </div>
   );
 }

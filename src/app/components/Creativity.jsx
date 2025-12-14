@@ -81,7 +81,15 @@ export default function CreativitySection() {
             className="flex items-center gap-2 px-5 py-3 bg-(--secondary-color) text-[#151515] 
             font-medium rounded-md hover:bg-(--accent-color) hover:text-white transition-colors duration-300"
           >
-            ORDER NOW
+             <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+               
+              >
+                 ORDER NOW
+              </a>
+           
             <FaArrowRight />
           </motion.button>
         </motion.div>

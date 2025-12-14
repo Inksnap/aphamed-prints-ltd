@@ -91,7 +91,14 @@ export default function WhatWeDoBestLg() {
 
             {/* Order Button */}
             <button className="text-(--neutral-color) [background:linear-gradient(90deg,#062B21_0%,#14916F_100%)] p-2 rounded-md mt-auto mx-auto relative flex items-center justify-center gap-2">
-              ORDER NOW
+              <a
+                href="https://wa.me/2349091643613"
+                target="_blank"
+                rel="noopener noreferrer"
+               
+              >
+               ORDER NOW
+              </a>
               <HiOutlineArrowRight className="text-xl" />
             </button>
           </motion.div>

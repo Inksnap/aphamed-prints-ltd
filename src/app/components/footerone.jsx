@@ -7,11 +7,11 @@ export default function Footerone() {
       {/* Desktop / Large Screens */}
       <div className="relative mt-20 ">
         {/* Footer Container */}
-        <div className="bg-(--footer-color) w-full py-8 px-8 text-center flex flex-col items-center gap-6">
-          <p className="merienda-font text-3xl text-(--neutral-color) font-bold z-1">
+        <div className="bg-(--footer-color) w-full py-8 px-8 text-center flex flex-col items-center gap-3 lg:gap-4">
+          <p className="merienda-font text-2xl lg:text-3xl text-(--neutral-color) font-bold z-1">
             Got something in mind?
           </p>
-          <p className="text-(--neutral-color) text-base font-extralight max-w-lg z-1">
+          <p className="text-(--neutral-color) text-md font-light max-w-lg z-1">
             Let’s talk about it, we’ll give you the best offer for your project.
           </p>
           <button className="bg-(--accent-color) py-2 px-6 text-sm rounded-full text-(--neutral-color) mt-2 hover:scale-105 transition-transform">
@@ -29,7 +29,7 @@ export default function Footerone() {
         <img
           src="/image/footerone-img.png"
           alt="decorative-footer"
-          className="absolute -top-16 right-10 w-48 animate-bounce"
+          className="absolute -top-16 right-10 w-48 hidden lg:block"
         />
       </div>
     </>
