@@ -66,40 +66,37 @@ export default function Navbar() {
             </div>
 
             <div className="md:flex items-center gap-3 ml-6 animate-bounce">
-               <a
-              href="https://www.facebook.com/profile.php?id=100066513801954"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CiFacebook className="text-blue-600" />
-            </a>
-
-            <a
-              href="https://www.facebook.com/profile.php?id=100066513801954"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CiLinkedin className="text-blue-700" />
-            </a>
-
-            <a
-              href="https://www.facebook.com/profile.php?id=100066513801954"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CiInstagram className="text-pink-500" />
-            </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=100066513801954"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CiFacebook className="text-blue-600" />
+              </a>
 
               <a
-              href="https://www.facebook.com/profile.php?id=100066513801954"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTiktok className="text-black" />
-            </a>
-              
-              
-              
+                href="https://www.linkedin.com/in/hammed-mustapha-b25a24328?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CiLinkedin className="text-blue-700" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/aphamedprints?igsh=MTJydzV2OWowYTI4OQ%3D%3D&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CiInstagram className="text-pink-500" />
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@olawale1601"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTiktok className="text-black" />
+              </a>
             </div>
           </div>
         </div>
