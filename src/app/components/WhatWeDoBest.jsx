@@ -80,7 +80,7 @@ export default function WhatWeDoBest() {
               href="https://wa.me/2349091643613"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline"
+              className="hover:underline relative z-20 pointer-events-auto"
             >
               ORDER NOW
             </a>
