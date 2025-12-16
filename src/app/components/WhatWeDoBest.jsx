@@ -77,14 +77,13 @@ export default function WhatWeDoBest() {
             <p className={`font-light text-md ${service.textColor} mb-5`}>{service.description}</p>
             <div className={`font-semibold text-sm ${service.textColor} flex items-center gap-2 cursor-pointer`}>
               <a
-              href="https://wa.me/+2349091643613"
+              href="https://wa.me/2349091643613"
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-center text-xs"
+              className="hover:underline"
             >
               ORDER NOW
             </a>
-              
               <HiOutlineArrowRight className={`${service.textColor} text-sm`} />
             </div>
           </motion.div>
