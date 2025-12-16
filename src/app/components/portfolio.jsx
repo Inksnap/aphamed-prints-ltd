@@ -9,98 +9,98 @@ const portfolioItems = [
   {
     id: 1,
     category: "Print & Brand",
-    image: "/image/printing-branding-img1.png",
-    description: "Business card design",
+    image: "/image/Newportfolioimg1.jpeg",
+    description: "Signage Design",
   },
   {
     id: 2,
     category: "Print & Brand",
-    image: "/image/printing-branding-img2.png",
-    description: "Poster design",
+    image: "/image/Newportfolioimg2.png",
+    description: "Jersey Prints",
   },
   {
     id: 3,
     category: "Print & Brand",
-    image: "/image/printing-branding-img3.png",
-    description: "Landing page redesign",
+    image: "/image/Newportfolioimg3.png",
+    description: "Club Poster Design",
   },
   {
     id: 4,
     category: "Print & Brand",
-    image: "/image/printing-branding-img4.png",
-    description: "Brochure design",
+    image: "/image/Newportfolioimg4.jpeg",
+    description: "Double side Business Card",
   },
   {
     id: 5,
     category: "Print & Brand",
-    image: "/image/printing-branding-img5.png",
-    description: "Social media graphics",
+    image: "/image/Newportfolioimg5.jpeg",
+    description: "Site Helmet",
   },
   {
     id: 6,
     category: "Print & Brand",
-    image: "/image/printing-branding-img6.png",
-    description: "Mobile app interface",
+    image: "/image/Newportfolioimg6.jpeg",
+    description: "A3 Paper Bag",
   },
   {
     id: 7,
     category: "Print & Brand",
-    image: "/image/printing-branding-img7.png",
-    description: "Mobile app interface",
+    image: "/image/Newportfolioimg7.jpeg",
+    description: "Luminous outdoor Signage",
   },
   {
     id: 8,
     category: "Print & Brand",
-    image: "/image/printing-branding-img8.png",
-    description: "Mobile app interface",
+    image: "/image/Newportfolioimg8.png",
+    description: "A3 Paper Bag",
   },
   {
     id: 9,
     category: "Print & Brand",
-    image: "/image/printing-branding-img9.png",
-    description: "Mobile app interface",
+    image: "/image/Newportfolioimg9.png",
+    description: "A5 Jotter (Soft Cover)",
   },
   {
     id: 10,
     category: "Print & Brand",
-    image: "/image/printing-branding-img10.png",
-    description: "Mobile app interface",
+    image: "/image/Newportfolioimg10.jpeg",
+    description: "Double side Business Card",
   },
   {
     id: 11,
     category: "Graphic Design",
-    image: "/image/graphic-designimg1.png",
-    description: "Graphic design",
+    image: "/image/Newportfolioimg11.png",
+    description: "Birthday Poster design",
   },
   {
     id: 12,
     category: "Graphic Design",
-    image: "/image/graphic-designimg2.png",
-    description: "Graphic design",
+    image: "/image/Newportfolioimg12.png",
+    description: "Birthday Poster design",
   },
   {
     id: 13,
     category: "Graphic Design",
-    image: "/image/graphic-designimg3.png",
-    description: "Graphic design",
+    image: "/image/Newportfolioimg13.jpeg",
+    description: "A2 Paper Bag",
   },
   {
     id: 14,
     category: "Graphic Design",
-    image: "/image/graphic-designimg4.png",
-    description: "Graphic design",
+    image: "/image/Newportfolioimg14.jpeg",
+    description: "A5 Paper Bag",
   },
   {
     id: 15,
     category: "Print & Brand",
-    image: "/image/printing-branding-img11.png",
-    description: "Graphic design",
+    image: "/image/Newportfolioimg15.jpeg",
+    description: "Branded Nylon",
   },
   {
     id: 16,
     category: "Print & Brand",
-    image: "/image/printing-branding-img12.png",
-    description: "Graphic design",
+    image: "/image/Newportfolioimg16.png",
+    description: "A3 Paper Bag",
   },
 ];
 
@@ -203,7 +203,7 @@ export default function Portfolio() {
                   <img
                     src={item.image}
                     alt={item.description}
-                    className="w-full h-full object-cover"
+                    className=""
                   />
                 </div>
 

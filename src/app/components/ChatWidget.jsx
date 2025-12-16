@@ -60,7 +60,7 @@ export default function ChatWidget() {
           {/* Button */}
           <div className="px-3 pb-3">
             <a
-              href="https://wa.me/2348123456789"
+              href="https://wa.me/+2349091643613"
               target="_blank"
               rel="noopener noreferrer"
               className="block text-center text-xs
