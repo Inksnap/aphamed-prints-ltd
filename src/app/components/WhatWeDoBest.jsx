@@ -7,7 +7,7 @@ const services = [
     title: "Graphic Design",
     subtitle: "Designs that speak louder than words.",
     description:
-      "We design with intention, blending creativity, strategy, and experience to create visuals that inspire action. Logos, flyers, social media graphics, or print layouts — whatever your design needs, we bring them to life with detail and excellence.",
+      "We design with intention, blending creativity, strategy, and experience to create visuals that inspire action. Logos, flyers, social media graphics, or print layouts, whatever your design needs, we bring them to life with detail and excellence.",
     bgColor: "bg-[#014230CC]",
     textColor: "text-(--neutral-color) ",
     img: "/image/Wwdbimg1.png",

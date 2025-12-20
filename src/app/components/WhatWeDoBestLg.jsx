@@ -7,7 +7,7 @@ const servicesLg = [
   {
     title: "Graphic Design",
     description:
-      "We design with intention, blending creativity, strategy, and experience to create visuals that inspire action. Logos, flyers, social media graphics, or print layouts — whatever your design needs, we bring them to life with detail and excellence.",
+      "We design with intention, blending creativity, strategy, and experience to create visuals that inspire action. Logos, flyers, social media graphics, or print layouts, whatever your design needs, we bring them to life with detail and excellence.",
     features: [
       "Logo & Brand Identity Design",
       "Flyers, Posters & Brochures",
@@ -35,7 +35,7 @@ const servicesLg = [
   {
     title: "Branding & Merchandise",
     description:
-      "Our Branding & Merchandise services are designed to help you make a lasting impression — turning everyday items into powerful brand tools. From custom apparel to corporate souvenirs, we blend creativity and quality to help your brand stand out wherever it goes.",
+      "Our Branding & Merchandise services are designed to help you make a lasting impression, turning everyday items into powerful brand tools. From custom apparel to corporate souvenirs, we blend creativity and quality to help your brand stand out wherever it goes.",
     features: [
       "Corporate Merchandise",
       "Branded Apparel",

@@ -9,7 +9,7 @@ const mobileImagesArray = [
 const desktopImagesArray = [
   "/image/Heroimg1.png",
   "/image/Heroimg2.png",
-  "/image/Heroimg3.png",
+  "/image/Newheroimg1.png",
   "/image/Heroimg4.png",
 ];
 
@@ -62,7 +62,7 @@ export default function HeroImages() {
       {/* Desktop */}
       <div className="hidden lg:flex justify-center items-center gap-8 m-10">
         {desktopImages.map((src, i) => (
-          <img key={i} src={src} alt="hero" />
+          <img key={i} src={src} alt="hero" className="w-80" />
         ))}
       </div>
     </div>

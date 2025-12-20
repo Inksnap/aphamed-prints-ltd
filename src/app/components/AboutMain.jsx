@@ -28,11 +28,11 @@ export default function AboutMain() {
             </p>
 
             <p>
-              We believe every design tells a story—one that deserves to be printed with care, passion, and purpose. Since our inception in 2018, we’ve grown from a small print brand into a trusted name known for premium-quality printing and branding solutions across Lagos and beyond.
+              We believe every design tells a story, one that deserves to be printed with care, passion, and purpose. Since our inception in 2018, we’ve grown from a small print brand into a trusted name known for premium-quality printing and branding solutions across Lagos and beyond.
             </p>
 
             <p>
-              We specialize in digital printing, brand design, and creative production. From business cards to large banners, and from corporate branding to custom merchandise—our goal is simple: make your brand stand out beautifully and professionally.
+              We specialize in digital printing, brand design, and creative production. From business cards to large banners, and from corporate branding to custom merchandise, our goal is simple: make your brand stand out beautifully and professionally.
             </p>
 
             <p>
@@ -52,12 +52,11 @@ export default function AboutMain() {
           {/* MAIN IMAGE */}
           <div className="w-[90%] max-w-[500px] h-[260px] lg:h-[340px] rounded-xl overflow-hidden shadow-xl relative">
             <img
-              src="/image/about1.jpg"
+              src="/image/Aboutimg.png"
               alt="Aphamed Prints workspace"
               className="w-full h-full object-cover"
             />
           </div>
-
           {/* FLOATING SMALL IMAGE */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
@@ -72,7 +71,7 @@ export default function AboutMain() {
             className="absolute right-6 -bottom-6 lg:right-10 lg:-bottom-10 w-[65%] max-w-[320px] h-[180px] lg:h-[220px] bg-white rounded-lg overflow-hidden shadow-lg border border-white"
           >
             <img
-              src="/image/about1.jpg"
+              src="/image/Aboutimg.png"
               alt="Aphamed Prints equipment"
               className="w-full h-full object-cover"
             />

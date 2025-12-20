@@ -191,16 +191,16 @@ https://www.linkedin.com/in/hammed-mustapha-b25a24328?utm_source=share&utm_campa
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/about">About Us</Link>
+                <Link href="/About">About Us</Link>
               </li>
               <li>
-                <Link href="/services">Services</Link>
+                <Link href="/Service">Services</Link>
               </li>
               <li>
-                <Link href="/products">Products</Link>
+                <Link href="/Products">Products</Link>
               </li>
               <li>
-                <Link href="/contact">Contact</Link>
+                <Link href="/Contact">Contact</Link>
               </li>
             </ul>
           </div>

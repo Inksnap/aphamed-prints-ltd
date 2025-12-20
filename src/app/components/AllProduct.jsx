@@ -30,25 +30,26 @@ export default function AllProducts() {
               visible: { opacity: 1, y: 0, transition: { delay: idx * 0.1 } },
             }}
           >
-            <img
-              src={product.icon}
-              alt={product.name}
-              className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10"
-            />
-            <p className="text-center text-[13px] md:text-sm lg:text-base font-light md:font-medium lg:font-medium leading-5 whitespace-pre-line">
-              {product.name}
-            </p>
+            <Link href="/Products" className="flex gap-2">
+              <img
+                src={product.icon}
+                alt={product.name}
+                className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10"
+              />
+              <p className="text-center text-[13px] md:text-sm lg:text-base font-light md:font-medium lg:font-medium leading-5 whitespace-pre-line">
+                {product.name}
+              </p>
+            </Link>
           </motion.div>
         ))}
       </motion.div>
       <Link href="/Products">
-      <div className="flex items-center justify-center lg:justify-end gap-2 mt-6 cursor-pointer hover:text-(--accent-color)">
-        
-        <p className="text-(--products-color) font-medium text-sm md:text-base lg:text-lg">
-          SEE ALL PRODUCTS
-        </p>
-        <FaArrowRight className="text-(--products-color) hover:text-(--accent-color) transition-colors duration-300" />
-      </div>
+        <div className="flex items-center justify-center lg:justify-end gap-2 mt-6 cursor-pointer hover:text-(--accent-color)">
+          <p className="text-(--products-color) font-medium text-sm md:text-base lg:text-lg">
+            SEE ALL PRODUCTS
+          </p>
+          <FaArrowRight className="text-(--products-color) hover:text-(--accent-color) transition-colors duration-300" />
+        </div>
       </Link>
     </div>
   );

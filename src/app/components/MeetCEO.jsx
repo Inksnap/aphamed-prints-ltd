@@ -42,7 +42,7 @@ export default function MeetCEO() {
           the final result, but through  the entire creative process.
           Every client we work with becomes part of our story, and every
           project is a new opportunity to raise the standard higher.</p>
-          <p>At Aphamed Prints, quality isn’t just our job — it’s our identity.</p>   
+          <p>At Aphamed Prints, quality isn’t just our job, it’s our identity.</p>   
           </div>
         </motion.div>
 

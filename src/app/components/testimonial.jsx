@@ -15,9 +15,9 @@ they have always delivered the optimum quality of service. Well done Aphamed pri
   {
     id: 2,
     image: "/image/Testimonial2.png",
-    text: `Aphamed prints have been a reliable and dependable brand, always delivering even at the most impossible,
-urgent hour. And this is without compromise on the quality. I have trusted this brand for over 5 years, and
-they have always delivered the optimum quality of service. Well done Aphamed prints`,
+    text: `I was introduced to Aphamed Prints Ltd through a friend, and ever since then, my experience has been nothing short of exceptional. From the very first interaction, the level of professionalism, care, and attention to detail has stood out. He has never once disappointed me, every service delivered has been timely, efficient, and of the highest quality.
+
+I’m truly grateful for the peace of mind and confidence Aphamed(Olawale) provides. I wholeheartedly recommend his services to anyone looking for excellence and integrity. I sincerely pray he gets all the recognition and success he truly deserves.`,
     name: "Masrurat Oloruntobiloba Akintayo",
     title: "CEO KICHIES DELIGHT",
   },
