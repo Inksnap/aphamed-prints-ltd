@@ -1,15 +1,16 @@
 "use client";
-
+import Image from "next/image";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { AiFillBehanceSquare } from "react-icons/ai";
 import { FaGoogleDrive } from "react-icons/fa";
 
+
 const portfolioItems = [
   {
     id: 1,
     category: "Print & Brand",
-    image: "/image/Newportfolioimg1.jpeg",
+    image: "/image/Portimg7.jpg",
     description: "Signage Design",
   },
   {
@@ -21,7 +22,7 @@ const portfolioItems = [
   {
     id: 3,
     category: "Print & Brand",
-    image: "/image/Newportfolioimg3.png",
+    image: "/image/Portimg2.jpg",
     description: "Club Poster Design",
   },
   {
@@ -39,7 +40,7 @@ const portfolioItems = [
   {
     id: 6,
     category: "Print & Brand",
-    image: "/image/Newportfolioimg6.jpeg",
+    image: "/image/Portimg8.jpg",
     description: "A3 Paper Bag",
   },
   {
@@ -69,13 +70,13 @@ const portfolioItems = [
   {
     id: 11,
     category: "Graphic Design",
-    image: "/image/Newportfolioimg11.png",
+    image: "/image/Portimg3.jpg",
     description: "Birthday Poster design",
   },
   {
     id: 12,
     category: "Graphic Design",
-    image: "/image/Newportfolioimg12.png",
+    image: "/image/portimg1.jpg",
     description: "Birthday Poster design",
   },
   {
@@ -87,19 +88,19 @@ const portfolioItems = [
   {
     id: 14,
     category: "Graphic Design",
-    image: "/image/Newportfolioimg14.jpeg",
+    image: "/image/Portimg5.jpg",
     description: "A5 Paper Bag",
   },
   {
     id: 15,
     category: "Print & Brand",
-    image: "/image/Newportfolioimg15.jpeg",
+    image: "/image/Portimg4.jpg",
     description: "Branded Nylon",
   },
   {
     id: 16,
     category: "Print & Brand",
-    image: "/image/Newportfolioimg16.png",
+    image: "/image/Portimg6.jpg",
     description: "A3 Paper Bag",
   },
 ];
@@ -172,7 +173,8 @@ export default function Portfolio() {
 
       {/* Flip Cards Grid */}
       <motion.div
-        className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 mt-10"
+        className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 
+    2xl:grid-cols-4  gap-6 mt-10"
         layout
       >
         <AnimatePresence>
@@ -180,7 +182,7 @@ export default function Portfolio() {
             <motion.div
               key={item.id}
               layout
-              className="relative w-full h-64 cursor-pointer perspective-[1000px]"
+              className="relative w-full h-60 lg:h-55 2xl:h-100  cursor-pointer perspective-[1000px]"
               onClick={() =>
                 setFlippedId(flippedId === item.id ? null : item.id)
               }
@@ -200,11 +202,26 @@ export default function Portfolio() {
                   className="absolute inset-0 overflow-hidden rounded-lg shadow-lg"
                   style={{ backfaceVisibility: "hidden" }}
                 >
-                  <img
+                  
+                  <Image
+  src={item.image}
+  alt={item.description}
+  fill
+  className="object-cover"
+  sizes="
+    (max-width: 640px) 100vw,
+    (max-width: 1024px) 50vw,
+    (max-width: 1536px) 25vw,
+    20vw
+  "
+/>
+
+                  
+                  {/* <img
                     src={item.image}
                     alt={item.description}
-                    className=""
-                  />
+                    className="w-full h-full object-cover"
+                  /> */}
                 </div>
 
                 {/* Back */}
