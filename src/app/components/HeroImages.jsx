@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const mobileImagesArray = ["/image/newheroimg3.png", "/image/newheroimg4.png"];
+const mobileImagesArray = ["/image/mobileheroimg1.png", "/image/mobileheroimg2.png"];
 
 const desktopImagesArray = [
   "/image/newheroimg1.png",
@@ -53,7 +53,7 @@ export default function HeroImages() {
             key={i}
             src={src}
             alt="hero"
-            className="w-40 h-56 object-cover"
+            className=" w-40 "
           />
         ))}
       </div>
