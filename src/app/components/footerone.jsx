@@ -29,7 +29,7 @@ export default function Footerone() {
         <img
           src="/image/footerone-img.png"
           alt="decorative-footer"
-          className="absolute -top-16 right-10 w-48 hidden lg:block"
+          className="absolute -top-16 right-10 w-48 hidden lg:block lg:animate-bounce"
         />
       </div>
     </>

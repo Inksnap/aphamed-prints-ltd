@@ -44,7 +44,7 @@ export default function AllProducts() {
         ))}
       </motion.div>
       <Link href="/Products">
-        <div className="flex items-center justify-center lg:justify-end gap-2 mt-6 cursor-pointer hover:text-(--accent-color)">
+        <div className="flex items-center justify-center lg:justify-end xl:justify-center gap-2 mt-6 cursor-pointer hover:text-(--accent-color)">
           <p className="text-(--products-color) font-medium text-sm md:text-base lg:text-lg">
             SEE ALL PRODUCTS
           </p>

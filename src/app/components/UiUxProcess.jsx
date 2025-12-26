@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function UiUxProcessLg() {
   return (
     <div className="mt-30 mb-20 px-40 hidden lg:block">
-      <div className="relative flex items-start justify-between ">
+      <div className="relative flex items-start justify-between xl:justify-center xl:gap-20">
         {/* UI/UX Card */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
