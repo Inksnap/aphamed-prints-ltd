@@ -748,25 +748,26 @@ export default function ProductPage() {
           "
         >
           {filteredProducts.map((product) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="overflow-hidden p-4"
-            >
-              <img src={product.image} alt={product.name} loading="lazy" className="w-full" />
+            <Link key={product.id} href={`/Products/${product.id}`}>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="overflow-hidden p-4 cursor-pointer hover:scale-105 transition-transform"
+              >
+                <img src={product.image} alt={product.name} loading="lazy" className="w-full" />
 
-              <div className=" text-center mt-4 h-auto rounded-md p-2 shadow-lg">
-                <h3 className="text-lg font-medium">{product.name}</h3>
-                <p className="text-xs text-gray-500">{product.unit}</p>
+                <div className=" text-center mt-4 h-auto rounded-md p-2 shadow-lg">
+                  <h3 className="text-lg font-medium">{product.name}</h3>
+                  <p className="text-xs text-gray-500">{product.unit}</p>
 
-                <button className="mt-2 text-(--primary-color) font-semibold border border-[#5E5E5E] rounded-sm p-1">
-                  ₦{product.price}
-                </button>
-              </div> 
-            </motion.div>
+                  <button className="mt-2 text-(--primary-color) font-semibold border border-[#5E5E5E] rounded-sm p-1">
+                    ₦{product.price}
+                  </button>
+                </div> 
+              </motion.div>
+            </Link>
           ))}
         </div>
         
