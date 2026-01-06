@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+.merienda-font {
+  font-family: var(--font-merienda), cursive;
+}
+.montserrat-font {
+  font-family: var(--font-montserrat), sans-serif;
+}
+.michroma-font {
+  font-family: var(--font-michroma), sans-serif;
+}
+
+/* :root {
+  --background: #ffffff;
+  --foreground: #171717;
+} */
+
+:root[data-theme="inline"] {
+  --primary-color: #062b21;
+  --secondary-color: #ffe314;
+  --accent-color: #151515;
+  --neutral-color: #ffffff;
+  --button-color: #f1f1f1;
+  --products-color: #d0b700;
+  --footer-color: #00ae7f;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+/* body {
+  background: url("/image/Background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; 
+  font-family: var(--font-montserrat), sans-serif;
+} */
+
+body {
+  position: relative;
+  font-family: var(--font-montserrat), sans-serif;
+  margin: 0;
+}
+
+body::before {
+  content: "";
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/image/Background.png") center/cover no-repeat fixed;
+  opacity: 0.3; 
+  z-index: -1; 
+}
+
+
+/* === Animated black & white gradient border === */
+.border-gradient-animate {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.border-gradient-animate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0.9px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(90deg, #000000, #ffe314, #062b21, #ffffff);
+  background-size: 300% 300%;
+  animation: bwGradientMove 5s linear infinite;
+  z-index: 0;
+
+  /* Makes the center transparent so only the border shows */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.border-gradient{
+  border: 0.9px solid;
+  border-image-slice: 0.9;
+  border-width: 0.9px;
+  border-image-source: linear-gradient(160deg, #000000, #ffffff);
+  border-radius: inherit;
+}
+
+@keyframes bwGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.perspective {
+  perspective: 1000px;
+}
+.bg-diamond-gradient {
+  background: radial-gradient(
+    50% 317.11% at 50% 50%,
+    #033729 3.37%,
+    rgba(6, 232, 171, 0.92) 100%
+  );
+}

@@ -1,0 +1,131 @@
+"use client";
+
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { 
+  FaHome, FaBox, FaImage, FaChartBar, FaSignOutAlt, 
+  FaBars, FaTimes 
+} from "react-icons/fa";
+
+export default function AdminLayout({ children }) {
+  const pathname = usePathname();
+  const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  useEffect(() => {
+    // Check if user is logged in
+    const adminLoggedIn = localStorage.getItem("adminLoggedIn");
+    
+    if (!adminLoggedIn && pathname !== "/admin/login") {
+      router.push("/admin/login");
+    } else if (adminLoggedIn) {
+      setIsAuthenticated(true);
+    }
+    setLoading(false);
+  }, [pathname, router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminLoggedIn");
+    router.push("/admin/login");
+  };
+
+  // Don't show sidebar on login page
+  if (pathname === "/admin/login") {
+    return <div className="min-h-screen bg-gray-50">{children}</div>;
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return null;
+  }
+
+  const navItems = [
+    { href: "/admin", icon: FaHome, label: "Dashboard" },
+    { href: "/admin/products", icon: FaBox, label: "Products" },
+    { href: "/admin/images", icon: FaImage, label: "Gallery" },
+    { href: "/admin/analytics", icon: FaChartBar, label: "Analytics" },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Sidebar */}
+      <aside
+        className={`${
+          sidebarOpen ? "w-64" : "w-20"
+        } bg-gray-900 text-white transition-all duration-300 flex flex-col`}
+      >
+        {/* Logo */}
+        <div className="p-6 border-b border-gray-800 flex items-center justify-between">
+          {sidebarOpen && <h2 className="text-xl font-bold">Aphamed Admin</h2>}
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 hover:bg-gray-800 rounded-lg"
+          >
+            {sidebarOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 p-4">
+          <ul className="space-y-2">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = pathname === item.href;
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`flex items-center gap-4 p-3 rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-blue-600 text-white"
+                        : "hover:bg-gray-800 text-gray-300"
+                    }`}
+                  >
+                    <Icon className="text-xl" />
+                    {sidebarOpen && <span>{item.label}</span>}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Logout */}
+        <div className="p-4 border-t border-gray-800">
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-4 p-3 w-full hover:bg-gray-800 rounded-lg text-gray-300 transition-colors"
+          >
+            <FaSignOutAlt className="text-xl" />
+            {sidebarOpen && <span>Logout</span>}
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-auto">
+        {/* Header */}
+        <header className="bg-white shadow-sm border-b">
+          <div className="px-8 py-4">
+            <h1 className="text-2xl font-bold text-gray-800">
+              {navItems.find((item) => item.href === pathname)?.label || "Admin Panel"}
+            </h1>
+          </div>
+        </header>
+
+        {/* Content */}
+        <div className="p-8">{children}</div>
+      </main>
+    </div>
+  );
+}
