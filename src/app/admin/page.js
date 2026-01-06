@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { 
   FaBox, FaShoppingCart, FaChartLine, FaPlus,
@@ -8,6 +9,7 @@ import {
 } from "react-icons/fa";
 
 export default function AdminDashboard() {
+  const router = useRouter();
   const [stats, setStats] = useState({
     totalProducts: 0,
     categories: 0,
@@ -16,8 +18,14 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Check authentication first
+    const adminLoggedIn = localStorage.getItem("adminLoggedIn");
+    if (!adminLoggedIn) {
+      router.push("/admin/login");
+      return;
+    }
     fetchStats();
-  }, []);
+  }, [router]);
 
   const fetchStats = async () => {
     try {

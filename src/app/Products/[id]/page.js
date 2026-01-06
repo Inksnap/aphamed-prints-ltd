@@ -2403,10 +2403,15 @@ export default function ProductDetail() {
                           products.find((p) => p.id === parseInt(params.id));
       
       if (!foundProduct) {
+        console.log("Product not found. Searched for:", params.id);
+        console.log("Available slugs:", products.map(p => p.slug).filter(Boolean));
         // Fallback to default products
         const fallbackProduct = DEFAULT_PRODUCTS.find((p) => p.slug === params.id) || 
                                DEFAULT_PRODUCTS.find((p) => p.id === parseInt(params.id));
         setProduct(fallbackProduct);
+        if (!fallbackProduct) {
+          console.error("Product not found in default products either");
+        }
         setAllProducts(DEFAULT_PRODUCTS);
       } else {
         setProduct(foundProduct);

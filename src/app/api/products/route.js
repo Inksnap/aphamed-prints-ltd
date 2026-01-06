@@ -1920,9 +1920,17 @@ export async function GET() {
   try {
     await initProductsFile();
     const data = await fs.readFile(PRODUCTS_FILE, "utf8");
-    const products = JSON.parse(data);
+    let products = JSON.parse(data);
+    
+    // Ensure all products have slugs
+    products = products.map(product => ({
+      ...product,
+      slug: product.slug || generateSlug(product.name)
+    }));
+    
     return NextResponse.json(products);
   } catch (error) {
+    console.error("Failed to fetch products:", error);
     return NextResponse.json(
       { error: "Failed to fetch products" },
       { status: 500 }
