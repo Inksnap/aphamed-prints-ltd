@@ -21,18 +21,18 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://aphamedprints.com'),
+  metadataBase: new URL('https://aphamed.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: "Aphamed Prints LTD - Quality Printing & Branding Services",
     description: "Professional printing and branding services in Nigeria. Business cards, flyers, banners, signage, and more. Premium quality, fast delivery.",
-    url: 'https://aphamedprints.com',
+    url: 'https://aphamed.com',
     siteName: 'Aphamed Prints LTD',
     images: [
       {
-        url: '/image/logo.svg',
+        url: 'https://aphamed.com/image/logo.svg',
         width: 800,
         height: 600,
         alt: 'Aphamed Prints LTD Logo',
@@ -45,7 +45,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Aphamed Prints LTD - Quality Printing Services',
     description: 'Professional printing and branding services in Nigeria',
-    images: ['/image/logo.svg'],
+    images: ['https://aphamed.com/image/logo.svg'],
   },
   robots: {
     index: true,

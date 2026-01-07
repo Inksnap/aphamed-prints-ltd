@@ -5,9 +5,9 @@
     "slug": "a5-flyers",
     "price": "25,000",
     "category": "Prints",
-    "image": "/image/A4-flyers.png",
+    "image": "/image/1767764726378-9d769bdee6c2b677e8c4ac0c10bdc00d.jpg",
     "unit": "Per 50",
-    "description": "Eye-catching A5 flyers perfect for promotions, events, and marketing campaigns. High-quality print on premium paper stock with vibrant colors that capture attention.",
+    "description": "Customized A5 Flyer",
     "features": [
       "Full color CMYK printing",
       "130gsm glossy art paper",
@@ -38,6 +38,11 @@
         "date": "Dec 22, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764760370-484473784_1822984881833585_5636399968355938100_n.jpg",
+      "/image/1767764760826-IMG_4893.png",
+      "/image/1767764760883-IMG_3197.png"
     ]
   },
   {
@@ -72,6 +77,12 @@
         "date": "Jan 2, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767735111474-WhatsApp-Image-2026-01-04-at-4.09.49-PM.jpeg",
+      "/image/1767735111587-WhatsApp-Image-2026-01-04-at-4.09.44-PM.jpeg",
+      "/image/1767764782219-IMG_7507.jpeg",
+      "/image/1767764795144-4132843_1207.jpg"
     ]
   },
   {
@@ -106,13 +117,17 @@
         "date": "Dec 28, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767735238993-404c7357226451ce78037cee662922a8.jpg",
+      "/image/1767762905924-IMG_0446.png"
     ]
   },
   {
     "id": 4,
     "name": "Invitation Cards",
     "slug": "invitation-cards",
-    "price": "15,000",
+    "price": "1,500",
     "category": "Prints",
     "image": "/image/Invitation.png",
     "unit": "Per one",
@@ -140,7 +155,8 @@
         "date": "Jan 1, 2026",
         "verified": true
       }
-    ]
+    ],
+    "gallery": []
   },
   {
     "id": 5,
@@ -174,6 +190,10 @@
         "date": "Dec 30, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767763803095-WhatsApp-Image-2026-01-04-at-4.09.50-PM.jpeg",
+      "/image/1767763904510-d8955f3dbaa68c5d66f02114a9800a47.jpg"
     ]
   },
   {
@@ -208,6 +228,9 @@
         "date": "Dec 27, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767763958006-5269f15576349230a4635248f6d3c348.jpg"
     ]
   },
   {
@@ -242,6 +265,9 @@
         "date": "Dec 25, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764218079-7ae7463e0387b24a628b6f4cee9173c3.jpg"
     ]
   },
   {
@@ -276,13 +302,18 @@
         "date": "Dec 24, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764304841-82e8ca90c610d2b1ee676addcba7ae60.jpg",
+      "/image/1767764305256-d54216a6f49e24fc2d584144eeb0056a.jpg",
+      "/image/1767764305366-25ed64b09087901eb58cace0b4232533.jpg"
     ]
   },
   {
     "id": 9,
     "name": "Exercise Book",
     "slug": "exercise-book",
-    "price": "0,000",
+    "price": "600",
     "category": "Prints",
     "image": "/image/Exercise-book.png",
     "unit": "Per one",
@@ -310,6 +341,11 @@
         "date": "Dec 20, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764494765-935cb72797550207b1310b206a7c1866.jpg",
+      "/image/1767764495016-c9f83c205960ce99e9f3f7b0a5206334.jpg",
+      "/image/1767764495064-d79229ebc900aa8aa474fab857e7bea6.jpg"
     ]
   },
   {
@@ -319,7 +355,7 @@
     "price": "20,000",
     "category": "Branding",
     "image": "/image/Conqueror-Letterhead.png",
-    "unit": "Per one",
+    "unit": "Per 100",
     "description": "Premium Conqueror letterhead paper for executive correspondence. Luxurious feel with professional branding.",
     "features": [
       "Premium Conqueror paper",
@@ -344,16 +380,20 @@
         "date": "Jan 3, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764560648-51561409_letterhead_17.jpg",
+      "/image/1767764560814-329550443_1f819d89-3b35-448c-b993-ce39e97bfe8e.jpg"
     ]
   },
   {
     "id": 11,
     "name": "A4 Flyers",
     "slug": "a4-flyers",
-    "price": "45,000",
+    "price": "15,000",
     "category": "Prints",
     "image": "/image/A4-Flyers3.png",
-    "unit": "Per one",
+    "unit": "Per 100",
     "description": "Large format A4 flyers for maximum impact. Perfect for posters, announcements, and promotional materials.",
     "features": [
       "Large A4 format",
@@ -378,7 +418,8 @@
         "date": "Dec 29, 2025",
         "verified": true
       }
-    ]
+    ],
+    "gallery": []
   },
   {
     "id": 12,
@@ -387,7 +428,7 @@
     "price": "28,000",
     "category": "Branding",
     "image": "/image/Branded-Nylon.png",
-    "unit": "Per one",
+    "unit": "Per 100",
     "description": "Custom branded nylon bags for shopping, events, or promotions. Durable and reusable with vibrant printing.",
     "features": [
       "Durable nylon material",
@@ -412,6 +453,11 @@
         "date": "Dec 26, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764935841-9005eeb1fa8a590740163f8934c447a3.jpg",
+      "/image/1767764936216-c4e95f10c6650e2247d85617d01c41d3.jpg",
+      "/image/1767764936324-WhatsApp-Image-2026-01-04-at-4.09.46-PM-(2).jpeg"
     ]
   },
   {
@@ -446,6 +492,9 @@
         "date": "Dec 23, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764980902-82e3edb79627c107c6253cfc8c7a9963.jpg"
     ]
   },
   {
@@ -480,6 +529,9 @@
         "date": "Dec 21, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765102180-e0e4309197eeba08232d43f35f812441.jpg"
     ]
   },
   {
@@ -489,7 +541,7 @@
     "price": "80,000",
     "category": "Branding",
     "image": "/image/A2-Posters.png",
-    "unit": "Per one",
+    "unit": "Per 100",
     "description": "Large A2 posters for maximum visibility. Perfect for advertising, events, or indoor displays with vibrant colors.",
     "features": [
       "Large format printing",
@@ -514,6 +566,10 @@
         "date": "Jan 4, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765167728-9be076499ad42d764db16b5fa95d1b4c.jpg",
+      "/image/1767765168146-4663477f44396cc3de89b67825737a85.jpg"
     ]
   },
   {
@@ -582,6 +638,11 @@
         "date": "Dec 30, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765250920-9be076499ad42d764db16b5fa95d1b4c.jpg",
+      "/image/1767765251265-poster-q11.jpg",
+      "/image/1767765251378-4663477f44396cc3de89b67825737a85.jpg"
     ]
   },
   {
@@ -616,13 +677,18 @@
         "date": "Jan 2, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765387430-WhatsApp-Image-2026-01-04-at-4.09.50-PM-(1).jpeg",
+      "/image/1767765387713-WhatsApp-Image-2026-01-04-at-4.09.52-PM.jpeg",
+      "/image/1767765387768-c5006024398bde64b0317814a8e9d195.jpg"
     ]
   },
   {
     "id": 19,
     "name": "A6 Flyer",
     "slug": "a6-flyers",
-    "price": "15,000",
+    "price": "8,000",
     "category": "Prints",
     "image": "/image/A6-Flyer.png",
     "unit": "Per 100",
@@ -650,6 +716,9 @@
         "date": "Dec 27, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767764840372-4aef35486d71606dde6e99d99c65032b.jpg"
     ]
   },
   {
@@ -684,6 +753,10 @@
         "date": "Dec 25, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765441998-91becd96f1ea80e2dc78c23813734742.jpg",
+      "/image/1767767055197-WhatsApp-Image-2026-01-04-at-4.09.45-PM-(1).jpeg"
     ]
   },
   {
@@ -718,6 +791,11 @@
         "date": "Dec 31, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765516361-626f6a0936c6ffa9ccf52c8ac33bb422.jpg",
+      "/image/1767765516696-601817023bd077b3d115c7706e591def.jpg",
+      "/image/1767765516749-cb489bd6ba61763610718e4cf96c13db.jpg"
     ]
   },
   {
@@ -755,40 +833,6 @@
     ]
   },
   {
-    "id": 23,
-    "name": "Double side Business Card",
-    "slug": "double-side-business-card",
-    "price": "35,000",
-    "category": "Branding",
-    "image": "/image/Double-side.png",
-    "unit": "Per one",
-    "description": "Premium double-sided business cards with luxury finish options. Make a memorable impression with high-end cardstock.",
-    "features": [
-      "Double-sided printing",
-      "Premium cardstock",
-      "Multiple finish options",
-      "Rounded corners option",
-      "Luxury feel"
-    ],
-    "specifications": {
-      "size": "3.5 x 2 inches",
-      "material": "400gsm Premium Card",
-      "printing": "Full Color Both Sides",
-      "finishing": "Matte/Glossy/Soft Touch",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "3-4 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Executive Director",
-        "rating": 5,
-        "comment": "Impressive quality for our executives!",
-        "date": "Jan 5, 2026",
-        "verified": true
-      }
-    ]
-  },
-  {
     "id": 24,
     "name": "Outdoor Signage",
     "slug": "outdoor-signage",
@@ -820,6 +864,9 @@
         "date": "Dec 20, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765627557-689fa497552fe129241d1a562c0f01c0.jpg"
     ]
   },
   {
@@ -854,6 +901,9 @@
         "date": "Dec 28, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765656511-64a79f13179bfec1ed1ae31851c3abf2.jpg"
     ]
   },
   {
@@ -888,6 +938,10 @@
         "date": "Jan 3, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765795711-f08e5a9168c812bfd56d98239e10ec78.jpg",
+      "/image/1767765796028-44749e8f5510263594d8d3e4cc78b0c2.jpg"
     ]
   },
   {
@@ -922,6 +976,11 @@
         "date": "Dec 27, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765908244-8df1031c817a5b32555dc25d6a0ba79c.jpg",
+      "/image/1767765908549-c2360d5801b9c3e3eafccae9d404da8a.jpg",
+      "/image/1767765908598-074d4b8dc6a217425a1d49372220f1c0.jpg"
     ]
   },
   {
@@ -956,108 +1015,10 @@
         "date": "Jan 1, 2026",
         "verified": true
       }
-    ]
-  },
-  {
-    "id": 29,
-    "name": "A5 jotter",
-    "slug": "a5-jotter",
-    "price": "1,200",
-    "category": "Design",
-    "image": "/image/A5-jotter3.png",
-    "unit": "Per 50",
-    "description": "Bulk A5 jotters perfect for schools, conferences, or corporate giveaways. Quality paper with custom cover designs.",
-    "features": [
-      "Bulk pricing",
-      "Custom covers",
-      "Quality paper",
-      "Perfect bound",
-      "Various page counts"
     ],
-    "specifications": {
-      "size": "A5 (148 x 210mm)",
-      "material": "80gsm offset paper",
-      "printing": "Full color cover",
-      "finishing": "Perfect binding",
-      "quantity": "50 pieces minimum",
-      "turnaround": "5-7 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Conference Organizer",
-        "rating": 4,
-        "comment": "Great value for bulk orders!",
-        "date": "Dec 26, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 30,
-    "name": "Flag Banner",
-    "slug": "flag-banner",
-    "price": "0,000",
-    "category": "Prints",
-    "image": "/image/Flag-Banner.png",
-    "unit": "Per piece",
-    "description": "Custom flag banners for outdoor promotions, events, and brand visibility. Durable and wind-resistant design.",
-    "features": [
-      "Wind resistant",
-      "Durable material",
-      "Vibrant colors",
-      "Easy setup",
-      "Portable design"
-    ],
-    "specifications": {
-      "size": "Various sizes available",
-      "material": "115gsm Knitted Polyester",
-      "printing": "Dye sublimation",
-      "finishing": "With pole and base",
-      "quantity": "Minimum 1 piece",
-      "turnaround": "5-7 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Retail Manager John",
-        "rating": 5,
-        "comment": "Attracts customers to our store!",
-        "date": "Dec 30, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 31,
-    "name": "Backdrop",
-    "slug": "backdrop",
-    "price": "75,000",
-    "category": "Branding",
-    "image": "/image/Backdrop.png",
-    "unit": "Per piece",
-    "description": "Premium event backdrops for weddings, conferences, and special occasions. Professional presentation with seamless finish.",
-    "features": [
-      "Seamless design",
-      "Professional quality",
-      "Various sizes",
-      "Easy installation",
-      "Reusable"
-    ],
-    "specifications": {
-      "size": "3m x 3m or custom",
-      "material": "Premium fabric/vinyl",
-      "printing": "High resolution digital",
-      "finishing": "With mounting options",
-      "quantity": "Custom orders",
-      "turnaround": "5-7 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Event Designer Kola",
-        "rating": 5,
-        "comment": "Stunning backdrop for our client's wedding!",
-        "date": "Jan 2, 2026",
-        "verified": true
-      }
+    "gallery": [
+      "/image/1767766017500-2342a0f122a1ddd6b75a4fe43e3f97ae.jpg",
+      "/image/1767766017804-509933631d16fae24a553edd34050bab.jpg"
     ]
   },
   {
@@ -1126,13 +1087,18 @@
         "date": "Dec 31, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765730713-WhatsApp-Image-2026-01-04-at-4.09.49-PM-(2).jpeg",
+      "/image/1767765730981-WhatsApp-Image-2026-01-04-at-5.43.49-PM.jpeg",
+      "/image/1767765731029-WhatsApp-Image-2026-01-04-at-5.43.50-PM-(1).jpeg"
     ]
   },
   {
     "id": 34,
     "name": "Road Poll banner",
     "slug": "road-poll-banner",
-    "price": "0,000",
+    "price": "50,000",
     "category": "Prints",
     "image": "/image/Road-poll.png",
     "unit": "Per piece",
@@ -1160,6 +1126,11 @@
         "date": "Jan 4, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766166315-custom-lamp-post-banner-street-banner-road-side-advertisement-banner-lamp-post-banner-design-and-printing-in-lagos-abuja-nigeria.jpg",
+      "/image/1767766166604-custom-lamp-post-banner-street-banner-road-side-advertisement-event-banner-lamp-post-banner-flag-design-and-print-in-lagos-abuja-nigeria.jpg",
+      "/image/1767766166668-Free-Light-Pole-Banner-Mockup-PSD-Template.jpg"
     ]
   },
   {
@@ -1228,6 +1199,11 @@
         "date": "Dec 22, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766237575-e7c3bfaf105bb1cbdbb4bf2453941720.jpg",
+      "/image/1767766386152-59fdfe0e53992863d2f65dc76997c568.jpg",
+      "/image/1767766386413-a29d0d68e023622d9c4db4156de04362.jpg"
     ]
   },
   {
@@ -1296,6 +1272,10 @@
         "date": "Dec 30, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766317111-ab92ca823d008ec2cd196450027cb626.jpg",
+      "/image/1767767099788-63a603389158ef195b3bd091d0f8a14f.jpg"
     ]
   },
   {
@@ -1330,6 +1310,9 @@
         "date": "Jan 1, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766426251-WhatsApp-Image-2026-01-04-at-4.09.47-PM.jpeg"
     ]
   },
   {
@@ -1364,40 +1347,9 @@
         "date": "Dec 27, 2025",
         "verified": true
       }
-    ]
-  },
-  {
-    "id": 41,
-    "name": "Face Cap",
-    "slug": "face-cap",
-    "price": "5,000",
-    "category": "Branding",
-    "image": "/image/Face-Cap2.png",
-    "unit": "Per one",
-    "description": "Quality face caps with custom embroidery or printing. Perfect for teams, events, or promotional merchandise.",
-    "features": [
-      "Premium quality",
-      "Custom designs",
-      "Various colors",
-      "Adjustable",
-      "Comfortable fit"
     ],
-    "specifications": {
-      "size": "One size adjustable",
-      "material": "100% Cotton",
-      "printing": "Embroidery/Print",
-      "finishing": "Professional stitching",
-      "quantity": "Minimum 50 pieces",
-      "turnaround": "7-10 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Team Leader Chris",
-        "rating": 5,
-        "comment": "Team loves their custom caps!",
-        "date": "Dec 29, 2025",
-        "verified": true
-      }
+    "gallery": [
+      "/image/1767766446151-WhatsApp-Image-2026-01-04-at-4.09.51-PM-(2).jpeg"
     ]
   },
   {
@@ -1466,6 +1418,12 @@
         "date": "Dec 31, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767765689313-WhatsApp-Image-2026-01-04-at-5.42.18-PM-(1).jpeg",
+      "/image/1767765689705-WhatsApp-Image-2026-01-04-at-5.43.49-PM-(1).jpeg",
+      "/image/1767765689814-WhatsApp-Image-2026-01-04-at-5.43.49-PM-(2).jpeg",
+      "/image/1767765702278-WhatsApp-Image-2026-01-04-at-5.43.50-PM.jpeg"
     ]
   },
   {
@@ -1534,40 +1492,11 @@
         "date": "Dec 28, 2025",
         "verified": true
       }
-    ]
-  },
-  {
-    "id": 46,
-    "name": "Sticker",
-    "slug": "sticker",
-    "price": "100",
-    "category": "Branding",
-    "image": "/image/Stickers3.png",
-    "unit": "Per one",
-    "description": "Individual custom stickers for small orders or personal use. Various shapes, sizes, and finishes available.",
-    "features": [
-      "Single piece orders",
-      "Custom shapes",
-      "Quality vinyl",
-      "Waterproof",
-      "Various finishes"
     ],
-    "specifications": {
-      "size": "Custom size",
-      "material": "Vinyl sticker",
-      "printing": "Full Color Digital",
-      "finishing": "Die-cut/Kiss-cut",
-      "quantity": "Minimum 1 piece",
-      "turnaround": "1-2 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Individual Customer",
-        "rating": 5,
-        "comment": "Perfect custom sticker!",
-        "date": "Jan 5, 2026",
-        "verified": true
-      }
+    "gallery": [
+      "/image/1767766899965-WhatsApp-Image-2026-01-04-at-5.46.14-PM-(1).jpeg",
+      "/image/1767766900208-WhatsApp-Image-2026-01-04-at-5.46.14-PM-(2).jpeg",
+      "/image/1767766900255-WhatsApp-Image-2026-01-04-at-5.46.14-PM.jpeg"
     ]
   },
   {
@@ -1636,6 +1565,11 @@
         "date": "Jan 1, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766541331-0a1f412ba5b3a9f19b965e0acb0933a9.jpg",
+      "/image/1767766541373-4b14e14becc0a6867890a93146df791b.jpg",
+      "/image/1767766551454-38bed90c1d7f27d509dee5243f0f7120.jpg"
     ]
   },
   {
@@ -1707,108 +1641,6 @@
     ]
   },
   {
-    "id": 51,
-    "name": "Custom Calendar",
-    "slug": "custom-calendar",
-    "price": "6,500",
-    "category": "Prints",
-    "image": "/image/Custom-calender2.png",
-    "unit": "Per 50",
-    "description": "Custom wall or desk calendars with your photos and branding. Ideal for corporate gifts or personal use.",
-    "features": [
-      "Custom layouts",
-      "Quality printing",
-      "Various formats",
-      "Full color pages",
-      "Professional binding"
-    ],
-    "specifications": {
-      "size": "A4 or A3",
-      "material": "170gsm Glossy Paper",
-      "printing": "Full Color CMYK",
-      "finishing": "Wire-O binding",
-      "quantity": "Minimum 50 pieces",
-      "turnaround": "5-7 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Marketing Team",
-        "rating": 5,
-        "comment": "Great corporate calendars!",
-        "date": "Dec 26, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 52,
-    "name": "Outdoor Signage",
-    "slug": "outdoor-signage",
-    "price": "550,000",
-    "category": "Signage",
-    "image": "/image/Outdoor-signage2.png",
-    "unit": "Per piece",
-    "description": "Premium outdoor signage solutions for commercial buildings and businesses. Heavy-duty and weather-resistant.",
-    "features": [
-      "Heavy-duty construction",
-      "Weather proof",
-      "Professional design",
-      "Long-lasting",
-      "UV protected"
-    ],
-    "specifications": {
-      "size": "Large custom sizes",
-      "material": "Aluminum composite",
-      "printing": "UV digital printing",
-      "finishing": "With mounting system",
-      "quantity": "Custom projects",
-      "turnaround": "14-21 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Property Manager",
-        "rating": 5,
-        "comment": "Impressive signage for our building!",
-        "date": "Jan 4, 2026",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 53,
-    "name": "A2 Paper Bag",
-    "slug": "a2-paper-bag",
-    "price": "2,000",
-    "category": "Prints",
-    "image": "/image/A2-Paper.png",
-    "unit": "Per one",
-    "description": "Medium-sized A2 paper bags perfect for retail shopping and gift packaging. Eco-friendly and reusable.",
-    "features": [
-      "Medium capacity",
-      "Eco-friendly",
-      "Custom printing",
-      "Strong handles",
-      "Reusable"
-    ],
-    "specifications": {
-      "size": "A2 (420 x 594mm base)",
-      "material": "Kraft paper",
-      "printing": "Offset printing",
-      "finishing": "Twisted handles",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "7-10 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Gift Shop",
-        "rating": 4,
-        "comment": "Perfect size for our gifts!",
-        "date": "Dec 29, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
     "id": 54,
     "name": "Badge Lapel",
     "slug": "badge-lapel",
@@ -1840,13 +1672,16 @@
         "date": "Jan 3, 2026",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766942079-fdddee1baff58c4fb7c4709bda50714b.jpg"
     ]
   },
   {
     "id": 55,
     "name": "Jersey name customization",
     "slug": "jersey-name-customization",
-    "price": "15,000",
+    "price": "5,000",
     "category": "Design",
     "image": "/image/Jersey-name-customization.png",
     "unit": "Per piece",
@@ -1874,41 +1709,8 @@
         "date": "Dec 31, 2025",
         "verified": true
       }
-    ]
-  },
-  {
-    "id": 56,
-    "name": "A3 Paper Bag",
-    "slug": "a3-paper-bag",
-    "price": "1,600",
-    "category": "Prints",
-    "image": "/image/A3-Paperbag.png",
-    "unit": "Per one",
-    "description": "Compact A3 paper bags ideal for small retail items and boutique shopping. Custom branded options available.",
-    "features": [
-      "Compact size",
-      "Quality paper",
-      "Custom branding",
-      "Strong handles",
-      "Attractive design"
     ],
-    "specifications": {
-      "size": "A3 (297 x 420mm)",
-      "material": "Art paper/Kraft paper",
-      "printing": "Offset/Digital printing",
-      "finishing": "Paper rope handles",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "7-10 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Boutique Manager",
-        "rating": 4,
-        "comment": "Perfect for our small items!",
-        "date": "Jan 2, 2026",
-        "verified": true
-      }
-    ]
+    "gallery": []
   },
   {
     "id": 57,
@@ -1940,74 +1742,6 @@
         "rating": 5,
         "comment": "Beautiful flyer design!",
         "date": "Dec 28, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 58,
-    "name": "Double side Business Card",
-    "slug": "double-side-business-card",
-    "price": "20,000",
-    "category": "Branding",
-    "image": "/image/Double-side-Business-card.png",
-    "unit": "Per 50",
-    "description": "Affordable double-sided business cards in bulk quantities. Great value for large teams or networking events.",
-    "features": [
-      "Bulk pricing",
-      "Double-sided",
-      "Quality cardstock",
-      "Professional finish",
-      "Quick delivery"
-    ],
-    "specifications": {
-      "size": "3.5 x 2 inches",
-      "material": "300gsm Art Card",
-      "printing": "Full Color Both Sides",
-      "finishing": "Matte/Glossy",
-      "quantity": "50 pieces minimum",
-      "turnaround": "2-3 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Sales Team Lead",
-        "rating": 5,
-        "comment": "Great value for bulk orders!",
-        "date": "Jan 5, 2026",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 59,
-    "name": "A5 Birthday NoteBook",
-    "slug": "a5-birthday-notebook",
-    "price": "40,000",
-    "category": "Branding",
-    "image": "/image/A5-Birthday.png",
-    "unit": "Per 100",
-    "description": "Bulk A5 birthday notebooks perfect for party favors or corporate gifts. Personalization available.",
-    "features": [
-      "Bulk pricing",
-      "Custom covers",
-      "Birthday themes",
-      "Quality paper",
-      "Gift-ready"
-    ],
-    "specifications": {
-      "size": "A5 (148 x 210mm)",
-      "material": "100gsm offset paper",
-      "printing": "Full color cover",
-      "finishing": "Hardcover bound",
-      "quantity": "100 pieces minimum",
-      "turnaround": "5-7 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Event Planner",
-        "rating": 5,
-        "comment": "Perfect party favors!",
-        "date": "Dec 30, 2025",
         "verified": true
       }
     ]
@@ -2047,108 +1781,6 @@
     ]
   },
   {
-    "id": 61,
-    "name": "Branded Box",
-    "slug": "branded-box",
-    "price": "25,000",
-    "category": "Branding",
-    "image": "/image/Branded-box.png",
-    "unit": "Per piece",
-    "description": "Custom branded boxes for product packaging, gifts, or corporate presentations. Various sizes and styles available.",
-    "features": [
-      "Custom sizes",
-      "Full color printing",
-      "Various styles",
-      "Sturdy construction",
-      "Professional finish"
-    ],
-    "specifications": {
-      "size": "Custom sizes",
-      "material": "Corrugated/Cardboard",
-      "printing": "Full Color printing",
-      "finishing": "Die-cut, folding box",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "10-14 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Product Manager",
-        "rating": 5,
-        "comment": "Perfect packaging for our products!",
-        "date": "Dec 27, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 62,
-    "name": "A3 Paper Bag",
-    "slug": "a3-paper-bag",
-    "price": "1,600",
-    "category": "Branding",
-    "image": "/image/A3-Paper-bag.png",
-    "unit": "Per one",
-    "description": "Quality A3 paper bags with custom branding. Perfect for retail, events, or promotional giveaways.",
-    "features": [
-      "Quality construction",
-      "Custom printing",
-      "Eco-friendly paper",
-      "Comfortable handles",
-      "Reusable"
-    ],
-    "specifications": {
-      "size": "A3 size",
-      "material": "Kraft/Art paper",
-      "printing": "Offset printing",
-      "finishing": "Twisted paper handles",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "7-10 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Retail Manager",
-        "rating": 4,
-        "comment": "Great bags for our store!",
-        "date": "Dec 29, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 63,
-    "name": "Glitters Frame",
-    "slug": "glitters-frame",
-    "price": "25,000",
-    "category": "Branding",
-    "image": "/image/Glitters-frame.png",
-    "unit": "Per 50",
-    "description": "Elegant glitter frames for certificates, photos, or artwork. Sparkle finish adds a touch of glamour.",
-    "features": [
-      "Glitter finish",
-      "Various sizes",
-      "Premium quality",
-      "Easy mounting",
-      "Elegant design"
-    ],
-    "specifications": {
-      "size": "A4, A3 or custom",
-      "material": "Glitter-finished frame",
-      "printing": "N/A (frame product)",
-      "finishing": "Wall mounting hardware",
-      "quantity": "50 pieces minimum",
-      "turnaround": "5-7 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Event Decorator",
-        "rating": 5,
-        "comment": "Beautiful frames for our events!",
-        "date": "Jan 4, 2026",
-        "verified": true
-      }
-    ]
-  },
-  {
     "id": 64,
     "name": "Site Helmet",
     "slug": "site-helmet",
@@ -2178,108 +1810,6 @@
         "rating": 5,
         "comment": "Quality helmets for our site!",
         "date": "Dec 26, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 65,
-    "name": "A3 Paper Bag",
-    "slug": "a3-paper-bag",
-    "price": "1,600",
-    "category": "Branding",
-    "image": "/image/A3-paperbag2.png",
-    "unit": "Per piece",
-    "description": "Versatile A3 paper bags for various retail and promotional needs. Customizable with your brand design.",
-    "features": [
-      "Versatile size",
-      "Custom designs",
-      "Strong construction",
-      "Quality handles",
-      "Eco-friendly"
-    ],
-    "specifications": {
-      "size": "A3 (297 x 420mm)",
-      "material": "Premium paper stock",
-      "printing": "Full Color printing",
-      "finishing": "Reinforced handles",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "7-10 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Store Owner",
-        "rating": 4,
-        "comment": "Great quality bags!",
-        "date": "Jan 3, 2026",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 66,
-    "name": "A4 Flyers",
-    "slug": "a4-flyers",
-    "price": "45,000",
-    "category": "Branding",
-    "image": "/image/A4-Flyers5.png",
-    "unit": "Per 50",
-    "description": "A4 flyers in medium quantity, perfect for local marketing campaigns and event promotions.",
-    "features": [
-      "A4 format",
-      "Vibrant printing",
-      "Quality paper",
-      "Professional finish",
-      "Quick turnaround"
-    ],
-    "specifications": {
-      "size": "A4 (210 x 297mm)",
-      "material": "150gsm Art Paper",
-      "printing": "Full Color CMYK",
-      "finishing": "Glossy/Matte",
-      "quantity": "50 pieces",
-      "turnaround": "1-2 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Local Business",
-        "rating": 5,
-        "comment": "Perfect for our campaign!",
-        "date": "Dec 31, 2025",
-        "verified": true
-      }
-    ]
-  },
-  {
-    "id": 67,
-    "name": "A4 Flyers",
-    "slug": "a4-flyers",
-    "price": "35,000",
-    "category": "Branding",
-    "image": "/image/A4-Flyers4.png",
-    "unit": "Per 100",
-    "description": "A4 flyers in bulk quantity for large-scale marketing and distribution campaigns.",
-    "features": [
-      "Bulk quantity",
-      "Cost effective",
-      "High quality",
-      "Vibrant colors",
-      "Fast production"
-    ],
-    "specifications": {
-      "size": "A4 (210 x 297mm)",
-      "material": "150gsm Glossy Paper",
-      "printing": "Full Color CMYK",
-      "finishing": "Glossy lamination",
-      "quantity": "100 pieces",
-      "turnaround": "2-3 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Marketing Team",
-        "rating": 5,
-        "comment": "Excellent value for bulk!",
-        "date": "Jan 2, 2026",
         "verified": true
       }
     ]
@@ -2316,13 +1846,18 @@
         "date": "Dec 28, 2025",
         "verified": true
       }
+    ],
+    "gallery": [
+      "/image/1767766761334-WhatsApp-Image-2026-01-04-at-5.57.29-PM-(1).jpeg",
+      "/image/1767766761572-WhatsApp-Image-2026-01-04-at-5.57.29-PM.jpeg",
+      "/image/1767766761675-WhatsApp-Image-2026-01-04-at-5.59.37-PM-(1).jpeg"
     ]
   },
   {
     "id": 69,
     "name": "Glitters Frame",
     "slug": "glitters-frame",
-    "price": "25,000",
+    "price": "15,000",
     "category": "Branding",
     "image": "/image/Glitters-frame1.png",
     "unit": "Per piece",
@@ -2350,40 +1885,11 @@
         "date": "Jan 5, 2026",
         "verified": true
       }
-    ]
-  },
-  {
-    "id": 70,
-    "name": "A3 Paper Bag",
-    "slug": "a3-paper-bag",
-    "price": "1,600",
-    "category": "Branding",
-    "image": "/image/A3-paperbag3.png",
-    "unit": "Per piece",
-    "description": "Premium A3 paper bags with high-quality finish. Ideal for upscale retail and luxury gift packaging.",
-    "features": [
-      "Premium quality",
-      "Luxury finish",
-      "Custom branding",
-      "Strong handles",
-      "Elegant design"
     ],
-    "specifications": {
-      "size": "A3 size",
-      "material": "Premium art paper",
-      "printing": "High-quality offset",
-      "finishing": "Ribbon handles/Lamination",
-      "quantity": "Minimum 100 pieces",
-      "turnaround": "7-10 Business Days"
-    },
-    "reviews": [
-      {
-        "name": "Luxury Retailer",
-        "rating": 5,
-        "comment": "Perfect for our premium products!",
-        "date": "Dec 30, 2025",
-        "verified": true
-      }
+    "gallery": [
+      "/image/1767766786382-WhatsApp-Image-2026-01-04-at-4.09.52-PM-(1).jpeg",
+      "/image/1767766786538-WhatsApp-Image-2026-01-04-at-4.09.52-PM-(2).jpeg",
+      "/image/1767766786588-WhatsApp-Image-2026-01-04-at-4.09.53-PM-(1).jpeg"
     ]
   },
   {
@@ -2419,6 +1925,9 @@
         "verified": true
       }
     ],
-    "gallery": []
+    "gallery": [
+      "/image/1767766984030-23e5e04239f2d6e679eea4a5143f0d49.jpg",
+      "/image/1767766984228-33b62b5d2e08c7d3ec0ed270df8a2f89.jpg"
+    ]
   }
 ]

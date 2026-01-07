@@ -134,11 +134,8 @@ export default function AdminProducts() {
   };
 
   const handleImageUpload = async (e, type = "main") => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const formDataUpload = new FormData();
-    formDataUpload.append("file", file);
+    const files = type === "gallery" ? Array.from(e.target.files) : [e.target.files[0]];
+    if (!files.length || !files[0]) return;
 
     if (type === "main") {
       setUploadingImage(true);
@@ -147,32 +144,53 @@ export default function AdminProducts() {
     }
 
     try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formDataUpload,
-      });
-
-      const data = await response.json();
+      const uploadedUrls = [];
       
-      if (data.success) {
+      // Upload each file
+      for (const file of files) {
+        const formDataUpload = new FormData();
+        formDataUpload.append("file", file);
+        
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          body: formDataUpload,
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+          uploadedUrls.push(data.imageUrl);
+        } else {
+          // Failed to upload this file
+        }
+      }
+      
+      // Update form data with uploaded images
+      if (uploadedUrls.length > 0) {
         if (type === "main") {
-          setFormData({ ...formData, image: data.imageUrl });
+          setFormData({ ...formData, image: uploadedUrls[0] });
+          alert("Image uploaded successfully!");
         } else {
           setFormData({ 
             ...formData, 
-            gallery: [...(formData.gallery || []), data.imageUrl] 
+            gallery: [...(formData.gallery || []), ...uploadedUrls] 
           });
+          alert(`${uploadedUrls.length} image${uploadedUrls.length > 1 ? 's' : ''} uploaded successfully!`);
         }
+      } else {
+        alert("Failed to upload images");
       }
     } catch (error) {
       console.error("Upload failed:", error);
-      alert("Failed to upload image");
+      alert("Failed to upload image: " + error.message);
     } finally {
       if (type === "main") {
         setUploadingImage(false);
       } else {
         setUploadingThumbnail(false);
       }
+      // Reset file input
+      e.target.value = "";
     }
   };
 
@@ -190,14 +208,26 @@ export default function AdminProducts() {
       let reviews = [];
       
       try {
-        specs = JSON.parse(specificationsText);
+        const trimmedSpecs = specificationsText.trim();
+        if (trimmedSpecs && trimmedSpecs !== '{}') {
+          specs = JSON.parse(trimmedSpecs);
+          // Remove empty string values
+          Object.keys(specs).forEach(key => {
+            if (specs[key] === "") delete specs[key];
+          });
+        }
       } catch (err) {
         alert("Invalid JSON format in Specifications field");
         return;
       }
       
       try {
-        reviews = JSON.parse(reviewsText);
+        const trimmedReviews = reviewsText.trim();
+        if (trimmedReviews && trimmedReviews !== '[]') {
+          reviews = JSON.parse(trimmedReviews);
+          // Filter out empty reviews
+          reviews = reviews.filter(r => r.name && r.comment);
+        }
       } catch (err) {
         alert("Invalid JSON format in Reviews field");
         return;
@@ -206,8 +236,17 @@ export default function AdminProducts() {
       const dataToSubmit = {
         ...formData,
         specifications: specs,
-        reviews: reviews
+        reviews: reviews,
+        // Ensure gallery and features are always arrays
+        gallery: formData.gallery || [],
+        features: formData.features || []
       };
+
+      // Include ID if editing
+      if (editingProduct) {
+        dataToSubmit.id = editingProduct.id;
+        dataToSubmit.slug = editingProduct.slug;
+      }
       
       const url = "/api/products";
       const method = editingProduct ? "PUT" : "POST";
@@ -217,15 +256,18 @@ export default function AdminProducts() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dataToSubmit),
       });
-
+      
       if (response.ok) {
+        const result = await response.json();
         await fetchProducts();
         setShowModal(false);
         alert(editingProduct ? "Product updated!" : "Product added!");
+      } else {
+        const errorData = await response.json();
+        alert(`Failed to save product: ${errorData.error || 'Unknown error'}`);
       }
     } catch (error) {
-      console.error("Failed to save product:", error);
-      alert("Failed to save product");
+      alert("Failed to save product: " + error.message);
     }
   };
 
@@ -312,24 +354,27 @@ export default function AdminProducts() {
           {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border"
+              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border flex flex-col"
             >
-              <div className="relative h-48 bg-gray-100">
+              <div className="relative h-48 bg-gray-100 flex-shrink-0">
                 <img
                   src={product.image || "/image/placeholder.png"}
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = "/image/placeholder.png";
+                  }}
                 />
                 <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                  {product.category}
+                  {product.category || 'Other'}
                 </div>
               </div>
 
-              <div className="p-4">
-                <h3 className="font-bold text-lg text-gray-800 mb-1 truncate">
+              <div className="p-4 flex flex-col flex-1">
+                <h3 className="font-bold text-lg text-gray-800 mb-1 truncate" title={product.name}>
                   {product.name}
                 </h3>
-                <p className="text-gray-600 text-sm mb-2">{product.unit}</p>
+                <p className="text-gray-600 text-sm mb-2 h-5">{product.unit || 'N/A'}</p>
                 <p className="text-xl font-bold text-blue-600 mb-4">
                   ₦{product.price}
                 </p>
@@ -364,23 +409,23 @@ export default function AdminProducts() {
 
       {/* Add/Edit Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 overflow-y-auto">
-          <div className="bg-white rounded-xl w-full max-w-3xl my-8">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 p-2 md:p-4 overflow-y-auto">
+          <div className="bg-white rounded-xl w-full max-w-3xl my-4 md:my-8">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b">
-              <h2 className="text-2xl font-bold text-gray-800">
+            <div className="flex items-center justify-between p-4 md:p-6 border-b">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-800">
                 {editingProduct ? "Edit Product" : "Add New Product"}
               </h2>
               <button
                 onClick={() => setShowModal(false)}
-                className="text-gray-400 hover:text-gray-600 text-2xl"
+                className="text-gray-400 hover:text-gray-600 text-xl md:text-2xl"
               >
                 <FaTimes />
               </button>
             </div>
 
             {/* Modal Body */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+            <form onSubmit={handleSubmit} className="p-4 md:p-6 space-y-4 md:space-y-6">
               {/* Basic Info */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -495,15 +540,17 @@ export default function AdminProducts() {
                 </div>
                 <label className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg cursor-pointer transition-colors inline-flex">
                   <FaUpload />
-                  <span>{uploadingThumbnail ? "Uploading..." : "Add Gallery Image"}</span>
+                  <span>{uploadingThumbnail ? "Uploading..." : "Add Gallery Images"}</span>
                   <input
                     type="file"
                     accept="image/*"
+                    multiple
                     onChange={(e) => handleImageUpload(e, "gallery")}
                     className="hidden"
                     disabled={uploadingThumbnail}
                   />
                 </label>
+                <p className="text-xs text-gray-500 mt-1">You can select multiple images at once</p>
               </div>
 
               {/* Description */}
@@ -568,7 +615,7 @@ export default function AdminProducts() {
               </div>
 
               {/* Form Actions */}
-              <div className="flex gap-3 pt-4 border-t">
+              <div className="flex flex-col-reverse sm:flex-row gap-3 pt-4 border-t">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}

@@ -1944,6 +1944,14 @@ export async function POST(request) {
     await initProductsFile();
     const newProduct = await request.json();
     
+    // Validate required fields
+    if (!newProduct.name || !newProduct.price || !newProduct.category) {
+      return NextResponse.json(
+        { error: "Missing required fields: name, price, and category are required" },
+        { status: 400 }
+      );
+    }
+    
     const data = await fs.readFile(PRODUCTS_FILE, "utf8");
     const products = JSON.parse(data);
     
@@ -1962,8 +1970,9 @@ export async function POST(request) {
     
     return NextResponse.json(productWithId, { status: 201 });
   } catch (error) {
+    console.error("Failed to create product:", error);
     return NextResponse.json(
-      { error: "Failed to create product" },
+      { error: "Failed to create product", details: error.message },
       { status: 500 }
     );
   }
@@ -1974,6 +1983,13 @@ export async function PUT(request) {
   try {
     await initProductsFile();
     const updatedProduct = await request.json();
+    
+    if (!updatedProduct.id) {
+      return NextResponse.json(
+        { error: "Product ID is required for update" },
+        { status: 400 }
+      );
+    }
     
     const data = await fs.readFile(PRODUCTS_FILE, "utf8");
     const products = JSON.parse(data);
@@ -1991,8 +2007,9 @@ export async function PUT(request) {
     
     return NextResponse.json(updatedProduct);
   } catch (error) {
+    console.error("Failed to update product:", error);
     return NextResponse.json(
-      { error: "Failed to update product" },
+      { error: "Failed to update product", details: error.message },
       { status: 500 }
     );
   }

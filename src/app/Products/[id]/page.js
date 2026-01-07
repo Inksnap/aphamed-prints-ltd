@@ -2403,21 +2403,15 @@ export default function ProductDetail() {
                           products.find((p) => p.id === parseInt(params.id));
       
       if (!foundProduct) {
-        console.log("Product not found. Searched for:", params.id);
-        console.log("Available slugs:", products.map(p => p.slug).filter(Boolean));
         // Fallback to default products
         const fallbackProduct = DEFAULT_PRODUCTS.find((p) => p.slug === params.id) || 
                                DEFAULT_PRODUCTS.find((p) => p.id === parseInt(params.id));
         setProduct(fallbackProduct);
-        if (!fallbackProduct) {
-          console.error("Product not found in default products either");
-        }
         setAllProducts(DEFAULT_PRODUCTS);
       } else {
         setProduct(foundProduct);
       }
     } catch (error) {
-      console.error("Failed to fetch product:", error);
       // Fallback to default products
       const fallbackProduct = DEFAULT_PRODUCTS.find((p) => p.slug === params.id) || 
                              DEFAULT_PRODUCTS.find((p) => p.id === parseInt(params.id));
@@ -2558,7 +2552,7 @@ export default function ProductDetail() {
             >
               {/* MAIN IMAGE */}
               <div className="relative bg-white rounded-xl overflow-hidden shadow-lg group">
-                <div className="aspect-square relative">
+                <div className="aspect-square lg:aspect-video lg:max-h-96 relative">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={selectedImage}
@@ -2568,7 +2562,7 @@ export default function ProductDetail() {
                       transition={{ duration: 0.3 }}
                       src={images[selectedImage]}
                       alt={product.name}
-                      className="w-full h-full object-contain p-4"
+                      className="w-full h-full object-cover"
                     />
                   </AnimatePresence>
                   

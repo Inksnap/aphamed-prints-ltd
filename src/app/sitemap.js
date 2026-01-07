@@ -1,5 +1,5 @@
 export default async function sitemap() {
-  const baseUrl = 'https://aphamedprints.com';
+  const baseUrl = 'https://aphamed.com';
   
   // Fetch all products
   let products = [];

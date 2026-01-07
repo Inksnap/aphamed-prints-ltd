@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import path from "path";
 
+// Configure API route
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export async function POST(request) {
   try {
     const formData = await request.formData();
@@ -36,7 +43,7 @@ export async function POST(request) {
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(
-      { error: "Failed to upload image" },
+      { error: "Failed to upload image", details: error.message },
       { status: 500 }
     );
   }

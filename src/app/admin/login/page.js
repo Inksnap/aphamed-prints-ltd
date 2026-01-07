@@ -18,8 +18,11 @@ export default function AdminLogin() {
     setError("");
     setLoading(true);
 
-    // Simple authentication - In production, use proper backend authentication
-    if (credentials.username === "admin" && credentials.password === "aphamed2026") {
+    // Get credentials from environment variables
+    const adminUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME || "admin";
+    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "aphamed2026";
+
+    if (credentials.username === adminUsername && credentials.password === adminPassword) {
       localStorage.setItem("adminLoggedIn", "true");
       router.push("/admin");
     } else {
@@ -103,13 +106,6 @@ export default function AdminLogin() {
               {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
-
-          {/* Demo Credentials Info */}
-          <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-blue-800 font-medium mb-1">Demo Credentials:</p>
-            <p className="text-xs text-blue-600">Username: admin</p>
-            <p className="text-xs text-blue-600">Password: aphamed2026</p>
-          </div>
         </div>
 
         {/* Footer */}
