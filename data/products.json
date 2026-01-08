@@ -1894,9 +1894,9 @@
   },
   {
     "id": 71,
-    "name": "Branded Box",
+    "name": "Branded Boxs",
     "slug": "branded-box",
-    "price": "8,000",
+    "price": "7,000",
     "category": "Branding",
     "image": "/image/Branded-Box2.png",
     "unit": "Per piece",
@@ -1929,5 +1929,22 @@
       "/image/1767766984030-23e5e04239f2d6e679eea4a5143f0d49.jpg",
       "/image/1767766984228-33b62b5d2e08c7d3ec0ed270df8a2f89.jpg"
     ]
+  },
+  {
+    "name": "ffff",
+    "price": "2344",
+    "category": "Prints",
+    "image": "/image/1767856615449-backdrop-.jpg",
+    "unit": "23",
+    "description": "",
+    "features": [],
+    "specifications": {},
+    "gallery": [
+      "/image/1767856622328-branded-cap.jpg",
+      "/image/1767856622532-branded-cap-printing.jpg"
+    ],
+    "reviews": [],
+    "id": 72,
+    "slug": "ffff"
   }
 ]

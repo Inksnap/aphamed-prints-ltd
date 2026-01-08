@@ -1,13 +1,8 @@
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 
-// Configure API route
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const runtime = "nodejs";
 
 export async function POST(request) {
   try {
@@ -29,8 +24,10 @@ export async function POST(request) {
     const originalName = file.name.replace(/\s+/g, "-");
     const filename = `${timestamp}-${originalName}`;
     
-    // Save to public/image directory
-    const filepath = path.join(process.cwd(), "public", "image", filename);
+    // Ensure public/image directory exists and save file
+    const imageDir = path.join(process.cwd(), "public", "image");
+    await mkdir(imageDir, { recursive: true });
+    const filepath = path.join(imageDir, filename);
     await writeFile(filepath, buffer);
     
     // Return the public URL
