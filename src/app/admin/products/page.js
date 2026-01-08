@@ -157,11 +157,14 @@ export default function AdminProducts() {
         });
 
         const data = await response.json();
-        
+
         if (data.success) {
           uploadedUrls.push(data.imageUrl);
         } else {
-          // Failed to upload this file
+          // Failed to upload this file — surface server error to user
+          const errMsg = data.error || (data.details && JSON.stringify(data.details)) || 'Unknown upload error';
+          console.error('Upload error for file', file.name, data);
+          alert(`Image upload failed: ${errMsg}`);
         }
       }
       
