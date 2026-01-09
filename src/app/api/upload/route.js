@@ -9,6 +9,8 @@ export const runtime = "nodejs";
 // Required env vars for unsigned fallback: CLOUDINARY_CLOUD_NAME, CLOUDINARY_UPLOAD_PRESET
 
 import crypto from 'crypto';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 export async function POST(request) {
   try {
@@ -21,10 +23,29 @@ export async function POST(request) {
 
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
     if (!cloudName) {
-      return NextResponse.json(
-        { error: "Cloudinary not configured. Set CLOUDINARY_CLOUD_NAME and either CLOUDINARY_API_KEY/CLOUDINARY_API_SECRET or CLOUDINARY_UPLOAD_PRESET." },
-        { status: 500 }
-      );
+      // No Cloudinary configured — save uploads to public/uploads (works without env vars)
+      try {
+        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+        await fs.mkdir(uploadDir, { recursive: true });
+
+        // Derive filename and extension
+        const originalFilename = file.name || `upload-${Date.now()}`;
+        const ext = path.extname(originalFilename) || (file.type ? '.' + file.type.split('/').pop() : '.jpg');
+        const baseName = (originalFilename.replace(/\.[^.]+$/, '') || 'upload').replace(/\s+/g, '-');
+        const timestamp = Math.floor(Date.now() / 1000);
+        const fileName = `${timestamp}-${baseName}${ext}`;
+        const filePath = path.join(uploadDir, fileName);
+
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        await fs.writeFile(filePath, buffer);
+
+        // Return a relative URL that the client can use
+        return NextResponse.json({ success: true, imageUrl: `/uploads/${fileName}` });
+      } catch (err) {
+        console.error('Local upload failed:', err);
+        return NextResponse.json({ error: 'Local upload failed', details: err.message }, { status: 500 });
+      }
     }
 
     const apiKey = process.env.CLOUDINARY_API_KEY;
