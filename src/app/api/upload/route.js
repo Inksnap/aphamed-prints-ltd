@@ -23,7 +23,20 @@ export async function POST(request) {
 
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
     if (!cloudName) {
-      // No Cloudinary configured — save uploads to public/uploads (works without env vars)
+      // In production we must not rely on writing to the server filesystem
+      // (serverless environments are ephemeral / read-only). Require Cloudinary.
+      if (process.env.NODE_ENV === 'production') {
+        console.error('Cloudinary not configured in production. Aborting upload.');
+        return NextResponse.json(
+          {
+            error:
+              'Cloudinary not configured on server. Set CLOUDINARY_CLOUD_NAME and either CLOUDINARY_API_KEY/CLOUDINARY_API_SECRET (signed) or CLOUDINARY_UPLOAD_PRESET (unsigned) in your hosting env.'
+          },
+          { status: 500 }
+        );
+      }
+
+      // Local/dev fallback: save uploads to public/uploads (works when running locally)
       try {
         const uploadDir = path.join(process.cwd(), 'public', 'uploads');
         await fs.mkdir(uploadDir, { recursive: true });

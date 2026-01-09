@@ -59,8 +59,8 @@ export const metadata = {
     },
   },
   icons: {
-    icon: "/image/logo.svg",
-    apple: "/image/logo.svg",
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   verification: {
     google: 'your-google-verification-code',

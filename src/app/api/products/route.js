@@ -1966,9 +1966,21 @@ export async function POST(request) {
     const productWithId = { ...newProduct, id: newId, slug };
     products.push(productWithId);
     
-    await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
-    
-    return NextResponse.json(productWithId, { status: 201 });
+            try {
+                  await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
+            } catch (writeErr) {
+                  console.error("Failed to write products file (likely read-only filesystem):", writeErr);
+                  return NextResponse.json(
+                        {
+                              error: "Failed to persist product to local storage.",
+                              details: writeErr.message,
+                              hint: "This environment likely uses a read-only filesystem (e.g., serverless). Use an external database or storage for persistent writes."
+                        },
+                        { status: 503 }
+                  );
+            }
+
+            return NextResponse.json(productWithId, { status: 201 });
   } catch (error) {
     console.error("Failed to create product:", error);
     return NextResponse.json(

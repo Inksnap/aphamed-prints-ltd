@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function AboutHeader() {
   return (
     <div className="bg-gradient-to-r from-[#0CE7AC] to-[#00543D] py-8 lg:py-14">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 lg:px-12">
         <div className="flex  flex-row max-[360px]:flex-col items-center justify-around gap-10 lg:gap-64">
           {/* Left Side */}
           <div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 export default function AboutMain() {
   return (
     <section className="mt-14 lg:mt-24 mb-20 lg:mb-32">
-      <div className="container mx-auto px-4 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
+      <div className="container mx-auto px-6 lg:px-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12">
 
         {/* LEFT: TEXT SECTION */}
         <motion.div

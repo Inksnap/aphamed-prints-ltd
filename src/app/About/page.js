@@ -25,7 +25,7 @@ export default function AboutPage() {
 
       <MeetCEO />
 
-      <div className="bg-[#D9D9D9] py-10 px-4">
+      <div className="bg-[#D9D9D9] py-10 px-6 lg:px-12">
         <div className="container mx-auto text-center">
           <h1 className="font-bold text-xl md:text-2xl lg:text-3xl text-[#1B1B1B] leading-tight">
             APHAMED PRINTS
