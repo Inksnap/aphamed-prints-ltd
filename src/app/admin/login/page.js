@@ -18,17 +18,26 @@ export default function AdminLogin() {
     setError("");
     setLoading(true);
 
-    // Get credentials from environment variables
-    const adminUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME || "admin";
-    const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "aphamed2026";
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials)
+      });
 
-    if (credentials.username === adminUsername && credentials.password === adminPassword) {
-      localStorage.setItem("adminLoggedIn", "true");
-      router.push("/admin");
-    } else {
-      setError("Invalid username or password");
+      const data = await res.json();
+      if (res.ok && data.success) {
+        localStorage.setItem('adminLoggedIn', 'true');
+        router.push('/admin');
+      } else {
+        setError(data.error || 'Invalid username or password');
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      setError('Login failed');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (

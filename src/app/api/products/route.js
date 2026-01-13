@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { createClient } from '@supabase/supabase-js';
 
 const PRODUCTS_FILE = path.join(process.cwd(), "data", "products.json");
 
@@ -1917,143 +1918,236 @@ function getDefaultProducts() {
 
 // GET - Fetch all products
 export async function GET() {
-  try {
-    await initProductsFile();
-    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
-    let products = JSON.parse(data);
+      // If Supabase is configured, read from the DB
+      const SUPABASE_URL = process.env.SUPABASE_URL;
+      const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (SUPABASE_URL && SUPABASE_KEY) {
+            const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, { global: { fetch } });
+            try {
+                  const { data, error } = await supabase.from('products').select('*').order('id', { ascending: true });
+                  if (error) {
+                        console.error('Supabase fetch error:', error);
+                        return NextResponse.json({ error: 'Failed to fetch products from Supabase', details: error.message }, { status: 500 });
+                  }
+                  const products = (data || []).map(product => ({ ...product, slug: product.slug || generateSlug(product.name) }));
+                  return NextResponse.json(products);
+            } catch (err) {
+                  console.error('Supabase fetch failed:', err);
+                  return NextResponse.json({ error: 'Failed to fetch products from Supabase', details: err.message }, { status: 500 });
+            }
+      }
+
+      // Fallback to local filesystem (dev)
+      try {
+            await initProductsFile();
+            const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+            let products = JSON.parse(data);
     
-    // Ensure all products have slugs
-    products = products.map(product => ({
-      ...product,
-      slug: product.slug || generateSlug(product.name)
-    }));
+            // Ensure all products have slugs
+            products = products.map(product => ({
+                  ...product,
+                  slug: product.slug || generateSlug(product.name)
+            }));
     
-    return NextResponse.json(products);
-  } catch (error) {
-    console.error("Failed to fetch products:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch products" },
-      { status: 500 }
-    );
-  }
+            return NextResponse.json(products);
+      } catch (error) {
+            console.error("Failed to fetch products:", error);
+            return NextResponse.json(
+                  { error: "Failed to fetch products" },
+                  { status: 500 }
+            );
+      }
 }
 
 // POST - Create new product
 export async function POST(request) {
-  try {
-    await initProductsFile();
-    const newProduct = await request.json();
-    
-    // Validate required fields
-    if (!newProduct.name || !newProduct.price || !newProduct.category) {
-      return NextResponse.json(
-        { error: "Missing required fields: name, price, and category are required" },
-        { status: 400 }
-      );
-    }
-    
-    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
-    const products = JSON.parse(data);
-    
-    // Generate new ID
-    const newId = products.length > 0 
-      ? Math.max(...products.map(p => p.id)) + 1 
-      : 1;
-    
-    // Generate slug if not provided
-    const slug = newProduct.slug || generateSlug(newProduct.name);
-    
-    const productWithId = { ...newProduct, id: newId, slug };
-    products.push(productWithId);
-    
+      // If Supabase is configured, write to the DB
+      const SUPABASE_URL = process.env.SUPABASE_URL;
+      const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (SUPABASE_URL && SUPABASE_KEY) {
+            const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, { global: { fetch } });
             try {
-                  await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
-            } catch (writeErr) {
-                  console.error("Failed to write products file (likely read-only filesystem):", writeErr);
+                  const newProduct = await request.json();
+                  if (!newProduct.name || !newProduct.price || !newProduct.category) {
+                        return NextResponse.json({ error: "Missing required fields: name, price, and category are required" }, { status: 400 });
+                  }
+
+                  const slug = newProduct.slug || generateSlug(newProduct.name);
+                  const payload = { ...newProduct, slug };
+
+                  const { data, error } = await supabase.from('products').insert([payload]).select();
+                  if (error) {
+                        console.error('Supabase insert error:', error);
+                        return NextResponse.json({ error: 'Failed to persist product to database', details: error.message }, { status: 500 });
+                  }
+                  const created = Array.isArray(data) ? data[0] : data;
+                  return NextResponse.json(created, { status: 201 });
+            } catch (err) {
+                  console.error('Failed to create product (Supabase):', err);
+                  return NextResponse.json({ error: 'Failed to create product', details: err.message }, { status: 500 });
+            }
+      }
+
+      // Fallback to local filesystem (dev)
+      try {
+            await initProductsFile();
+            const newProduct = await request.json();
+    
+            // Validate required fields
+            if (!newProduct.name || !newProduct.price || !newProduct.category) {
                   return NextResponse.json(
-                        {
-                              error: "Failed to persist product to local storage.",
-                              details: writeErr.message,
-                              hint: "This environment likely uses a read-only filesystem (e.g., serverless). Use an external database or storage for persistent writes."
-                        },
-                        { status: 503 }
+                        { error: "Missing required fields: name, price, and category are required" },
+                        { status: 400 }
                   );
             }
+    
+            const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+            const products = JSON.parse(data);
+    
+            // Generate new ID
+            const newId = products.length > 0 
+                  ? Math.max(...products.map(p => p.id)) + 1 
+                  : 1;
+    
+            // Generate slug if not provided
+            const slug = newProduct.slug || generateSlug(newProduct.name);
+    
+            const productWithId = { ...newProduct, id: newId, slug };
+            products.push(productWithId);
+    
+                                    try {
+                                                      await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
+                                    } catch (writeErr) {
+                                                      console.error("Failed to write products file (likely read-only filesystem):", writeErr);
+                                                      return NextResponse.json(
+                                                                        {
+                                                                                          error: "Failed to persist product to local storage.",
+                                                                                          details: writeErr.message,
+                                                                                          hint: "This environment likely uses a read-only filesystem (e.g., serverless). Use an external database or storage for persistent writes."
+                                                                        },
+                                                                        { status: 503 }
+                                                      );
+                                    }
 
-            return NextResponse.json(productWithId, { status: 201 });
-  } catch (error) {
-    console.error("Failed to create product:", error);
-    return NextResponse.json(
-      { error: "Failed to create product", details: error.message },
-      { status: 500 }
-    );
-  }
+                                    return NextResponse.json(productWithId, { status: 201 });
+      } catch (error) {
+            console.error("Failed to create product:", error);
+            return NextResponse.json(
+                  { error: "Failed to create product", details: error.message },
+                  { status: 500 }
+            );
+      }
 }
 
 // PUT - Update product
 export async function PUT(request) {
-  try {
-    await initProductsFile();
-    const updatedProduct = await request.json();
+      // If Supabase is configured, update in DB
+      const SUPABASE_URL = process.env.SUPABASE_URL;
+      const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      if (SUPABASE_URL && SUPABASE_KEY) {
+            const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, { global: { fetch } });
+            try {
+                  const updatedProduct = await request.json();
+                  if (!updatedProduct.id) return NextResponse.json({ error: "Product ID is required for update" }, { status: 400 });
+
+                  const { data, error } = await supabase.from('products').update(updatedProduct).eq('id', updatedProduct.id).select();
+                  if (error) {
+                        console.error('Supabase update error:', error);
+                        return NextResponse.json({ error: 'Failed to update product in database', details: error.message }, { status: 500 });
+                  }
+                  const updated = Array.isArray(data) ? data[0] : data;
+                  return NextResponse.json(updated);
+            } catch (err) {
+                  console.error('Failed to update product (Supabase):', err);
+                  return NextResponse.json({ error: 'Failed to update product', details: err.message }, { status: 500 });
+            }
+      }
+
+      // Fallback to local filesystem (dev)
+      try {
+            await initProductsFile();
+            const updatedProduct = await request.json();
     
-    if (!updatedProduct.id) {
-      return NextResponse.json(
-        { error: "Product ID is required for update" },
-        { status: 400 }
-      );
-    }
+            if (!updatedProduct.id) {
+                  return NextResponse.json(
+                        { error: "Product ID is required for update" },
+                        { status: 400 }
+                  );
+            }
     
-    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
-    const products = JSON.parse(data);
+            const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+            const products = JSON.parse(data);
     
-    const index = products.findIndex(p => p.id === updatedProduct.id);
-    if (index === -1) {
-      return NextResponse.json(
-        { error: "Product not found" },
-        { status: 404 }
-      );
-    }
+            const index = products.findIndex(p => p.id === updatedProduct.id);
+            if (index === -1) {
+                  return NextResponse.json(
+                        { error: "Product not found" },
+                        { status: 404 }
+                  );
+            }
     
-    products[index] = updatedProduct;
-    await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
+            products[index] = updatedProduct;
+            await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
     
-    return NextResponse.json(updatedProduct);
-  } catch (error) {
-    console.error("Failed to update product:", error);
-    return NextResponse.json(
-      { error: "Failed to update product", details: error.message },
-      { status: 500 }
-    );
-  }
+            return NextResponse.json(updatedProduct);
+      } catch (error) {
+            console.error("Failed to update product:", error);
+            return NextResponse.json(
+                  { error: "Failed to update product", details: error.message },
+                  { status: 500 }
+            );
+      }
 }
 
 // DELETE - Delete product
 export async function DELETE(request) {
-  try {
-    await initProductsFile();
-    const { searchParams } = new URL(request.url);
-    const id = parseInt(searchParams.get("id"));
+      // If Supabase is configured, delete from DB
+      const SUPABASE_URL = process.env.SUPABASE_URL;
+      const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      const { searchParams } = new URL(request.url);
+      const id = parseInt(searchParams.get("id"));
+
+      if (SUPABASE_URL && SUPABASE_KEY) {
+            const supabase = createClient(SUPABASE_URL, SUPABASE_KEY, { global: { fetch } });
+            try {
+                  const { error } = await supabase.from('products').delete().eq('id', id);
+                  if (error) {
+                        console.error('Supabase delete error:', error);
+                        return NextResponse.json({ error: 'Failed to delete product from database', details: error.message }, { status: 500 });
+                  }
+                  return NextResponse.json({ message: 'Product deleted successfully' });
+            } catch (err) {
+                  console.error('Failed to delete product (Supabase):', err);
+                  return NextResponse.json({ error: 'Failed to delete product', details: err.message }, { status: 500 });
+            }
+      }
+
+      // Fallback to local filesystem (dev)
+      try {
+            await initProductsFile();
+            const { searchParams } = new URL(request.url);
+            const id = parseInt(searchParams.get("id"));
     
-    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
-    let products = JSON.parse(data);
+            const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+            let products = JSON.parse(data);
     
-    const initialLength = products.length;
-    products = products.filter(p => p.id !== id);
+            const initialLength = products.length;
+            products = products.filter(p => p.id !== id);
     
-    if (products.length === initialLength) {
-      return NextResponse.json(
-        { error: "Product not found" },
-        { status: 404 }
-      );
-    }
+            if (products.length === initialLength) {
+                  return NextResponse.json(
+                        { error: "Product not found" },
+                        { status: 404 }
+                  );
+            }
     
-    await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
+            await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
     
-    return NextResponse.json({ message: "Product deleted successfully" });
-  } catch (error) {
-    return NextResponse.json(
-      { error: "Failed to delete product" },
-      { status: 500 }
-    );
-  }
+            return NextResponse.json({ message: "Product deleted successfully" });
+      } catch (error) {
+            return NextResponse.json(
+                  { error: "Failed to delete product" },
+                  { status: 500 }
+            );
+      }
 }

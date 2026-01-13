@@ -6,6 +6,10 @@ const nextConfig = {
       bodySizeLimit: '10mb',
     },
   },
+  turbopack: {
+    // Ensure Turbopack resolves the correct project root when multiple lockfiles exist
+    root: './',
+  },
 };
 
 export default nextConfig;

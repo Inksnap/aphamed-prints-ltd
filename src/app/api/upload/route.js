@@ -11,6 +11,7 @@ export const runtime = "nodejs";
 import crypto from 'crypto';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { createClient } from '@supabase/supabase-js';
 
 export async function POST(request) {
   try {
@@ -19,6 +20,41 @@ export async function POST(request) {
 
     if (!file) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+    }
+
+    // Prefer Supabase when configured
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const supabaseBucket = process.env.SUPABASE_BUCKET || 'uploads';
+
+    if (supabaseUrl && supabaseKey) {
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+
+        const originalFilename = file.name || `upload-${Date.now()}`;
+        const ext = path.extname(originalFilename) || (file.type ? '.' + file.type.split('/').pop() : '.jpg');
+        const baseName = (originalFilename.replace(/\.[^.]+$/, '') || 'upload').replace(/\s+/g, '-');
+        const timestamp = Math.floor(Date.now() / 1000);
+        const storagePath = `${timestamp}-${baseName}${ext}`;
+
+        const supabase = createClient(supabaseUrl, supabaseKey, { global: { fetch } });
+
+        const { error: uploadError } = await supabase.storage
+          .from(supabaseBucket)
+          .upload(storagePath, buffer, { contentType: file.type, upsert: true });
+
+        if (uploadError) {
+          console.error('Supabase upload failed:', uploadError);
+          return NextResponse.json({ error: 'Supabase upload failed', details: uploadError.message }, { status: 502 });
+        }
+
+        const { data: publicData } = supabase.storage.from(supabaseBucket).getPublicUrl(storagePath);
+        return NextResponse.json({ success: true, imageUrl: publicData.publicUrl });
+      } catch (err) {
+        console.error('Supabase upload error:', err);
+        return NextResponse.json({ error: 'Supabase upload failed', details: err.message }, { status: 500 });
+      }
     }
 
     const cloudName = process.env.CLOUDINARY_CLOUD_NAME;

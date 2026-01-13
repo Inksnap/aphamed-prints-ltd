@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { 
@@ -17,6 +17,8 @@ export default function AdminProducts() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCategory, setFilterCategory] = useState("All");
+  const [showProductsDropdown, setShowProductsDropdown] = useState(false);
+  const dropdownRef = useRef(null);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
   const [specificationsText, setSpecificationsText] = useState("{}");
@@ -71,6 +73,17 @@ export default function AdminProducts() {
     
     setFilteredProducts(filtered);
   }, [products, searchTerm, filterCategory]);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (showProductsDropdown && dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setShowProductsDropdown(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [showProductsDropdown]);
 
   const fetchProducts = async () => {
     try {
@@ -168,16 +181,16 @@ export default function AdminProducts() {
         }
       }
       
-      // Update form data with uploaded images
+      // Update form data with uploaded images (use functional updates to avoid stale state)
       if (uploadedUrls.length > 0) {
         if (type === "main") {
-          setFormData({ ...formData, image: uploadedUrls[0] });
+          setFormData((prev) => ({ ...prev, image: uploadedUrls[0] }));
           alert("Image uploaded successfully!");
         } else {
-          setFormData({ 
-            ...formData, 
-            gallery: [...(formData.gallery || []), ...uploadedUrls] 
-          });
+          setFormData((prev) => ({ 
+            ...prev, 
+            gallery: [...(prev.gallery || []), ...uploadedUrls] 
+          }));
           alert(`${uploadedUrls.length} image${uploadedUrls.length > 1 ? 's' : ''} uploaded successfully!`);
         }
       } else {
@@ -319,7 +332,47 @@ export default function AdminProducts() {
           </div>
         </div>
 
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center">
+          <div className="relative" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setShowProductsDropdown(s => !s)}
+              className="px-4 py-2 border rounded-lg bg-white hover:bg-gray-50 flex items-center gap-2"
+            >
+              <FaImage />
+              <span className="hidden sm:inline">Products</span>
+              <span className="ml-2 text-sm text-gray-600">({products.length})</span>
+            </button>
+
+            {showProductsDropdown && (
+              <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg z-50 max-h-80 overflow-auto border">
+                {products.length === 0 ? (
+                  <div className="p-4 text-sm text-gray-600">No products</div>
+                ) : (
+                  products.map((p) => (
+                    <Link
+                      key={p.id}
+                      href={`/Products/${p.id}`}
+                      className="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 border-b last:border-b-0"
+                      onClick={() => setShowProductsDropdown(false)}
+                    >
+                      <img
+                        src={p.image || "/image/placeholder.png"}
+                        alt={p.name}
+                        className="w-12 h-12 object-cover rounded"
+                        onError={(e) => { e.target.src = "/image/placeholder.png"; }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium text-gray-800 truncate">{p.name}</div>
+                        <div className="text-xs text-gray-500">₦{p.price}</div>
+                      </div>
+                    </Link>
+                  ))
+                )}
+              </div>
+            )}
+          </div>
+
           <select
             value={filterCategory}
             onChange={(e) => setFilterCategory(e.target.value)}
@@ -502,6 +555,7 @@ export default function AdminProducts() {
                       src={formData.image}
                       alt="Preview"
                       className="w-24 h-24 object-cover rounded-lg border"
+                      onError={(e) => { e.currentTarget.src = "/image/placeholder.png"; }}
                     />
                   )}
                   <label className="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg cursor-pointer transition-colors">
@@ -530,6 +584,7 @@ export default function AdminProducts() {
                         src={img}
                         alt={`Gallery ${index + 1}`}
                         className="w-20 h-20 object-cover rounded-lg border"
+                        onError={(e) => { e.currentTarget.src = "/image/placeholder.png"; }}
                       />
                       <button
                         type="button"

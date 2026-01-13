@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   FaMinus, FaPlus, FaWhatsapp, FaStar, FaCheck, FaTruck, 
-  FaShieldAlt, FaHeadset, FaChevronLeft, FaChevronRight 
+  FaShieldAlt, FaHeadset, FaChevronLeft, FaChevronRight, FaTimes
 } from "react-icons/fa";
 import { HiArrowLeft, HiZoomIn } from "react-icons/hi";
 import { MdVerified } from "react-icons/md";
@@ -2552,7 +2552,10 @@ export default function ProductDetail() {
             >
               {/* MAIN IMAGE */}
               <div className="relative bg-white rounded-xl overflow-hidden shadow-lg group">
-                <div className="aspect-square lg:aspect-video lg:max-h-96 relative">
+                <div 
+                  className="aspect-square lg:aspect-video lg:max-h-96 relative cursor-pointer"
+                  onClick={() => setImageZoomed(true)}
+                >
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={selectedImage}
@@ -2583,13 +2586,19 @@ export default function ProductDetail() {
                   {images.length > 1 && (
                     <>
                       <button
-                        onClick={() => setSelectedImage((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+                        }}
                         className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white transition-all opacity-0 group-hover:opacity-100"
                       >
                         <FaChevronLeft className="text-gray-700" size={14} />
                       </button>
                       <button
-                        onClick={() => setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+                        }}
                         className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-2 rounded-full shadow-md hover:bg-white transition-all opacity-0 group-hover:opacity-100"
                       >
                         <FaChevronRight className="text-gray-700" size={14} />
@@ -2624,6 +2633,75 @@ export default function ProductDetail() {
                   ))}
                 </div>
               </div>
+              )}
+
+              {/* IMAGE ZOOM MODAL/LIGHTBOX */}
+              {imageZoomed && (
+                <AnimatePresence>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4"
+                    onClick={() => setImageZoomed(false)}
+                  >
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.9, opacity: 0 }}
+                      className="relative max-w-7xl max-h-[90vh] w-full"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* CLOSE BUTTON */}
+                      <button
+                        onClick={() => setImageZoomed(false)}
+                        className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all z-10"
+                      >
+                        <FaTimes className="text-gray-700" size={20} />
+                      </button>
+
+                      {/* ZOOMED IMAGE */}
+                      <div className="relative bg-white rounded-lg overflow-hidden shadow-2xl">
+                        <img
+                          src={images[selectedImage]}
+                          alt={product.name}
+                          className="w-full h-auto max-h-[90vh] object-contain"
+                        />
+                      </div>
+
+                      {/* NAVIGATION ARROWS IN MODAL */}
+                      {images.length > 1 && (
+                        <>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+                            }}
+                            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all"
+                          >
+                            <FaChevronLeft className="text-gray-700" size={18} />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setSelectedImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+                            }}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all"
+                          >
+                            <FaChevronRight className="text-gray-700" size={18} />
+                          </button>
+                        </>
+                      )}
+
+                      {/* IMAGE COUNTER */}
+                      {images.length > 1 && (
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg text-sm font-medium text-gray-700">
+                          {selectedImage + 1} / {images.length}
+                        </div>
+                      )}
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
               )}
 
               {/* TRUST BADGES */}

@@ -59,8 +59,14 @@ export const metadata = {
     },
   },
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
   },
   verification: {
     google: 'your-google-verification-code',

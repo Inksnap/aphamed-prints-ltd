@@ -11,13 +11,15 @@ export default function Preloader() {
   useEffect(() => {
     const handleLoad = () => setLoading(false);
 
-    if (document.readyState === "complete") {
-      setLoading(false);
-    } else {
-      window.addEventListener("load", handleLoad);
-    }
+    if (typeof window !== "undefined" && typeof document !== "undefined") {
+      if (document.readyState === "complete") {
+        setLoading(false);
+      } else {
+        window.addEventListener("load", handleLoad);
+      }
 
-    return () => window.removeEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
   }, []);
 
   // Optional: show preloader briefly on route change

@@ -13,25 +13,25 @@
 
 ### Environment Variables Required
 
-Create a `.env.local` file (or set in Vercel) with:
+Create a `.env.local` file (or set env vars in your host) with server-side credentials:
 
 ```env
-NEXT_PUBLIC_ADMIN_USERNAME=your_admin_username
-NEXT_PUBLIC_ADMIN_PASSWORD=your_secure_password
+ADMIN_USERNAME=your_admin_username
+ADMIN_PASSWORD=your_secure_password
 NEXT_PUBLIC_SITE_URL=https://aphamed.com
 ```
 
-**Important**: Change the default credentials before deployment!
+**Important**: Keep `ADMIN_PASSWORD` server-side (do NOT prefix with `NEXT_PUBLIC_`). Change default credentials before deployment!
 
 ## Deployment on Vercel
 
 1. **Push to GitHub** (if not already done)
-2. **Import to Vercel**
-   - Go to vercel.com
-   - Click "Import Project"
-   - Select your repository
+2. **Import to your host (Netlify / Vercel / other)**
+   - Create or select your site on the hosting dashboard
+   - Connect your GitHub repository
 3. **Configure Environment Variables**
-   - Add the environment variables from `.env.local`
+   - Add the environment variables from `.env.local` (or use `env_for_netlify_sanitized.env` for Netlify import)
+   - Mark secrets as secret/hidden in the dashboard (e.g., `ADMIN_PASSWORD`, `SUPABASE_SERVICE_ROLE_KEY`)
    - Make sure to set strong credentials
 4. **Deploy**
    - Vercel will automatically build and deploy
