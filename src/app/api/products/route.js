@@ -117,7 +117,7 @@ async function writeProducts(products) {
       // Upsert products (requires PK constraint in DB)
       const { error } = await supabase.from("products").upsert(products);
       if (error) throw error;
-      return;
+      return { source: 'supabase' };
     } catch (err) {
       console.error("Supabase write failed, falling back to blob/local:", err);
     }
@@ -127,12 +127,13 @@ async function writeProducts(products) {
   if (BLOB_TOKEN) {
     const url = await writeToBlob(products);
     if (!url) throw new Error("Failed to persist products to blob");
-    return;
+    return { source: 'blob', url };
   }
 
   // Local dev fallback
   await ensureDataDir();
   await fs.writeFile(PRODUCTS_FILE, JSON.stringify(products, null, 2));
+  return { source: 'local', path: PRODUCTS_FILE };
 }
 
 // Default products to populate on first load
@@ -2051,9 +2052,9 @@ export async function POST(request) {
     };
 
     products.push(productToSave);
-    await writeProducts(products);
+    const writeResult = await writeProducts(products);
 
-    return NextResponse.json(productToSave, { status: 201 });
+    return NextResponse.json({ product: productToSave, writeResult }, { status: 201 });
   } catch (error) {
     console.error("Failed to create product:", error);
     return NextResponse.json({ error: "Failed to create product", details: error.message }, { status: 500 });
@@ -2078,8 +2079,8 @@ export async function PUT(request) {
     const slug = updatedProduct.slug || generateSlug(updatedProduct.name || products[index].name);
     products[index] = { ...products[index], ...updatedProduct, slug };
 
-    await writeProducts(products);
-    return NextResponse.json(products[index]);
+    const writeResult = await writeProducts(products);
+    return NextResponse.json({ product: products[index], writeResult });
   } catch (error) {
     console.error("Failed to update product:", error);
     return NextResponse.json({ error: "Failed to update product", details: error.message }, { status: 500 });
