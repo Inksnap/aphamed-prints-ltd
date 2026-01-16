@@ -60,10 +60,11 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     apple: [
+      { url: "/favicon.ico", sizes: "180x180", type: "image/x-icon" },
       { url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" },
     ],
     shortcut: "/favicon.ico",
