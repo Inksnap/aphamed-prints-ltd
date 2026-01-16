@@ -57,7 +57,20 @@ export async function POST(request) {
       }
     }
 
-    const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+    // Support explicit env vars or a single `CLOUDINARY_URL` fallback
+    // CLOUDINARY_URL format: cloudinary://API_KEY:API_SECRET@CLOUD_NAME
+    const parseCloudinaryUrl = (url) => {
+      try {
+        const m = url && url.match(/^cloudinary:\/\/([^:]+):([^@]+)@(.+)$/);
+        if (!m) return null;
+        return { apiKey: m[1], apiSecret: m[2], cloudName: m[3] };
+      } catch (e) {
+        return null;
+      }
+    };
+
+    const urlParsed = parseCloudinaryUrl(process.env.CLOUDINARY_URL);
+    const cloudName = process.env.CLOUDINARY_CLOUD_NAME || (urlParsed && urlParsed.cloudName);
     if (!cloudName) {
       // In production we must not rely on writing to the server filesystem
       // (serverless environments are ephemeral / read-only). Require Cloudinary.
@@ -97,8 +110,9 @@ export async function POST(request) {
       }
     }
 
-    const apiKey = process.env.CLOUDINARY_API_KEY;
-    const apiSecret = process.env.CLOUDINARY_API_SECRET;
+    // Prefer explicit API credentials but fall back to values parsed from CLOUDINARY_URL
+    const apiKey = process.env.CLOUDINARY_API_KEY || (urlParsed && urlParsed.apiKey);
+    const apiSecret = process.env.CLOUDINARY_API_SECRET || (urlParsed && urlParsed.apiSecret);
     const uploadPreset = process.env.CLOUDINARY_UPLOAD_PRESET;
     const uploadFolder = process.env.CLOUDINARY_UPLOAD_FOLDER || "";
 

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 const mobileImagesArray = ["/image/mobileheroimg1.png", "/image/mobileheroimg2.png"];
 
 const desktopImagesArray = [
-  "/image/newheroimg1.png",
-  "/image/newheroimg2.png",
+  "/image/Newheroimg1.png",
+  "/image/Newheroimg2.png",
   "/image/newheroimg3.png",
   "/image/newheroimg4.png",
 ];
