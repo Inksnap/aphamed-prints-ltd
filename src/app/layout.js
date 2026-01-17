@@ -60,14 +60,14 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/image/favicon.png", sizes: "48x48", type: "image/png" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/favicon.ico", sizes: "180x180", type: "image/x-icon" },
+      { url: "/image/favicon.png", sizes: "180x180", type: "image/png" },
       { url: "/favicon.svg", sizes: "180x180", type: "image/svg+xml" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/image/favicon.png",
   },
   verification: {
     google: 'your-google-verification-code',
@@ -100,6 +100,11 @@ export default function RootLayout({ children }) {
       data-theme="inline"
       className={`${montserrat.variable} ${merienda.variable} ${michroma.variable}`}
     >
+      <head>
+        <title>Aphamed Prints LTD</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className="overflow-x-hidden">
         <div className="overflow-hidden">
          <Preloader />
