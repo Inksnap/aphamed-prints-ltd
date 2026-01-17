@@ -16,6 +16,134 @@ async function readProducts() {
     const products = JSON.parse(data || "[]");
     return products.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
   } catch (err) {
+    return [];
+  }
+}
+
+export async function generateMetadata({ params }) {
+  const products = await readProducts();
+  const found = products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+
+  if (!found) {
+    return {
+      title: "Aphamed Prints LTD - Product",
+      description: "High quality printing and branding products from Aphamed Prints LTD.",
+    };
+  }
+
+  return {
+    title: `${found.name} | Aphamed Prints LTD`,
+    description: found.description || "Products from Aphamed Prints LTD",
+    openGraph: {
+      title: `${found.name} | Aphamed Prints LTD`,
+      description: found.description || "Products from Aphamed Prints LTD",
+      images: [
+        {
+          url: found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image,
+          width: 800,
+          height: 600,
+          alt: found.name,
+        },
+      ],
+      type: "product",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${found.name} | Aphamed Prints LTD`,
+      description: found.description || "Products from Aphamed Prints LTD",
+      images: [found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image],
+    },
+  };
+}
+
+export default async function Page({ params }) {
+  const products = await readProducts();
+  const found = products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+
+  return <ProductClient initialProduct={found || null} initialAllProducts={products} params={params} />;
+}
+import fs from "fs/promises";
+import path from "path";
+import ProductClient from "./ProductClient";
+
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+async function readProducts() {
+  const PRODUCTS_FILE = path.join(process.cwd(), "data", "products.json");
+  try {
+    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+    const products = JSON.parse(data || "[]");
+    return products.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
+  } catch (err) {
+    return [];
+  }
+}
+
+export async function generateMetadata({ params }) {
+  const products = await readProducts();
+  const found = products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+
+  if (!found) {
+    return {
+      title: "Aphamed Prints LTD - Product",
+      description: "High quality printing and branding products from Aphamed Prints LTD.",
+    };
+  }
+
+  return {
+    title: `${found.name} | Aphamed Prints LTD`,
+    description: found.description || "Products from Aphamed Prints LTD",
+    openGraph: {
+      title: `${found.name} | Aphamed Prints LTD`,
+      description: found.description || "Products from Aphamed Prints LTD",
+      images: [
+        {
+          url: found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image,
+          width: 800,
+          height: 600,
+          alt: found.name,
+        },
+      ],
+      type: "product",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${found.name} | Aphamed Prints LTD`,
+      description: found.description || "Products from Aphamed Prints LTD",
+      images: [found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image],
+    },
+  };
+}
+
+export default async function Page({ params }) {
+  const products = await readProducts();
+  const found = products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+
+  return <ProductClient initialProduct={found || null} initialAllProducts={products} params={params} />;
+}
+import fs from "fs/promises";
+import path from "path";
+import ProductClient from "./ProductClient";
+
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+async function readProducts() {
+  const PRODUCTS_FILE = path.join(process.cwd(), "data", "products.json");
+  try {
+    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+    const products = JSON.parse(data || "[]");
+    return products.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
+  } catch (err) {
     // if file missing or parse error, return an empty array
     return [];
   }
@@ -63,141 +191,6 @@ export default async function Page({ params }) {
 
   return <ProductClient initialProduct={found || null} initialAllProducts={products} params={params} />;
 }
-        rating: 4,
-        comment: "Nice notepads with good paper quality. Great for daily use.",
-        date: "Dec 25, 2025",
-        verified: true
-      },
-      {
-        name: "Jennifer Ade",
-        rating: 5,
-        comment: "Perfect for corporate gifts. My clients loved them!",
-        date: "Dec 15, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [14, 16, 8]
-  },
-  {
-    id: 9,
-    name: "Exercise Book",
-    price: "0,000",
-    category: "Prints",
-    image: "/image/Exercise-book.png",
-    unit: "Per one",
-    description: "Custom branded exercise books perfect for schools, corporate training, and promotional giveaways. Available in various page counts.",
-    features: [
-      "Custom cover design",
-      "Multiple page count options",
-      "Quality bond paper",
-      "Durable binding",
-      "Available in ruled/plain",
-      "Bulk orders available"
-    ],
-    specifications: {
-      size: "A4/A5",
-      paper: "60gsm Bond Paper",
-      pages: "40-100 pages",
-      cover: "200gsm Card Cover",
-      binding: "Sewn/Stapled",
-      turnaround: "5-7 Business Days"
-    },
-    reviews: [
-      {
-        name: "Mrs. Bukola Adeniyi",
-        rating: 5,
-        comment: "Ordered 500 for our school. Excellent quality and the students love the custom design!",
-        date: "Dec 30, 2025",
-        verified: true
-      },
-      {
-        name: "Adeola Fashola",
-        rating: 5,
-        comment: "Perfect for our training sessions. Good paper quality and professional binding.",
-        date: "Dec 22, 2025",
-        verified: true
-      },
-      {
-        name: "Rahman Tijani",
-        rating: 4,
-        comment: "Good value for bulk orders. Quick delivery too!",
-        date: "Dec 13, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [14, 16, 44]
-  },
-  {
-    id: 10,
-    name: "Conqueror Letterhead",
-    price: "20,000",
-    category: "Branding",
-    image: "/image/Conqueror-Letterhead.png",
-    unit: "Per one",
-    description: "Premium conqueror letterhead paper for official correspondence. Features elegant watermark texture and professional appearance.",
-    features: [
-      "Premium conqueror paper",
-      "Watermark texture",
-      "Full color header printing",
-      "Professional appearance",
-      "Suitable for laser printers",
-      "Perfect for corporate use"
-    ],
-    specifications: {
-      size: "A4 (210 x 297mm)",
-      paper: "100gsm Conqueror Paper",
-      printing: "Full Color (Header)",
-      texture: "Watermark Finish",
-      quantity: "50 sheets minimum",
-      turnaround: "2-3 Business Days"
-    },
-    reviews: [
-      {
-        name: "Chief Adamu Bello",
-        rating: 5,
-        comment: "Excellent quality letterhead! Gives our company a very professional image.",
-        date: "Jan 1, 2026",
-        verified: true
-      },
-      {
-        name: "Dr. Amina Yusuf",
-        rating: 5,
-        comment: "Love the texture and quality. Perfect for official letters.",
-        date: "Dec 27, 2025",
-        verified: true
-      },
-      {
-        name: "Michael Ogunleye",
-        rating: 4,
-        comment: "Premium quality paper. Worth the price for important documents.",
-        date: "Dec 18, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [2, 37, 6]
-  },
-  {
-    id: 11,
-    name: "A4 Flyers",
-    price: "45,000",
-    category: "Prints",
-    image: "/image/A4-Flyers3.png",
-    unit: "Per one",
-    description: "Large format A4 flyers for maximum impact. Perfect for posters, announcements, and promotional materials.",
-    features: [
-      "Full color double-sided printing",
-      "170gsm glossy paper",
-      "High-resolution output",
-      "Weather resistant coating",
-      "Eye-catching large format",
-      "Bulk discounts available"
-    ],
-    specifications: {
-      size: "A4 (210 x 297mm)",
-      paper: "170gsm Glossy Art Paper",
-      printing: "Full Color CMYK (Both Sides)",
-      finishing: "Glossy/Matte",
-      quantity: "100 pieces",
       turnaround: "2-3 Business Days"
     },
     reviews: [
