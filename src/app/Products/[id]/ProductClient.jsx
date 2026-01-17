@@ -47,19 +47,40 @@ export default function ProductClient({ initialProduct = null, initialAllProduct
       const products = await response.json();
       setAllProducts(products);
 
-      const foundProduct = products.find((p) => p.slug === params.id) || 
-                          products.find((p) => p.id === parseInt(params.id));
+      function normalize(s){
+        return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      }
+      const idParam = params.id;
+      const decoded = decodeURIComponent(String(idParam || ""));
+
+      const foundProduct =
+        products.find((p) => p.slug === idParam) ||
+        products.find((p) => p.slug === decoded) ||
+        products.find((p) => String(p.id) === String(idParam)) ||
+        products.find((p) => normalize(p.slug) === normalize(idParam)) ||
+        products.find((p) => normalize(p.name) === normalize(idParam)) ||
+        products.find((p) => normalize(p.name) === normalize(decoded));
 
       if (!foundProduct) {
-        const fallbackProduct = DEFAULT_PRODUCTS.find((p) => p.slug === params.id) || 
-                               DEFAULT_PRODUCTS.find((p) => p.id === parseInt(params.id));
+        const fallbackProduct =
+          DEFAULT_PRODUCTS.find((p) => p.slug === idParam) ||
+          DEFAULT_PRODUCTS.find((p) => p.slug === decoded) ||
+          DEFAULT_PRODUCTS.find((p) => String(p.id) === String(idParam)) ||
+          DEFAULT_PRODUCTS.find((p) => normalize(p.slug) === normalize(idParam)) ||
+          DEFAULT_PRODUCTS.find((p) => normalize(p.name) === normalize(idParam)) ||
+          DEFAULT_PRODUCTS.find((p) => normalize(p.name) === normalize(decoded));
         setProduct(fallbackProduct);
       } else {
         setProduct(foundProduct);
       }
     } catch (error) {
-      const fallbackProduct = DEFAULT_PRODUCTS.find((p) => p.slug === params.id) || 
-                             DEFAULT_PRODUCTS.find((p) => p.id === parseInt(params.id));
+      const fallbackProduct =
+        DEFAULT_PRODUCTS.find((p) => p.slug === idParam) ||
+        DEFAULT_PRODUCTS.find((p) => p.slug === decoded) ||
+        DEFAULT_PRODUCTS.find((p) => String(p.id) === String(idParam)) ||
+        DEFAULT_PRODUCTS.find((p) => normalize(p.slug) === normalize(idParam)) ||
+        DEFAULT_PRODUCTS.find((p) => normalize(p.name) === normalize(idParam)) ||
+        DEFAULT_PRODUCTS.find((p) => normalize(p.name) === normalize(decoded));
       setProduct(fallbackProduct);
     } finally {
       setLoading(false);

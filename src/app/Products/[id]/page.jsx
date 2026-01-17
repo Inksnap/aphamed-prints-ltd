@@ -22,8 +22,20 @@ async function readProducts() {
 
 export async function generateMetadata({ params }) {
   const products = await readProducts();
+  function normalize(s){
+    return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  }
+
+  const idParam = params.id;
+  const decoded = decodeURIComponent(String(idParam || ""));
+
   const found =
-    products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+    products.find((p) => p.slug === idParam) ||
+    products.find((p) => p.slug === decoded) ||
+    products.find((p) => String(p.id) === String(idParam)) ||
+    products.find((p) => normalize(p.slug) === normalize(idParam)) ||
+    products.find((p) => normalize(p.name) === normalize(idParam)) ||
+    products.find((p) => normalize(p.name) === normalize(decoded));
 
   if (!found) {
     return {
@@ -66,8 +78,20 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   const products = await readProducts();
-  const found =
-    products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+  function normalize(s){
+    return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  }
 
-  return <ProductClient initialProduct={found || null} initialAllProducts={products} params={params} />;
+  const idParam = params.id;
+  const decoded = decodeURIComponent(String(idParam || ""));
+
+  const found2 =
+    products.find((p) => p.slug === idParam) ||
+    products.find((p) => p.slug === decoded) ||
+    products.find((p) => String(p.id) === String(idParam)) ||
+    products.find((p) => normalize(p.slug) === normalize(idParam)) ||
+    products.find((p) => normalize(p.name) === normalize(idParam)) ||
+    products.find((p) => normalize(p.name) === normalize(decoded));
+
+  return <ProductClient initialProduct={found2 || null} initialAllProducts={products} params={params} />;
 }
