@@ -2036,15 +2036,25 @@ function getDefaultProducts() {
 
 // GET - Fetch all products
 export async function GET() {
+  // HOTFIX: Serve local `data/products.json` unconditionally to prevent
+  // deployed sites from returning empty/incorrect product lists while we
+  // diagnose the blob/Supabase source. This makes product pages render
+  // immediately after you deploy. Remove this block after verifying.
   try {
-    const products = await readProducts();
-    return NextResponse.json(products, { headers: { 'x-products-source': PRODUCTS_SOURCE } });
-  } catch (error) {
-    console.error("Failed to fetch products:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch products" },
-      { status: 500 }
-    );
+    const raw = await fs.readFile(PRODUCTS_FILE, "utf8");
+    const data = JSON.parse(raw || "[]");
+    const products = data.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
+    return NextResponse.json(products, { headers: { "x-products-source": "local-hotfix" } });
+  } catch (err) {
+    console.error("Hotfix: failed to read local products file:", err);
+    // Fallback to the original readProducts() path if local read fails
+    try {
+      const products = await readProducts();
+      return NextResponse.json(products, { headers: { "x-products-source": PRODUCTS_SOURCE || "fallback" } });
+    } catch (error) {
+      console.error("Failed to fetch products after hotfix fallback:", error);
+      return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
+    }
   }
 }
 
