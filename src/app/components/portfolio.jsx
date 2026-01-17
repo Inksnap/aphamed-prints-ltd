@@ -118,13 +118,13 @@ export default function Portfolio() {
     <section className="py-16 px-6 lg:px-20">
       {/* Header */}
       <div className="text-center">
-        <h1 className="merienda-font font-extrabold text-xl sm:text-3xl lg:text-3xl text-(--primary-color) leading-10">
+        <h1 className="merienda-font font-extrabold text-xl sm:text-3xl lg:text-3xl text-[var(--primary-color)] leading-10">
           EXPLORE OUR PORTFOLIO
         </h1>
-        <p className="michroma-font text-xl sm:text-2xl lg:text-2xl text-(--primary-color) leading-6 sm:leading-10 lg:leading-10">
+        <p className="michroma-font text-xl sm:text-2xl lg:text-2xl text-[var(--primary-color)] leading-6 sm:leading-10 lg:leading-10">
           Design - Prints - Quality Results
         </p>
-        <p className="merienda-font font-medium text-xs sm:text-md lg:text-sm text-(--primary-color)">
+        <p className="merienda-font font-medium text-xs sm:text-md lg:text-sm text-[var(--primary-color)]">
           Our portfolio shows our hard work and devotion to helping our clients{" "}
           <br />
           succeed. Don't just take our word for it. <br />
@@ -138,7 +138,7 @@ export default function Portfolio() {
     className="
       flex flex-wrap items-center justify-center 
       gap-2 text-sm 
-      bg-(--neutral-color)/50 mx-auto 
+          bg-[var(--neutral-color)]/50 mx-auto 
       p-2 rounded-md md:rounded-full shadow-gray-400 shadow-xl
       max-w-[90%]   /* prevents overflow on 360px */
       lg:max-w-fit  /* restores normal on large screens */
@@ -155,10 +155,9 @@ export default function Portfolio() {
             onClick={() => setActiveCategory(cat)}
             className={`
               cursor-pointer px-3 py-2 rounded-full transition-all whitespace-nowrap
-              ${
-                isActive
-                  ? "bg-(--primary-color)/50 text-[--accent-color] font-bold scale-105 shadow-md"
-                  : "hover:bg-(--primary-color)/50"
+              ${isActive
+                ? "bg-[var(--primary-color)]/50 text-[var(--accent-color)] font-bold scale-105 shadow-md"
+                : "hover:bg-[var(--primary-color)]/50"
               }
             `}
           >
@@ -182,7 +181,7 @@ export default function Portfolio() {
             <motion.div
               key={item.id}
               layout
-              className="relative w-full h-60 lg:h-55 2xl:h-100  cursor-pointer perspective-[1000px]"
+              className="relative w-full h-60 cursor-pointer perspective-[1000px]"
               onClick={() =>
                 setFlippedId(flippedId === item.id ? null : item.id)
               }
@@ -226,14 +225,14 @@ export default function Portfolio() {
 
                 {/* Back */}
                 <div
-                  className="absolute inset-0 flex flex-col items-center justify-center p-4 rounded-lg shadow-lg bg-(--primary-color) text-(--neutral-color)"
+                  className="absolute inset-0 flex flex-col items-center justify-center p-4 rounded-lg shadow-lg bg-[var(--primary-color)] text-[var(--neutral-color)]"
                   style={{
                     transform: "rotateY(180deg)",
                     backfaceVisibility: "hidden",
                   }}
                 >
                   <p className="text-center text-sm">{item.description}</p>
-                  <button className="bg-(--secondary-color) rounded-sm p-2 merienda-font mt-2">
+                  <button className="bg-[var(--secondary-color)] rounded-sm p-2 merienda-font mt-2">
                     <a
                       href="https://wa.me/2349091643613"
                       target="_blank"
@@ -251,26 +250,26 @@ export default function Portfolio() {
 
       {/* See More Buttons */}
       <div className="text-center mt-10">
-        <div className="text-center michroma-font text-(--accent-color) mb-4">
+        <div className="text-center michroma-font text-[var(--accent-color)] mb-4">
           <p>See More</p>
         </div>
         <div className="flex justify-center flex-wrap gap-4">
-          <button className="bg-(--secondary-color) rounded-sm py-2 px-8 merienda-font mt-2">
+          <button className="bg-[var(--secondary-color)] rounded-sm py-2 px-8 merienda-font mt-2">
             <a
               href="https://www.behance.net/gallery/226929635/APHAMED-PROJECT"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AiFillBehanceSquare className="text-(--accent-color) text-xl" />
+              <AiFillBehanceSquare className="text-[var(--accent-color)] text-xl" />
             </a>
           </button>
-          <button className="bg-(--secondary-color) rounded-sm py-2 px-8 merienda-font mt-2">
+          <button className="bg-[var(--secondary-color)] rounded-sm py-2 px-8 merienda-font mt-2">
             <a
               href="https://drive.google.com/drive/folders/1CoAou0NdC5bKnvCPlQTUU1thQ5VqCX4X"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FaGoogleDrive className="text-(--accent-color) text-xl" />
+              <FaGoogleDrive className="text-[var(--accent-color)] text-xl" />
             </a>
           </button>
         </div>
