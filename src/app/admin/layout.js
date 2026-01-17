@@ -27,6 +27,29 @@ export default function AdminLayout({ children }) {
     setLoading(false);
   }, [pathname, router]);
 
+  // Inject Tawk.to script for admin pages (only once)
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (document.querySelector("script[data-tawk]")) return;
+
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_LoadStart = new Date();
+
+    const s1 = document.createElement("script");
+    s1.async = true;
+    s1.src = "https://embed.tawk.to/696b2cf40f26dd197d65d180/1jf5af7nb";
+    s1.charset = "UTF-8";
+    s1.setAttribute("crossorigin", "*");
+    s1.setAttribute("data-tawk", "true");
+    document.body.appendChild(s1);
+
+    return () => {
+      // optional: remove script on unmount
+      const el = document.querySelector("script[data-tawk]");
+      if (el) el.remove();
+    };
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem("adminLoggedIn");
     router.push("/admin/login");

@@ -109,7 +109,12 @@ export default function RootLayout({ children }) {
         <WhatsAppButton />
         <ChatWidget />
         </div>
-        
+        {/* Tawk.to live chat script - loads on all pages */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];s1.async=true;s1.src='https://embed.tawk.to/696b2cf40f26dd197d65d180/1jf5af7nb';s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();`,
+          }}
+        />
       </body>
     </html>
   );

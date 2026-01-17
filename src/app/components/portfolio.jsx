@@ -22,7 +22,7 @@ const portfolioItems = [
   {
     id: 3,
     category: "Print & Brand",
-    image: "/image/Portimg2.jpg",
+    image: "/image/portimg2.jpg",
     description: "Club Poster Design",
   },
   {
@@ -70,7 +70,7 @@ const portfolioItems = [
   {
     id: 11,
     category: "Graphic Design",
-    image: "/image/Portimg3.jpg",
+    image: "/image/portimg3.jpg",
     description: "Birthday Poster design",
   },
   {
@@ -94,7 +94,7 @@ const portfolioItems = [
   {
     id: 15,
     category: "Print & Brand",
-    image: "/image/Portimg4.jpg",
+    image: "/image/portimg4.jpg",
     description: "Branded Nylon",
   },
   {
