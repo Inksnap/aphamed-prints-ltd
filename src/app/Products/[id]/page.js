@@ -1,403 +1,68 @@
-"use client";
+import fs from "fs/promises";
+import path from "path";
+import ProductClient from "./ProductClient";
 
-import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FaMinus, FaPlus, FaWhatsapp, FaStar, FaCheck, FaTruck, 
-  FaShieldAlt, FaHeadset, FaChevronLeft, FaChevronRight, FaTimes
-} from "react-icons/fa";
-import { HiArrowLeft, HiZoomIn } from "react-icons/hi";
-import { MdVerified } from "react-icons/md";
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
-// DEFAULT PRODUCT DATA (Fallback)
-const DEFAULT_PRODUCTS = [
-  {
-    id: 1,
-    name: "A5 Flyers",
-    price: "25,000",
-    category: "Prints",
-    image: "/image/A4-flyers.png",
-    unit: "Per 50",
-    description: "Eye-catching A5 flyers perfect for promotions, events, and marketing campaigns. High-quality print on premium paper stock.",
-    features: [
-      "Full color CMYK printing",
-      "130gsm glossy art paper",
-      "Professional design support",
-      "Vibrant color reproduction",
-      "Suitable for indoor/outdoor use"
-    ],
-    specifications: {
-      size: "A5 (148 x 210mm)",
-      paper: "130gsm Glossy Art Paper",
-      printing: "Full Color CMYK (One Side)",
-      finishing: "Glossy",
-      quantity: "50 pieces",
-      turnaround: "1-2 Business Days"
+async function readProducts() {
+  const PRODUCTS_FILE = path.join(process.cwd(), "data", "products.json");
+  try {
+    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+    const products = JSON.parse(data || "[]");
+    return products.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
+  } catch (err) {
+    // if file missing or parse error, return an empty array
+    return [];
+  }
+}
+
+export async function generateMetadata({ params }) {
+  const products = await readProducts();
+  const found = products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+
+  if (!found) {
+    return {
+      title: "Aphamed Prints LTD - Product",
+      description: "High quality printing and branding products from Aphamed Prints LTD.",
+    };
+  }
+
+  return {
+    title: `${found.name} | Aphamed Prints LTD`,
+    description: found.description || "Products from Aphamed Prints LTD",
+    openGraph: {
+      title: `${found.name} | Aphamed Prints LTD`,
+      description: found.description || "Products from Aphamed Prints LTD",
+      images: [
+        {
+          url: found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image,
+          width: 800,
+          height: 600,
+          alt: found.name,
+        },
+      ],
+      type: "product",
     },
-    reviews: [
-      {
-        name: "Funke Ajayi",
-        rating: 5,
-        comment: "The flyers came out beautifully! Colors are vibrant and paper quality is excellent.",
-        date: "Dec 29, 2025",
-        verified: true
-      },
-      {
-        name: "Emeka Nwosu",
-        rating: 5,
-        comment: "Used them for my product launch. Very impressed with the quality and quick turnaround.",
-        date: "Dec 22, 2025",
-        verified: true
-      },
-      {
-        name: "Aisha Bello",
-        rating: 4,
-        comment: "Good quality flyers at affordable price. Will order again.",
-        date: "Dec 18, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [6, 11, 37]
-  },
-  {
-    id: 2,
-    name: "Double side Business Card",
-    price: "19,000",
-    category: "Branding",
-    image: "/image/Business-Card.png",
-    unit: "Per 100",
-    description: "Premium quality double-sided business cards printed on high-grade cardstock. Perfect for making a lasting impression on clients and business partners.",
-    gallery: [
-      "/image/Business-Card.png",
-      "/image/Business-Card.png",
-      "/image/Business-Card.png",
-      "/image/Business-Card.png"
-    ],
-    features: [
-      "Double-sided full-color printing",
-      "Premium 350gsm cardstock",
-      "Matte or glossy finish options",
-      "Standard size: 3.5\" x 2\"",
-      "Fast turnaround time (2-3 business days)",
-      "Professional design assistance available",
-      "Water-resistant lamination",
-      "UV coating protection available"
-    ],
-    specifications: {
-      material: "350gsm Art Card",
-      size: "3.5 x 2 inches (Standard)",
-      printing: "Full Color CMYK (Both Sides)",
-      finishing: "Matte/Glossy Lamination",
-      quantity: "100 pieces minimum",
-      turnaround: "2-3 Business Days",
-      customization: "Available"
+    twitter: {
+      card: "summary_large_image",
+      title: `${found.name} | Aphamed Prints LTD`,
+      description: found.description || "Products from Aphamed Prints LTD",
+      images: [found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image],
     },
-    reviews: [
-      {
-        name: "Adewale Johnson",
-        rating: 5,
-        comment: "Excellent quality! The cards look very professional and the finish is perfect.",
-        date: "Dec 15, 2025",
-        verified: true
-      },
-      {
-        name: "Chioma Okafor",
-        rating: 5,
-        comment: "Fast delivery and amazing print quality. Highly recommended!",
-        date: "Dec 10, 2025",
-        verified: true
-      },
-      {
-        name: "Ibrahim Musa",
-        rating: 4,
-        comment: "Good quality cards. The matte finish looks really professional.",
-        date: "Dec 5, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [1, 10, 38]
-  },
-  {
-    id: 3,
-    name: "Shirts",
-    price: "8,000",
-    category: "Design",
-    image: "/image/Shirts.png",
-    unit: "Per one",
-    description: "Custom branded t-shirts with high-quality screen printing or heat transfer. Perfect for corporate events, uniforms, and promotional giveaways.",
-    features: [
-      "100% cotton fabric",
-      "Screen printing or heat transfer",
-      "Multiple color options",
-      "Durable and washable",
-      "Available in all sizes (S-XXL)",
-      "Bulk discounts available"
-    ],
-    specifications: {
-      material: "100% Cotton",
-      printing: "Screen Print/Heat Transfer",
-      colors: "Multiple Options Available",
-      sizes: "S, M, L, XL, XXL",
-      minimum: "1 piece",
-      turnaround: "3-5 Business Days"
-    },
-    reviews: [
-      {
-        name: "Yusuf Abdullahi",
-        rating: 5,
-        comment: "Ordered 20 shirts for my company. Quality is top-notch and print is very clear!",
-        date: "Jan 1, 2026",
-        verified: true
-      },
-      {
-        name: "Grace Okonkwo",
-        rating: 5,
-        comment: "Love the fabric quality! The print hasn't faded after multiple washes.",
-        date: "Dec 27, 2025",
-        verified: true
-      },
-      {
-        name: "Daniel Okoro",
-        rating: 4,
-        comment: "Great shirts for the price. Delivery was prompt.",
-        date: "Dec 20, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [41, 43, 48]
-  },
-  {
-    id: 4,
-    name: "Invitation Cards",
-    price: "15,000",
-    category: "Prints",
-    image: "/image/Invitation.png",
-    unit: "Per one",
-    description: "Elegant invitation cards for weddings, birthdays, and special events. Available in various designs with premium finishing options.",
-    features: [
-      "Premium cardstock material",
-      "Full color printing both sides",
-      "Customizable designs",
-      "Matte or glossy lamination",
-      "Includes envelopes",
-      "Professional layout service"
-    ],
-    specifications: {
-      material: "300gsm Art Card",
-      size: "5 x 7 inches (Standard)",
-      printing: "Full Color (Both Sides)",
-      finishing: "Laminated",
-      quantity: "1 piece (Bulk available)",
-      turnaround: "2-3 Business Days"
-    },
-    reviews: [
-      {
-        name: "Bisola Adeniran",
-        rating: 5,
-        comment: "Used for my wedding! Beautiful cards, everyone complimented them. Thank you Aphamed!",
-        date: "Dec 30, 2025",
-        verified: true
-      },
-      {
-        name: "Samuel Eze",
-        rating: 5,
-        comment: "Excellent quality and the design team was very helpful. Highly recommended.",
-        date: "Dec 24, 2025",
-        verified: true
-      },
-      {
-        name: "Ngozi Ibe",
-        rating: 5,
-        comment: "Perfect for my daughter's birthday party. The colors came out exactly as I wanted.",
-        date: "Dec 16, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [2, 7, 6]
-  },
-  {
-    id: 5,
-    name: "Stickers",
-    price: "12,000",
-    category: "Branding",
-    image: "/image/Stickers2.png",
-    unit: "Per 100",
-    description: "Custom vinyl stickers perfect for branding, packaging, and promotional purposes. Waterproof and durable for long-lasting use.",
-    features: [
-      "Waterproof vinyl material",
-      "UV resistant printing",
-      "Any shape and size",
-      "Strong adhesive backing",
-      "Suitable for indoor and outdoor",
-      "Glossy or matte finish"
-    ],
-    specifications: {
-      material: "Vinyl Sticker Paper",
-      printing: "Full Color CMYK",
-      sizes: "Custom Sizes Available",
-      finishing: "Glossy/Matte Lamination",
-      quantity: "100 pieces minimum",
-      turnaround: "2-3 Business Days"
-    },
-    reviews: [
-      {
-        name: "Tope Adeyemi",
-        rating: 5,
-        comment: "Perfect stickers for my product packaging. Waterproof and looks professional!",
-        date: "Dec 28, 2025",
-        verified: true
-      },
-      {
-        name: "Mercy Udoh",
-        rating: 5,
-        comment: "The quality exceeded my expectations. Colors are bright and adhesive is strong.",
-        date: "Dec 21, 2025",
-        verified: true
-      },
-      {
-        name: "Chukwuma Obi",
-        rating: 4,
-        comment: "Good value for money. Using them for my business branding.",
-        date: "Dec 14, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [38, 46, 12]
-  },
-  {
-    id: 6,
-    name: "A4 Brochure",
-    price: "6,500",
-    category: "Prints",
-    image: "/image/A4-Brochure.png",
-    unit: "Per one",
-    description: "Professional A4 brochures with bi-fold or tri-fold options. Ideal for product catalogs, company profiles, and marketing materials.",
-    features: [
-      "Bi-fold or tri-fold design",
-      "Full color printing",
-      "170gsm glossy paper",
-      "Professional layout design",
-      "Perfect for presentations",
-      "High-quality finishing"
-    ],
-    specifications: {
-      size: "A4 (210 x 297mm)",
-      paper: "170gsm Glossy Art Paper",
-      printing: "Full Color (Both Sides)",
-      fold: "Bi-fold/Tri-fold",
-      quantity: "1 piece minimum",
-      turnaround: "2-3 Business Days"
-    },
-    reviews: [
-      {
-        name: "Kemi Olowu",
-        rating: 5,
-        comment: "Used for my business presentation. The quality impressed my clients!",
-        date: "Jan 2, 2026",
-        verified: true
-      },
-      {
-        name: "Ahmed Hassan",
-        rating: 5,
-        comment: "Professional finish and great paper quality. Will definitely reorder.",
-        date: "Dec 26, 2025",
-        verified: true
-      },
-      {
-        name: "Victoria Nnamdi",
-        rating: 4,
-        comment: "Good brochures for the price. Delivery was on time.",
-        date: "Dec 19, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [1, 11, 14]
-  },
-  {
-    id: 7,
-    name: "Burial Programme",
-    price: "5,500",
-    category: "Branding",
-    image: "/image/Burial-programme.png",
-    unit: "Per one",
-    description: "Respectful and elegant burial/funeral programmes with professional designs. Available in booklet or folded formats.",
-    features: [
-      "Booklet or folded format",
-      "Full color or black and white",
-      "Quality paper stock",
-      "Custom layout design",
-      "Fast turnaround time",
-      "Respectful designs"
-    ],
-    specifications: {
-      size: "A5 (148 x 210mm)",
-      paper: "150gsm Bond Paper",
-      printing: "Full Color/B&W",
-      pages: "4-16 pages available",
-      quantity: "1 piece minimum",
-      turnaround: "24-48 Hours (Express)"
-    },
-    reviews: [
-      {
-        name: "Pastor John Okafor",
-        rating: 5,
-        comment: "Very professional and delivered on time. The family was pleased with the quality.",
-        date: "Dec 31, 2025",
-        verified: true
-      },
-      {
-        name: "Mrs. Folake Williams",
-        rating: 5,
-        comment: "Beautiful programme design. Thank you for the quick delivery during our difficult time.",
-        date: "Dec 23, 2025",
-        verified: true
-      },
-      {
-        name: "Solomon Adebisi",
-        rating: 5,
-        comment: "Excellent service. They understood the urgency and delivered perfectly.",
-        date: "Dec 17, 2025",
-        verified: true
-      }
-    ],
-    relatedProducts: [4, 6, 10]
-  },
-  {
-    id: 8,
-    name: "Notepad",
-    price: "5,500",
-    category: "Design",
-    image: "/image/Notepad.png",
-    unit: "Per one",
-    description: "Custom branded notepads for corporate use, gifts, or daily note-taking. Available in various sizes with quality binding.",
-    features: [
-      "Custom branding on cover",
-      "50-100 sheets available",
-      "Quality bond paper",
-      "Glued or spiral binding",
-      "Multiple size options",
-      "Corporate gifting ready"
-    ],
-    specifications: {
-      size: "A5/A6 (Multiple sizes)",
-      paper: "70gsm Bond Paper",
-      sheets: "50-100 sheets",
-      binding: "Glued/Spiral",
-      cover: "250gsm Card Cover",
-      turnaround: "3-4 Business Days"
-    },
-    reviews: [
-      {
-        name: "Chinwe Okeke",
-        rating: 5,
-        comment: "Ordered 50 notepads for my office. Everyone loves them! Quality is superb.",
-        date: "Dec 29, 2025",
-        verified: true
-      },
-      {
-        name: "Babatunde Lawal",
+  };
+}
+
+export default async function Page({ params }) {
+  const products = await readProducts();
+  const found = products.find((p) => p.slug === params.id) || products.find((p) => p.id === parseInt(params.id));
+
+  return <ProductClient initialProduct={found || null} initialAllProducts={products} params={params} />;
+}
         rating: 4,
         comment: "Nice notepads with good paper quality. Great for daily use.",
         date: "Dec 25, 2025",
