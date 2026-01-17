@@ -44,13 +44,6 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const rawImage = (found.gallery && found.gallery.length) ? found.gallery[0] : found.image;
-  const absoluteImage = rawImage
-    ? rawImage.startsWith("/")
-      ? `https://www.aphamed.com${rawImage}`
-      : rawImage
-    : `https://www.aphamed.com/image/logo.png`;
-
   return {
     title: `${found.name} | Aphamed Prints LTD`,
     description: found.description || "Products from Aphamed Prints LTD",
@@ -59,7 +52,7 @@ export async function generateMetadata({ params }) {
       description: found.description || "Products from Aphamed Prints LTD",
       images: [
         {
-          url: absoluteImage,
+          url: found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image,
           width: 800,
           height: 600,
           alt: found.name,
@@ -71,7 +64,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: `${found.name} | Aphamed Prints LTD`,
       description: found.description || "Products from Aphamed Prints LTD",
-      images: [absoluteImage],
+      images: [found.image?.startsWith("/") ? `https://aphamed.com${found.image}` : found.image],
     },
   };
 }
