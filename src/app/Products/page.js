@@ -8,6 +8,13 @@ import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+function generateSlug(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
 export default function ProductsPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -776,7 +783,10 @@ const CATEGORIES = ["All", "Prints", "Branding", "Design", "Signage", "Other"];
           "
         >
           {filteredProducts.map((product) => (
-            <Link key={product.id} href={`/Products/${product.slug || product.id}`}>
+            <Link
+              key={product.id}
+              href={`/Products/${product.slug || product.id || generateSlug(product.name)}`}
+            >
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}

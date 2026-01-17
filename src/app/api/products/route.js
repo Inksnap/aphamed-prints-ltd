@@ -7,6 +7,8 @@ import { put } from "@vercel/blob";
 const PRODUCTS_FILE = path.join(process.cwd(), "data", "products.json");
 const BLOB_URL = process.env.PRODUCTS_BLOB_URL; // public blob URL where products.json is stored
 const BLOB_TOKEN = process.env.BLOB_READ_WRITE_TOKEN; // Vercel Blob read/write token
+// Track which source was used to provide products for observability
+let PRODUCTS_SOURCE = "local";
 
 // Generate slug from product name
 function generateSlug(name) {
@@ -48,7 +50,11 @@ async function readFromBlob() {
   try {
     const res = await fetch(BLOB_URL, { cache: "no-store" });
     if (!res.ok) return null;
-    return await res.json();
+    const json = await res.json();
+    // If blob contains an empty array, treat it as missing so we fall back
+    // to local/default products instead of returning an empty product list.
+    if (Array.isArray(json) && json.length === 0) return null;
+    return json;
   } catch (err) {
     console.error("Failed to read products from blob:", err);
     return null;
@@ -76,6 +82,9 @@ async function writeToBlob(products) {
 }
 
 async function readProducts() {
+  try {
+    // Attempt to resolve products from multiple sources; if any part fails,
+    // return the built-in defaults so the site still functions.
   // 1) Try Supabase first if configured
   const SUPABASE_URL = process.env.SUPABASE_URL;
   const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -84,6 +93,7 @@ async function readProducts() {
     try {
       const { data, error } = await supabase.from("products").select("*").order("id", { ascending: true });
       if (error) throw error;
+      PRODUCTS_SOURCE = 'supabase';
       return data.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
     } catch (err) {
       console.error("Supabase fetch failed, falling back to blob/local:", err);
@@ -93,18 +103,31 @@ async function readProducts() {
   // 2) Try Vercel Blob if configured
   const blobProducts = await readFromBlob();
   if (blobProducts) {
+    PRODUCTS_SOURCE = 'blob';
     return blobProducts.map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
   }
 
   // 3) Fallback to local file (dev)
-  await initProductsFile();
-  const data = await fs.readFile(PRODUCTS_FILE, "utf8");
-  let products = JSON.parse(data);
-  products = products.map((product) => ({
-    ...product,
-    slug: product.slug || generateSlug(product.name),
-  }));
-  return products;
+  try {
+    await initProductsFile();
+    const data = await fs.readFile(PRODUCTS_FILE, "utf8");
+    let products = JSON.parse(data || "[]");
+    products = products.map((product) => ({
+      ...product,
+      slug: product.slug || generateSlug(product.name),
+    }));
+    PRODUCTS_SOURCE = 'local';
+    return products;
+  } catch (err) {
+    console.error('Failed to read local products file, returning defaults:', err);
+    PRODUCTS_SOURCE = 'defaults';
+    return getDefaultProducts().map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
+  }
+  } catch (err) {
+    console.error('Unexpected error reading products, returning defaults:', err);
+    PRODUCTS_SOURCE = 'defaults';
+    return getDefaultProducts().map((p) => ({ ...p, slug: p.slug || generateSlug(p.name) }));
+  }
 }
 
 async function writeProducts(products) {
@@ -2015,7 +2038,7 @@ function getDefaultProducts() {
 export async function GET() {
   try {
     const products = await readProducts();
-    return NextResponse.json(products);
+    return NextResponse.json(products, { headers: { 'x-products-source': PRODUCTS_SOURCE } });
   } catch (error) {
     console.error("Failed to fetch products:", error);
     return NextResponse.json(

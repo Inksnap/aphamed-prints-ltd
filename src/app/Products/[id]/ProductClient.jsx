@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import FALLBACK_PRODUCTS from "../../../../data/products.json";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,7 +24,10 @@ export default function ProductClient({ initialProduct = null, initialAllProduct
   const [loading, setLoading] = useState(!initialProduct);
 
   // DEFAULT_PRODUCT data copied from original for fallback (trimmed if needed)
-  const DEFAULT_PRODUCTS = initialAllProducts && initialAllProducts.length ? initialAllProducts : [];
+  const DEFAULT_PRODUCTS =
+    initialAllProducts && initialAllProducts.length
+      ? initialAllProducts
+      : FALLBACK_PRODUCTS || [];
 
   useEffect(() => {
     // If server already provided the product, skip fetching
